@@ -701,6 +701,71 @@ figcaption,
   display: none;
 }
 
+.play-gallery {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.play-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.play-flag,
+.play-gallery figcaption,
+#demo {
+  font-family: var(--mono);
+}
+
+#demo {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0 2rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  background: var(--bg-raise);
+}
+
+#demo button,
+#demo input {
+  min-height: 44px;
+}
+
+.play-row,
+.play-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.play-pull {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.play-pull img,
+.play-swatch {
+  width: 96px;
+  height: 96px;
+}
+
+.play-swatch {
+  display: grid;
+  place-items: center;
+  color: #14160f;
+  font-weight: 700;
+}
+
+#demo iframe {
+  width: 100%;
+  min-height: 720px;
+  border: 0;
+  background: #0b1020;
+}
+
 .card-media {
   position: relative;
   background: #0b0d0a;

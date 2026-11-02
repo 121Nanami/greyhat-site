@@ -1,4 +1,5 @@
 import { readFileSync, existsSync } from 'node:fs';
+import { DEMO_KIND } from '../src/scripts/play-meta.mjs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -19,17 +20,13 @@ const ALLOWED_URLS = new Set([
   'https://github.com/121Nanami/gate',
   'https://github.com/121Nanami/gate-action',
   'https://github.com/121Nanami/GreyHat',
+  'https://github.com/121Nanami/agent-arena',
+  'https://github.com/121Nanami/agent-fitness',
+  'https://github.com/121Nanami/boldinbeauty',
+  'https://github.com/121Nanami/fiaos',
   'https://121nanami.github.io/gate/',
 ]);
-const PRIVATE_SLUGS = new Set([
-  'agent-arena',
-  'agent-fitness',
-  'fiaos',
-  'fiahealth',
-  'fiaos-studio',
-  'fia-modules',
-  'boldinbeauty',
-]);
+const PRIVATE_SLUGS = new Set(['fiahealth']);
 
 function walkStrings(value, path, visit) {
   if (typeof value === 'string') visit(value, path);
@@ -103,9 +100,13 @@ if (featured.join() !== 'boldinbeauty,ai-colosseum,agent-arena,agent-fitness') {
   fail(`featured must be boldinbeauty, ai-colosseum, agent-arena, agent-fitness, got ${featured.join()}`);
 }
 const beauty = projects.find((project) => project.slug === 'boldinbeauty');
-if (!beauty || beauty.group !== 'flagship' || !beauty.featured || beauty.repo.state !== 'private' || beauty.links?.length) {
-  fail('boldinbeauty must lead flagship, stay private, and carry no link');
+if (!beauty || beauty.group !== 'flagship' || !beauty.featured || beauty.repo.state !== 'public') {
+  fail('boldinbeauty must lead flagship and be public');
 }
+if (beauty?.links?.[0]?.href !== 'https://github.com/121Nanami/boldinbeauty') {
+  fail('boldinbeauty must link its public repository');
+}
+if ((beauty?.shots.length ?? 0) < 6) fail('boldinbeauty needs the public screenshots');
 if (projects[0]?.slug !== 'boldinbeauty') fail('boldinbeauty must be the first project');
 const fiaosProject = projects.find((project) => project.slug === 'fiaos');
 if (!fiaosProject || fiaosProject.schematic || fiaosProject.shots.length < 4) {
@@ -137,12 +138,17 @@ if (colosseum && /copyrighted character/i.test(JSON.stringify(colosseum)) === fa
   fail('ai-colosseum must say it uses no copyrighted characters');
 }
 
-for (const slug of ['agent-arena', 'agent-fitness']) {
+for (const [slug, href] of [
+  ['agent-arena', 'https://github.com/121Nanami/agent-arena'],
+  ['agent-fitness', 'https://github.com/121Nanami/agent-fitness'],
+  ['fiaos', 'https://github.com/121Nanami/fiaos'],
+  ['fiaos-studio', 'https://github.com/121Nanami/fiaos'],
+  ['fia-modules', 'https://github.com/121Nanami/fiaos'],
+]) {
   const project = projects.find((item) => item.slug === slug);
-  if (!project || project.repo.state !== 'private' || !/not linked/i.test(project.repo.note)) {
-    fail(`${slug} must stay private and say it is not linked`);
+  if (!project || project.repo.state !== 'public' || project.links?.[0]?.href !== href) {
+    fail(`${slug} must be public and link ${href}`);
   }
-  if (project?.links?.length) fail(`${slug} must not carry an outbound link`);
 }
 
 for (const id of GROUP_IDS) {
@@ -150,6 +156,12 @@ for (const id of GROUP_IDS) {
 }
 
 if (!site.person || !site.studio || !site.ethos) fail('site profile is incomplete');
+
+for (const project of projects) {
+  const kind = DEMO_KIND[project.slug];
+  if (!kind || !['real', 'replay', 'gallery'].includes(kind)) fail(`${project.slug} needs a play demo kind`);
+}
+if (Object.keys(DEMO_KIND).length !== projects.length) fail('play demo list does not match projects');
 
 if (errors.length) {
   console.error(errors.join('\n'));

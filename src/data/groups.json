@@ -3,7 +3,7 @@
     "id": "flagship",
     "label": "Flagship AI",
     "index": "01",
-    "summary": "BoldInBeauty leads: months of work on an AI-made 3D gacha game in Unreal. AI Colosseum is active: two AIs, one random task, one winner. Arena and Fitness are private. Triage is 6/6 easy on both models, and 1/4 hard on local 7B (0/4 on 14B). All-CNN-C is 27.17% after 8 CPU epochs. Three local-7B reels. Foundry's Pocket run is still rejected at QA."
+    "summary": "BoldInBeauty leads: months of work on an AI-made 3D gacha game in Unreal. AI Colosseum is active: two AIs, one random task, one winner. Arena and Fitness are public. Triage is 6/6 easy on both models, and 1/4 hard on local 7B (0/4 on 14B). All-CNN-C is 27.17% after 8 CPU epochs. Three local-7B reels. Foundry's Pocket run is still rejected at QA."
   },
   {
     "id": "security",

@@ -99,15 +99,12 @@ const filters = [{ id: 'all', label: 'All' }, ...groups.map((group) => ({ id: gr
                       <p class="card-highlight">{project.highlight}</p>
                     </div>
                     </a>
-                    {
-                      project.links && project.links.length > 0 && (
-                        <p class="card-out">
-                          {project.links.map((link) => (
-                            <a href={link.href} rel="noopener noreferrer">{link.label}</a>
-                          ))}
-                        </p>
-                      )
-                    }
+                    <p class="card-out">
+                      <a href={href(`play/${project.slug}/`)}>Play</a>
+                      {project.links?.map((link) => (
+                        <a href={link.href} rel="noopener noreferrer">{link.label}</a>
+                      ))}
+                    </p>
                   </article>
                 );
               })}

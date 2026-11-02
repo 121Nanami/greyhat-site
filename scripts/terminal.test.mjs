@@ -40,20 +40,22 @@ test('cat arena quotes the brief result and does not invent a repo url', () => {
   const body = text(result);
   assert.match(body, /0% to 100%/);
   assert.match(body, /Qwen2\.5-Coder 1\.5B/);
-  assert.equal(result.blocks.some((block) => String(block.href || '').startsWith('http')), false);
-  assert.doesNotMatch(body, /https?:\/\//);
+  assert.equal(
+    result.blocks.find((block) => block.type === 'link' && String(block.href || '').startsWith('http'))?.href,
+    'https://github.com/121Nanami/agent-arena',
+  );
 });
 
 test('cat fitness stays private', () => {
   const result = runCommand('cat fitness', ctx);
   const body = text(result);
-  assert.match(body, /Private repository\. Not linked\./);
+  assert.match(body, /Public repository\./);
   assert.match(body, /22,000/);
   assert.match(body, /32 passing/);
   assert.match(body, /FOR UPDATE SKIP LOCKED/);
   assert.equal(result.navigateSlug, undefined);
   const hrefs = result.blocks.map((block) => block.href).filter(Boolean);
-  assert.deepEqual(hrefs, ['projects/agent-fitness/']);
+  assert.deepEqual(hrefs, ['https://github.com/121Nanami/agent-fitness', 'projects/agent-fitness/']);
 });
 
 test('cat colosseum is a plan, not a shipped result', () => {
@@ -107,8 +109,8 @@ test('every cat stays on-site', () => {
     for (const block of result.blocks) {
       if (!block.href) continue;
       if (block.href.startsWith('http')) {
-        assert.match(block.href, /^https:\/\/(www\.youtube\.com\/channel\/UCXJBK9fvqBnTByYkYo5eYyA|github\.com\/121Nanami(\/(gate|gate-action|GreyHat))?|121nanami\.github\.io\/gate\/)$/);
-        assert.ok(['ai-colosseum', 'gate', 'greyhat-utilities'].includes(project.slug));
+        assert.match(block.href, /^https:\/\/(www\.youtube\.com\/channel\/UCXJBK9fvqBnTByYkYo5eYyA|github\.com\/121Nanami(\/(gate|gate-action|GreyHat|agent-arena|agent-fitness|boldinbeauty|fiaos))?|121nanami\.github\.io\/gate\/)$/);
+        assert.ok(['ai-colosseum', 'gate', 'greyhat-utilities', 'agent-arena', 'agent-fitness', 'boldinbeauty', 'fiaos', 'fiaos-studio', 'fia-modules'].includes(project.slug));
       } else {
         assert.match(block.href, /^projects\/[a-z0-9-]+\/$/);
       }

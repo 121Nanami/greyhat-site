@@ -60,8 +60,8 @@ for (const needle of [
 
 const fitnessPage = texts.find((html) => html.includes('FOR UPDATE SKIP LOCKED'));
 if (!fitnessPage) fail('agent fitness report missing');
-if (fitnessPage && /github\.com\/121Nanami\/(agent-fitness|agent-arena|fiaos|BoldInBeauty)/i.test(fitnessPage)) {
-  fail('a private repository is linked');
+if (fitnessPage && /github\.com\/121Nanami\/fiahealth/i.test(fitnessPage)) {
+  fail('fia health repository is linked');
 }
 
 const banned = [
@@ -82,11 +82,18 @@ for (const html of texts) {
   for (const url of urls) {
     const allowed = [
       'https://schema.org',
+      'http://www.w3.org/2000/svg',
+      'https://www.w3.org/2000/svg',
       'https://www.youtube.com/channel/UCXJBK9fvqBnTByYkYo5eYyA',
       'https://github.com/121Nanami',
+      'https://github.com/121Nanami/agent-arena',
+      'https://github.com/121Nanami/agent-fitness',
+      'https://github.com/121Nanami/boldinbeauty',
+      'https://github.com/121Nanami/fiaos',
       'https://121nanami.github.io/gate/',
     ];
-    const ok = allowed.some((prefix) => url === prefix || url.startsWith(prefix));
+    const folded = url.toLowerCase();
+    const ok = allowed.some((prefix) => folded === prefix.toLowerCase() || folded.startsWith(prefix.toLowerCase()));
     if (!ok) fail(`unexpected external url ${url}`);
   }
 }
@@ -105,8 +112,12 @@ for (const [file, html] of htmlByPath) {
         'https://github.com/121Nanami',
         'https://github.com/121Nanami/gate',
         'https://github.com/121Nanami/gate-action',
-        'https://github.com/121Nanami/GreyHat',
-        'https://121nanami.github.io/gate/',
+      'https://github.com/121Nanami/GreyHat',
+      'https://github.com/121Nanami/agent-arena',
+      'https://github.com/121Nanami/agent-fitness',
+      'https://github.com/121Nanami/boldinbeauty',
+      'https://github.com/121Nanami/fiaos',
+      'https://121nanami.github.io/gate/',
       ]);
       const ok = href.startsWith('https://schema.org') || allowedHrefs.has(href);
       if (!ok) fail(`${file} has external href ${href}`);
@@ -121,12 +132,21 @@ for (const [file, html] of htmlByPath) {
   }
 }
 
-for (const slug of ['agent-fitness', 'agent-arena', 'fiaos', 'fiahealth', 'boldinbeauty']) {
+for (const [slug, href] of [
+  ['agent-fitness', 'https://github.com/121Nanami/agent-fitness'],
+  ['agent-arena', 'https://github.com/121Nanami/agent-arena'],
+  ['boldinbeauty', 'https://github.com/121Nanami/boldinbeauty'],
+  ['fiaos', 'https://github.com/121Nanami/fiaos'],
+  ['fiaos-studio', 'https://github.com/121Nanami/fiaos'],
+  ['fia-modules', 'https://github.com/121Nanami/fiaos'],
+]) {
   const page = htmlByPath.get(join(root, 'projects', slug, 'index.html')) || '';
-  if (!page) fail(`missing private page ${slug}`);
-  if (/github\.com\/(corinaharvey|121Nanami)\/(agent-fitness|agent-arena|fiaos|BoldInBeauty)/i.test(page)) {
-    fail(`${slug} links a private repository`);
-  }
+  if (!page.includes(href)) fail(`${slug} page missing ${href}`);
+}
+for (const slug of ['fiahealth']) {
+  const page = htmlByPath.get(join(root, 'projects', slug, 'index.html')) || '';
+  if (!page) fail(`missing page ${slug}`);
+  if (/github\.com\/121Nanami\/fiahealth/i.test(page)) fail(`${slug} links a repository`);
 }
 
 const images = files.filter((file) => /\.(webp|avif|png|jpe?g)$/i.test(file));

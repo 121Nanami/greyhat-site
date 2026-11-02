@@ -9,65 +9,104 @@
       "gacha",
       "game"
     ],
-    "summary": "The largest project in the studio: months of work and over $1,000 invested in a fully AI-made 3D gacha game in Unreal Engine. Private. Not linked.",
-    "highlight": "Months of work \u00b7 over $1,000 \u00b7 Unreal still uncompiled",
-    "stage": "Private. The largest build in the studio. Suites recorded green. Unreal still uncompiled.",
+    "summary": "A 3D gacha game in Unreal Engine 5.8, set in cyberpunk Neo Tokyo, 2009. Public snapshot: gameplay demo, account server, and the AI pipeline. Twenty operators, four rarities.",
+    "highlight": "UE 5.8 public demo \u00b7 20 operators \u00b7 78 / 19.9 / 2 / 0.1",
+    "stage": "Public snapshot. Guest play does not need the account server.",
     "repo": {
-      "state": "private",
-      "note": "Private repository. Not linked."
+      "state": "public",
+      "note": "Public repository."
     },
     "stack": [
-      "Unreal Engine"
+      "Unreal Engine 5.8",
+      "C++",
+      "Node"
     ],
     "facts": [
       {
-        "label": "Scale",
-        "value": "Months of work. The owner puts the spend above $1,000. Fully AI-made."
+        "label": "Engine",
+        "value": "Unreal Engine 5.8. The project file is Demo/BoldInBeautyDemo/BoldInBeautyDemo.uproject."
       },
       {
-        "label": "Form",
-        "value": "3D gacha game in Unreal Engine"
+        "label": "Setting",
+        "value": "Cyberpunk Neo Tokyo, 2009. Players are commanders. The fighters are operators."
       },
       {
-        "label": "Workspace",
-        "value": "Several AI agents under one lead. Mac and Windows copies kept in sync."
+        "label": "Roster",
+        "value": "Twenty operators across four rarities."
       },
       {
-        "label": "Sprint",
-        "value": "2 November 2026. Five merges. Suites recorded green. Unreal still uncompiled."
+        "label": "Rates",
+        "value": "Published in the design record: 3-star Rare 78%, 4-star Epic 19.9%, 5-star Legendary 2%, 6-star Secret 0.1%."
       },
       {
-        "label": "Server",
-        "value": "A reliability suite and local load numbers were recorded. The same day stopped lost saves, leaked rate keys, and a shutdown that drops in-flight work."
+        "label": "Banners",
+        "value": "Standard, Featured (Judge is the featured 5-star, Narrator the featured 6-star), and Daily. One 4-star per 10-pull. One 5-star per 100 rolls. One 6-star per 2,000 rolls. Daily is outside those pity counters."
       },
       {
-        "label": "Game layer",
-        "value": "A second defect pass. Finished plays are released. A touch stick is not divided by a zero radius. Viewport widgets left behind by the player controller are dropped."
+        "label": "Cost",
+        "value": "A single summon is one ticket or 300 Diamonds, except Daily, which forbids Diamonds. Ten results cost nine tickets or 2,700 Diamonds."
       },
       {
-        "label": "Saves",
-        "value": "A save-load sanitizer and fuzz results were recorded. Oversized JSON is refused. Hostile banner clocks are clamped. Overflow stays inside defined integer behaviour."
+        "label": "Account server",
+        "value": "A small Node service. Guest play does not need it. The game expects it on localhost port 8080. The public sample admin mailbox is a placeholder."
       },
       {
-        "label": "Earlier demo",
-        "value": "16 October: a BB Dream UI motion pack in game, dream-core rework, 13 fps."
+        "label": "AI pipeline",
+        "value": "People set direction. Coding agents implement the rules as Unreal C++ and headless tests. Concepts go to turnarounds, then to meshes. UI motion is HTML timelines rendered to atlases. Weather and audio are built in the repo. Greybox levels need Fab kits the snapshot does not include."
       },
       {
-        "label": "Numbers",
-        "value": "The notes say the load numbers and fuzz results were recorded. The figures themselves are not in the pages used here, so they are not repeated."
+        "label": "Demo screen",
+        "value": "The public hub still says placeholder shapes and numbers live in BIBConfig.h and BIBTuning.h. Those on-screen currencies are not repeated here as canon."
       },
       {
         "label": "Repository",
-        "value": "Private. Not linked. No screenshots on this page."
+        "value": "Public. https://github.com/121Nanami/boldinbeauty"
       }
     ],
     "paragraphs": [
-      "BoldInBeauty is the largest project in the studio, ahead of the Colosseum labs. It is a fully AI-made 3D gacha game in Unreal Engine: months of work, and the owner puts the spend above $1,000. The repository is private and is not linked. The workspace coordinates several AI agents under one lead, with Mac and Windows copies kept in sync. This page does not invent game design beyond the notes.",
-      "The 2 November sprint is in three logs. The server log records a reliability suite and the local load numbers, and fixes for lost saves, leaked rate keys, and a shutdown that drops work still in flight. The game log records a second defect pass. The project log records the save-load sanitizer and fuzz results: oversized JSON is refused, hostile banner clocks are clamped on load, and overflow stays inside defined integer behaviour.",
-      "The integrated note says five merges, suites green, and Unreal still uncompiled. An earlier demo, on 16 October, put a BB Dream UI motion pack in the game at 13 fps. No screenshot is published here, and the load and fuzz figures are not copied because the notes do not include them."
+      "BoldInBeauty is a 3D gacha game in Unreal Engine 5.8. The public repository is a development snapshot: the C++ demo, a Node account server, the asset catalogue, and the AI production scripts. It is not a finished store build. Guest play does not need the account server.",
+      "The published summon table is 78% 3-star, 19.9% 4-star, 2% 5-star, and 0.1% 6-star. Featured banners in the demo notes are Judge at 5-star and Narrator at 6-star. Within a rarity, Standard splits that rarity\u2019s chance equally. A 10-pull guarantees one 4-star. Pity is one 5-star per 100 rolls and one 6-star per 2,000, and Daily pulls do not count toward those.",
+      "The screenshots are from the public demo captures: the hub, combat, summoning, equipment, a chapter fight, and a Neo Tokyo blockout. The hub itself marks its currency figures as placeholders in BIBConfig.h and BIBTuning.h, so this page does not treat those figures as the economy."
     ],
-    "callout": "Private repository. Not linked. No player count, no store, and no screenshot.",
-    "shots": []
+    "callout": "Purchased marketplace packs are not in the snapshot. Greybox rebuilds that need them are documented and wait until you supply packs you own.",
+    "shots": [
+      {
+        "file": "boldinbeauty/01-main-menu.png",
+        "alt": "Unreal Editor play-in-editor of the BoldInBeauty hub. A banner reads BOLDINBEAUTY DEMO and says placeholder shapes and numbers live in BIBConfig.h and BIBTuning.h. Buttons along the bottom include Play Chapter 1 Stage 1, Stage 2, Summon, Operators and progression, Equipment, Team, and Merchant.",
+        "caption": "Public hub capture. The screen says the currency numbers are placeholders in BIBConfig.h and BIBTuning.h."
+      },
+      {
+        "file": "boldinbeauty/02-hud-combat.png",
+        "alt": "BoldInBeauty combat HUD in the Unreal editor. Luna is selected with HP 4275 of 4275. The objective is Chapter 1 Stage 2, section 1 of 2, defeat every enemy, 16 left. Move names include Blackhole, Orbiting, Event horizon, Special Expel, and Ultimate Reality Destabilisation.",
+        "caption": "Combat HUD from the public demo. Luna\u2019s HP on this screen is 4275 of 4275, the figure the design record says the demo uses at level 1."
+      },
+      {
+        "file": "boldinbeauty/03-summon.png",
+        "alt": "BoldInBeauty summon screen in the Unreal editor. The selected banner is Standard. Text states regular tickets or 300 Diamonds per roll, and that ten rolls cost 2,700 Diamonds. The last summon line reads Kuu, 4-star Epic, new. Buttons include Standard, Featured Judge 5-star, Featured Narrator 6-star, and Daily.",
+        "caption": "Summon screen. The last result on this capture is Kuu, 4-star Epic. Featured buttons name Judge at 5-star and Narrator at 6-star."
+      },
+      {
+        "file": "boldinbeauty/04-equipment.png",
+        "alt": "BoldInBeauty equipment screen in the Unreal editor, equipping Luna, labelled 4-star Epic. Inventory lists Leggings number 1 at plus 3.5 percent defence and Helmet number 2 at plus 5.5 percent damage. A line says Helmet number 2 upgraded to plus 1.",
+        "caption": "Equipment for Luna, labelled 4-star Epic on this public capture. The bonus lines are what this screen shows."
+      },
+      {
+        "file": "boldinbeauty/2026-10-07_anime_chapter1_stage1.png",
+        "alt": "BoldInBeauty chapter fight capture from 7 October 2026, a stylised stage from Chapter 1.",
+        "caption": "Chapter fight from the public 7 October 2026 captures."
+      },
+      {
+        "file": "boldinbeauty/2026-10-07_greybox_NeoTokyo_street.png",
+        "alt": "Greybox blockout of a Neo Tokyo street from the BoldInBeauty demo, captured 7 October 2026.",
+        "caption": "Neo Tokyo greybox from the same public capture set. The Fab city kits used to dress it are not in the snapshot."
+      }
+    ],
+    "links": [
+      {
+        "label": "BoldInBeauty repository",
+        "href": "https://github.com/121Nanami/boldinbeauty"
+      }
+    ]
   },
   {
     "slug": "ai-colosseum",
@@ -126,13 +165,13 @@
       },
       {
         "label": "Repository",
-        "value": "No public repository. Agent Arena and Agent Fitness stay private and are not linked."
+        "value": "No public Colosseum repository. Agent Arena and Agent Fitness are public."
       }
     ],
     "paragraphs": [
       "AI Colosseum is active. Two AIs take one random task, and one of them wins. Agent Fitness trains the choose-your-fighter roster. Agent Arena runs the head-to-head races.",
       "The tasks are generated. An easy task is a 15-shark-species website. A boss-tier task is a 3D renderer with lighting and shadows. The result of each task is checked automatically. The roster does not use copyrighted characters.",
-      "The YouTube channel is public. There is no public repository for Colosseum. Agent Arena and Agent Fitness stay private and are not linked."
+      "The YouTube channel is public. There is no public repository for Colosseum. Agent Arena and Agent Fitness are public."
     ],
     "callout": "The 15-shark-species website and the 3D renderer are the two ends of the task range. They are generated tasks with automatic checks, not separate products.",
     "shots": [
@@ -166,10 +205,16 @@
       "prefix": "0 \u2192 ",
       "suffix": "%"
     },
-    "stage": "Season findings page done. Coach edits hurt smaller players. Repository private.",
+    "stage": "Season findings page done. Coach edits hurt smaller players. Repository public.",
+    "links": [
+      {
+        "label": "Agent Arena repository",
+        "href": "https://github.com/121Nanami/agent-arena"
+      }
+    ],
     "repo": {
-      "state": "private",
-      "note": "Private repository. Not linked."
+      "state": "public",
+      "note": "Public repository."
     },
     "stack": [
       "llama.cpp",
@@ -207,12 +252,12 @@
       },
       {
         "label": "Repository",
-        "value": "Private. Not linked."
+        "value": "Public. https://github.com/121Nanami/agent-arena"
       }
     ],
     "paragraphs": [
       "Coding agents compete on hidden-test Python tasks. Skill and cost stay separate, so a cheap agent is not treated as a better one. The Pareto view shows where nobody else is better at both.",
-      "The recorded season ran locally: Qwen2.5-Coder 1.5B through llama.cpp. Hidden tests were held out. The sandbox was bubblewrap with no network. In that season, Reckless went from 0% to 100% hidden pass after the coach rewrite. The season findings page is done: coach edits hurt smaller players. In AI Colosseum, this lab is the battle side. The repository is private and is not linked."
+      "The recorded season ran locally: Qwen2.5-Coder 1.5B through llama.cpp. Hidden tests were held out. The sandbox was bubblewrap with no network. In that season, Reckless went from 0% to 100% hidden pass after the coach rewrite. The season findings page is done: coach edits hurt smaller players. In AI Colosseum, this lab is the battle side. The repository is public."
     ],
     "callout": "The season screenshot prints its own on-screen figures. The result quoted on this page is the one in the studio brief: Reckless, 0% to 100% hidden pass after the coach rewrite.",
     "shots": [
@@ -248,10 +293,16 @@
       "label": "passing tests",
       "count": 32
     },
-    "stage": "Working MVP, local",
+    "stage": "Working MVP, local. Repository public.",
+    "links": [
+      {
+        "label": "Agent Fitness repository",
+        "href": "https://github.com/121Nanami/agent-fitness"
+      }
+    ],
     "repo": {
-      "state": "private",
-      "note": "Private repository. Not linked."
+      "state": "public",
+      "note": "Public repository."
     },
     "stack": [
       "Python",
@@ -877,12 +928,12 @@
     "aliases": [
       "lifeos"
     ],
-    "summary": "Frida edition of the in-house life OS, version 0.2.0. A Casa tab for the house, and local AI through Ollama. Private. The stills are demo data, not a real household.",
+    "summary": "Frida edition of the in-house life OS, version 0.2.0. A Casa tab for the house, and local AI through Ollama. The stills are demo data, not a real household.",
     "highlight": "Frida edition \u00b7 Ollama qwen3:14b \u00b7 15/15 tests \u00b7 demo stills",
-    "stage": "Private. Not linked. Screenshots are demo data only.",
+    "stage": "Public source. Screenshots are demo data only.",
     "repo": {
-      "state": "private",
-      "note": "Private repository. Not linked."
+      "state": "public",
+      "note": "Public repository."
     },
     "stack": [
       "vanilla JS",
@@ -924,13 +975,13 @@
       },
       {
         "label": "Repository",
-        "value": "Private. Not linked."
+        "value": "Public. https://github.com/121Nanami/fiaos"
       }
     ],
     "paragraphs": [
       "The newest FiaOS is the Frida edition, version 0.2.0, an in-house life OS. It still runs the meals, shopping, and budget loop, plus workouts, study blocks, bills, habits, and chores. Casa is the house tab. Frida is the helper. Profiles and a household view exist. The stills use a placeholder household named Ada, Bea, and Cam. No real record is shown.",
       "Local AI is Ollama at the loopback address, model qwen3:14b unless another local model is named. An external key can still select the other provider. Anything else is refused, and Wi-Fi notes are stripped before the model sees context. The handoff's test run is 15 pass and 0 fail. A real model reply was not part of that test. The smoke host happened to have Ollama running, so health said local.",
-      "The repository is private and is not linked. The four figures are a local run of that edition with no API key. Every name, meal, bill, and Casa entry on them is invented demo data."
+      "The source repository is public. The four figures are a local run of that edition with no API key. Every name, meal, bill, and Casa entry on them is invented demo data."
     ],
     "callout": "Private in-house system. There is no repository link. The figures are labelled demo data. They are not a capture of a real household, and they contain no personal or health records.",
     "shots": [
@@ -953,6 +1004,12 @@
         "file": "fiaos/money.png",
         "alt": "FiaOS Money tab, labelled DEMO DATA. Demo rent of 1200 dollars is split three ways across Ada, Bea, and Cam. Ada has one expense, placeholder coffee, for 4.50 dollars.",
         "caption": "Money tab. Demo data: placeholder rent and one invented expense. Not a real budget."
+      }
+    ],
+    "links": [
+      {
+        "label": "FiaOS repository",
+        "href": "https://github.com/121Nanami/fiaos"
       }
     ]
   },
@@ -1031,11 +1088,11 @@
     "aliases": [
       "studio"
     ],
-    "summary": "The creative apps in the FiaOS ecosystem: documents, sheets, slides, paint, draw, clip, photo, and layout. Open formats.",
-    "highlight": "Eight named apps \u00b7 open formats \u00b7 private, not linked",
+    "summary": "The creative apps in the public FiaOS source: documents, sheets, slides, paint, draw, clip, photo, and layout. Open formats. Demo profiles Ada, Bea, and Cam.",
+    "highlight": "Eight studio apps in the public FiaOS client",
     "repo": {
-      "state": "private",
-      "note": "Private repository. Not linked."
+      "state": "public",
+      "note": "Public repository. Part of the FiaOS source."
     },
     "stack": [
       "open formats",
@@ -1058,7 +1115,14 @@
     "paragraphs": [
       "FiaOS Studio is the set of creative tools around the life OS: FiaDocs, FiaSheets, FiaSlides, FiaPaint, FiaDraw, FiaClip, FiaPhoto, and FiaLayout. Files stay in open formats. They are packaged as the EllenOS App Library, an Arch PKGBUILD."
     ],
-    "shots": []
+    "shots": [],
+    "links": [
+      {
+        "label": "FiaOS repository",
+        "href": "https://github.com/121Nanami/fiaos"
+      }
+    ],
+    "stage": "Public source, in the FiaOS repository."
   },
   {
     "slug": "fia-modules",
@@ -1067,11 +1131,11 @@
     "aliases": [
       "modules"
     ],
-    "summary": "The other modules named beside FiaOS: mail, calendar, desk, media, local transcription, and self-hosted chat.",
-    "highlight": "Named modules. No records. Private, not linked.",
+    "summary": "Mail, calendar, desk, media, and the other modules in the public FiaOS source. Demo profiles Ada, Bea, and Cam. No health records.",
+    "highlight": "House modules in the public FiaOS client",
     "repo": {
-      "state": "private",
-      "note": "Private repository. Not linked."
+      "state": "public",
+      "note": "Public repository. Part of the FiaOS source."
     },
     "facts": [
       {
@@ -1098,7 +1162,14 @@
     "paragraphs": [
       "These are the other modules the brief lists next to FiaOS: Fia Mail and Calendar, Desk, FiaMedia, local transcription, and self-hosted chat. No separate metrics or screenshots were provided, so none are shown."
     ],
-    "shots": []
+    "shots": [],
+    "links": [
+      {
+        "label": "FiaOS repository",
+        "href": "https://github.com/121Nanami/fiaos"
+      }
+    ],
+    "stage": "Public source, in the FiaOS repository."
   },
   {
     "slug": "ellenos",

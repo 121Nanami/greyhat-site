@@ -42,17 +42,16 @@ const related = projectsIn(project.group).filter((item) => item.slug !== project
         }
         <li class:list={['pill', project.repo.state]}>{project.repo.note}</li>
       </ul>
-      {
-        project.links && project.links.length > 0 && (
-          <ul class="outlinks">
-            {project.links.map((link) => (
-              <li>
-                <a href={link.href} rel="noopener noreferrer">{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        )
-      }
+      <ul class="outlinks">
+        <li>
+          <a href={href(`play/${project.slug}/`)}>Play</a>
+        </li>
+        {project.links?.map((link) => (
+          <li>
+            <a href={link.href} rel="noopener noreferrer">{link.label}</a>
+          </li>
+        ))}
+      </ul>
     </header>
 
     <div class="report-layout">
