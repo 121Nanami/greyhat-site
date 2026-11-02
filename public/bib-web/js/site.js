@@ -170,10 +170,6 @@ function init() {
   renderOps(); bindOpFilters();
   renderSupport();
   $("#year").textContent = new Date().getFullYear();
-  $(".menu-btn").addEventListener("click", () => {
-    const open = $(".nav").classList.toggle("open");
-    $(".menu-btn").setAttribute("aria-expanded", String(open));
-  });
   window.addEventListener("hashchange", route);
   route();
 }

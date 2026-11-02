@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import { projects } from '../../lib/content';
 import { href } from '../../lib/href';
 import { imageFor } from '../../lib/images';
-import { DEMO_KIND } from '../../scripts/play-meta.mjs';
+import { DEMO_KIND, RAW_APP } from '../../scripts/play-meta.mjs';
 
 export function getStaticPaths() {
   return projects.map((project) => ({
@@ -15,42 +15,42 @@ export function getStaticPaths() {
 
 const { project } = Astro.props;
 const kind = DEMO_KIND[project.slug];
+const raw = RAW_APP[project.slug];
 const label =
   kind === 'replay'
     ? 'Replay of recorded run.'
     : kind === 'gallery'
-      ? 'Gallery of public stills. The control below is a browser demo, not a recorded match.'
-      : 'Browser demo. It runs in this page and does not call a server.';
+      ? 'Public stills, plus the browser demo on this page.'
+      : 'Runs in this browser. No server.';
 ---
 
-<Base title={`Play ${project.title} — GreyHat Inc`} description={`${label} ${project.title}. ${project.summary}`}>
-  <article class="wrap play">
-    <p class="crumbs">
-      <a href={href('/')}>Session</a>
-      <span aria-hidden="true">/</span>
-      <a href={href(`projects/${project.slug}/`)}>{project.title}</a>
-      <span aria-hidden="true">/</span>
-      <span>Play</span>
-    </p>
-    <header class="report-head">
-      <p class="kicker">{kind}</p>
+<Base frame title={`Play ${project.title} — GreyHat Inc`} description={`${label} ${project.title}. ${project.summary}`}>
+  <div class="play-shell">
+    <header class="play-bar">
+      <a href={href(`projects/${project.slug}/`)}>Back</a>
       <h1>{project.title}</h1>
-      <p class="lede">{label}</p>
+      {
+        raw ? (
+          <a href={href(raw)}>Open full screen</a>
+        ) : (
+          <a href={href(`play/${project.slug}/`)} target="_blank" rel="noopener">Open full screen</a>
+        )
+      }
     </header>
     {
       kind === 'gallery' && project.shots.length > 0 && (
         <div class="play-gallery">
           {project.shots.map((shot) => (
             <figure>
-              <Image src={imageFor(shot.file)} alt={shot.alt} widths={[640, 960, 1280]} sizes="(min-width: 800px) 720px, 100vw" format="webp" />
+              <Image src={imageFor(shot.file)} alt={shot.alt} widths={[640, 960]} sizes="100vw" format="webp" />
               <figcaption>{shot.caption}</figcaption>
             </figure>
           ))}
         </div>
       )
     }
-    <div id="demo" data-slug={project.slug} data-kind={kind}></div>
-  </article>
+    <div id="demo" class="play-stage" data-slug={project.slug} data-kind={kind}></div>
+  </div>
 </Base>
 
 <script>

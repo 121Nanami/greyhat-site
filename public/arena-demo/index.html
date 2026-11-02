@@ -6,10 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Agent Arena leaderboard: coding agents compete, get rated, and evolve." />
     <title>Agent Arena · GreyHat Inc</title>
+    <style>
+      #boot{position:fixed;inset:0;z-index:20;display:grid;place-items:center;margin:0;background:#0c1014;color:#d6f25c;font:16px/1.4 ui-monospace,monospace}
+    </style>
+    <link rel="preload" href="./assets/index-UjNw5C3P.css" as="style">
+    <link rel="modulepreload" href="./assets/index-DPIRUHWe.js">
     <script type="module" crossorigin src="./assets/index-DPIRUHWe.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-UjNw5C3P.css">
   </head>
   <body>
+    <div id="boot">Loading the recorded season…</div>
     <div id="root"></div>
+    <script>
+      (function () {
+        var boot = document.getElementById('boot');
+        var app = document.getElementById('root');
+        function done() {
+          if (app && app.childElementCount) boot.remove();
+        }
+        new MutationObserver(done).observe(app, { childList: true });
+        window.addEventListener('load', function () { setTimeout(done, 40); });
+      })();
+    </script>
   </body>
 </html>

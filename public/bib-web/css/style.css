@@ -105,10 +105,14 @@ p { margin: 0; }
 .nav-links a:hover, .nav-links a[aria-current="true"] { color: var(--halo); }
 .nav-links a.cta { color: var(--bold); }
 .menu-btn {
-  display: none; margin-left: auto; background: none; border: 1px solid var(--line);
-  color: var(--text); padding: 8px 12px; font-family: var(--f-mono); letter-spacing: .12em; cursor: pointer;
+  display: none; margin-left: auto; position: relative; z-index: 5; flex: none;
+  background: none; border: 1px solid var(--line);
+  color: var(--text); min-height: 44px; padding: 8px 14px; font-family: var(--f-mono); letter-spacing: .12em; cursor: pointer;
 }
 @media (max-width: 900px) {
+  .nav { overflow: visible; }
+  .nav .wrap { gap: 12px; }
+  .logo { font-size: 1.15rem; min-width: 0; }
   .menu-btn { display: block; }
   .nav-links {
     position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;

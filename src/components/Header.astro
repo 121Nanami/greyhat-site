@@ -23,9 +23,10 @@ const onIndex = path === index || path === index.replace(/\/$/, '');
       </span>
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href={href('/#session')} aria-current={onHome ? 'page' : undefined}>Session</a>
+      <a href={href('/#flagship')}>Flagship</a>
       <a href={href('/#work')}>Work</a>
       <a href={index} aria-current={onIndex ? 'page' : undefined}>Index</a>
+      <a href={href('resume.pdf')}>PDF</a>
       <button type="button" data-theme-toggle>
         <span class="when-dark">Use light theme</span>
         <span class="when-light">Use dark theme</span>

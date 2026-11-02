@@ -1,29 +1,68 @@
 ---
-import Dossier from '../components/Dossier.astro';
-import Recorded from '../components/Recorded.astro';
-import Terminal from '../components/Terminal.astro';
+import Cases from '../components/Cases.astro';
 import Workbench from '../components/Workbench.astro';
 import Base from '../layouts/Base.astro';
-import { site } from '../lib/content';
+import { projects, site } from '../lib/content';
+import { href } from '../lib/href';
+
+const fitness = projects.find((project) => project.slug === 'agent-fitness');
+const triage = projects.find((project) => project.slug === 'triagebot');
+const arena = projects.find((project) => project.slug === 'agent-arena');
+const stacks = [...new Set(projects.flatMap((project) => project.stack ?? []))].sort((a, b) => a.localeCompare(b));
+const proofs = [
+  { value: String(projects.length), label: 'projects in this index' },
+  { value: fitness?.pulse?.text ?? '', label: fitness?.pulse?.label ?? '' },
+  { value: triage?.pulse?.text ?? '', label: triage?.stage ?? '' },
+  { value: arena?.pulse?.text ?? '', label: arena?.pulse?.label ?? '' },
+];
 ---
 
 <Base>
-  <section class="session" id="session">
+  <section class="hero-block" id="session">
     <div class="wrap">
-      <div class="intro">
-        <div>
-          <p class="kicker">{site.person} · {site.place}</p>
-          <h1>GreyHat Inc</h1>
-          <p class="studio-line">AI engineering studio</p>
-        </div>
-        <p class="intro-role">{site.tagline}</p>
-      </div>
-      <div class="session-grid">
-        <Terminal />
-        <Dossier />
+      <p class="kicker">{site.studio}</p>
+      <h1>Myla — AI Engineer, GreyHat Inc</h1>
+      <p class="hero-line">Local-first agents and benchmarks, plus a public Unreal Engine 5.8 game.</p>
+      <ul class="proofs">
+        {
+          proofs.map((proof) => (
+            <li>
+              <strong>{proof.value}</strong>
+              <span>{proof.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="hero-actions">
+        <a class="play-btn" href="#flagship">See flagship work</a>
+        <a class="play-btn play-btn-ghost" href="https://github.com/121Nanami" rel="noopener noreferrer">GitHub</a>
+        <a class="play-btn play-btn-ghost" href="#contact">Contact</a>
       </div>
     </div>
   </section>
-  <Recorded />
-  <Workbench />
+  <Cases />
+  <section class="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <h2 id="skills-title">Skills &amp; stack</h2>
+      <ul class="skill-row">
+        {stacks.map((item) => <li>{item}</li>)}
+      </ul>
+      <p><a href={href('resume.pdf')}>Download one-page summary (PDF)</a></p>
+    </div>
+  </section>
+  <section class="more-head" aria-labelledby="more-title">
+    <div class="wrap">
+      <h2 id="more-title">More work</h2>
+      <p>Every other project. Filter by group or search a name. Each card opens a live demo.</p>
+    </div>
+  </section>
+  <Workbench compact />
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p>
+        <a href="https://github.com/121Nanami" rel="noopener noreferrer">github.com/121Nanami</a>
+      </p>
+    </div>
+  </section>
 </Base>

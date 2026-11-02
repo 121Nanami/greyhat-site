@@ -83,6 +83,13 @@ test.describe('boldinbeauty', () => {
     await expect(frame.getByRole('link', { name: 'Meet the operators' })).toBeVisible();
     await frame.locator('#operators').scrollIntoViewIfNeeded();
     await expect(frame.locator('#operators')).toContainText('Luna');
+    await page.setViewportSize({ width: 390, height: 844 });
+    const menu = frame.getByRole('button', { name: 'Menu' });
+    await expect(menu).toBeVisible();
+    await menu.click();
+    await expect(frame.locator('.nav')).toHaveClass(/open/);
+    await expect(frame.locator('.nav-links').getByRole('link', { name: 'Operators' })).toBeVisible();
+    await page.setViewportSize({ width: 1440, height: 900 });
     await page.locator('[data-demo-act]').click();
     await expect(page.locator('[data-demo-out]')).toContainText('One pull');
     await page.locator('[data-pull="10"]').click();
@@ -106,14 +113,32 @@ test.describe('fiaos', () => {
 });
 
 test.describe('fiaos-studio', () => {
-  test('opens the paint app from the public client', async ({ page }) => {
+  test('a pointer drag leaves paint on the canvas', async ({ page }) => {
     const errors = await open(page, 'fiaos-studio');
     const frame = page.frameLocator('iframe');
-    await expect(frame.locator('body')).toBeVisible();
-    await expect(page.locator('iframe')).toHaveAttribute('src', /app=paint/);
-    await page.locator('[data-demo-act]').click();
-    await expect(page.locator('[data-demo-out]')).toContainText('public FiaOS client');
-    await expect(frame.locator('#main, canvas').first()).toBeVisible();
+    const canvas = frame.locator('#st-paint');
+    await expect(canvas).toBeVisible({ timeout: 20000 });
+    await expect.poll(async () => canvas.evaluate((node) => (node as HTMLCanvasElement).dataset.on || '').catch(() => '')).toBe('1');
+    await canvas.scrollIntoViewIfNeeded();
+    const light = () =>
+      canvas.evaluate((node) => {
+        const view = node as HTMLCanvasElement;
+        const data = view.getContext('2d')?.getImageData(0, 0, view.width, view.height).data;
+        if (!data) return 0;
+        let count = 0;
+        for (let i = 0; i < data.length; i += 16) {
+          if (data[i] > 180 && data[i + 1] > 180 && data[i + 2] > 180) count += 1;
+        }
+        return count;
+      });
+    const before = await light();
+    const box = await canvas.boundingBox();
+    if (!box) throw new Error('paint canvas has no box');
+    await page.mouse.move(box.x + box.width * 0.2, box.y + box.height * 0.45);
+    await page.mouse.down();
+    await page.mouse.move(box.x + box.width * 0.78, box.y + box.height * 0.62, { steps: 14 });
+    await page.mouse.up();
+    await expect.poll(light).toBeGreaterThan(before);
     expect(errors, errors.join('\n')).toEqual([]);
   });
 });
@@ -122,9 +147,8 @@ test.describe('fia-modules', () => {
   test('opens mail from the public client', async ({ page }) => {
     const errors = await open(page, 'fia-modules');
     const frame = page.frameLocator('iframe');
-    await expect(frame.locator('body')).toBeVisible();
-    await page.locator('[data-demo-act]').click();
-    await expect(page.locator('[data-demo-out]')).toContainText('public FiaOS client');
+    await expect(frame.getByRole('button', { name: 'Mail' })).toBeVisible({ timeout: 20000 });
+    await expect(frame.getByText('New message')).toBeVisible();
     expect(errors, errors.join('\n')).toEqual([]);
   });
 });
@@ -158,7 +182,10 @@ test.describe('centre', () => {
     await frame.getByRole('button', { name: 'Keep' }).click();
     await expect(frame.locator('#clips')).toContainText('demo clip');
     await frame.getByRole('button', { name: 'Left' }).click();
-    await expect(frame.locator('#tile')).toContainText('No window manager');
+    await expect(frame.locator('#tile')).toContainText('Left tile');
+    await expect(frame.locator('#stage')).toHaveAttribute('data-layout', 'left');
+    await frame.getByRole('button', { name: 'Fullscreen' }).click();
+    await expect(frame.locator('#stage')).toHaveAttribute('data-layout', 'focus');
     expect(errors, errors.join('\n')).toEqual([]);
   });
 });
@@ -236,6 +263,25 @@ test.describe('medlib', () => {
     await expect(out).toContainText('Enter a height');
     expect(errors, errors.join('\n')).toEqual([]);
   });
+});
+
+test('home sells the three flagships and a play control on every card', async ({ page }, testInfo) => {
+  const errors = watch(page);
+  await page.goto('/greyhat-site/');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Myla — AI Engineer, GreyHat Inc');
+  await expect(page.getByRole('link', { name: 'See flagship work' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Open live demo' })).toHaveCount(3);
+  await expect(page.getByRole('button', { name: 'Windows build coming soon' })).toBeDisabled();
+  await expect(page.locator('a.play-btn', { hasText: /^Play$/ })).toHaveCount(projects.length);
+  for (const slug of ['fiaos-studio', 'facet', 'centre']) {
+    await expect(page.locator(`a.play-btn[href$="/play/${slug}/"]`)).toBeVisible();
+  }
+  if (testInfo.project.name === 'chromium') {
+    await page.screenshot({ path: '/cursor/stores/self/home-desktop.png', fullPage: true });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.screenshot({ path: '/cursor/stores/self/home-mobile.png', fullPage: true });
+  }
+  expect(errors, errors.join('\n')).toEqual([]);
 });
 
 test('every project slug has a play test group', () => {

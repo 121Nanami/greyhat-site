@@ -318,7 +318,7 @@ button.st-app{min-height:0;height:auto;width:100%;padding:14px;border-radius:16p
 button.st-app small{font-weight:400;color:var(--mute)}
 .st-cell{min-height:32px;width:100%;border:0;background:transparent;font-size:14px}
 .st-page{position:relative;min-height:280px;background:#101826;border-radius:16px;margin-top:8px}
-#st-paint,#st-photo{width:100%;max-width:640px;background:#141820;border-radius:12px;touch-action:none;cursor:crosshair}
+#st-paint,#st-photo{display:block;width:100%;max-width:640px;height:auto;aspect-ratio:640/360;background:#141820;border-radius:12px;touch-action:none;cursor:crosshair}
 .st-layers{list-style:none;margin:8px 0;padding:0;display:flex;flex-direction:column;gap:6px}
 .st-layers li{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:4px}
 .st-layers li.on{outline:1px solid var(--t);border-radius:12px}

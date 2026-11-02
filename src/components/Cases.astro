@@ -1,0 +1,118 @@
+---
+import { Image } from 'astro:assets';
+import { projects, site } from '../lib/content';
+import { href } from '../lib/href';
+import { imageFor } from '../lib/images';
+
+const beauty = projects.find((project) => project.slug === 'boldinbeauty');
+const colosseum = projects.find((project) => project.slug === 'ai-colosseum');
+const arena = projects.find((project) => project.slug === 'agent-arena');
+const fia = projects.find((project) => project.slug === 'fiaos');
+
+const cases = [
+  {
+    project: beauty,
+    play: 'boldinbeauty',
+    reel: 'reel/boldinbeauty.webm',
+    problem: 'A 3D gacha needed a playable Unreal build, an account server, and a public site.',
+    built: 'Unreal Engine 5.8 gameplay demo, account server, and AI pipeline. Twenty operators.',
+    result: beauty?.highlight,
+  },
+  {
+    project: colosseum,
+    play: 'agent-arena',
+    reel: 'reel/arena.webm',
+    problem: 'Two models take one generated task. The winner has to be checked, not claimed.',
+    built: 'Agent Fitness trains the roster. Agent Arena runs the head-to-head races and keeps the season files.',
+    result: `${colosseum?.highlight}. ${arena?.highlight}.`,
+  },
+  {
+    project: fia,
+    play: 'fiaos',
+    reel: 'reel/fiaos.webm',
+    problem: 'A household OS that stays on the machine, including local chat when no external key is set.',
+    built: 'Frida edition, public client, Casa tab, demo profiles Ada, Bea, and Cam.',
+    result: '15 pass, 0 fail. Default local model qwen3:14b. Stills are demo data.',
+  },
+];
+---
+
+<section class="cases" id="flagship" aria-labelledby="flagship-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="kicker">Flagship</p>
+      <h2 id="flagship-title">Three case studies</h2>
+    </header>
+    <div class="case-list">
+      {
+        cases.map((item) => {
+          const project = item.project;
+          if (!project) return null;
+          const shot = project.shots[0];
+          return (
+            <article class="case">
+              <div class="case-media">
+                {shot && (
+                  <Image
+                    src={imageFor(shot.file)}
+                    alt=""
+                    widths={[640, 960, 1280]}
+                    sizes="(min-width: 900px) 46vw, 100vw"
+                    format="webp"
+                    loading="eager"
+                  />
+                )}
+                <video
+                  src={href(item.reel)}
+                  muted
+                  loop
+                  playsinline
+                  autoplay
+                  aria-label={`${project.title} demo`}
+                ></video>
+              </div>
+              <div class="case-copy">
+                <p class="kicker">{project.title}</p>
+                <h3>{project.summary}</h3>
+                <dl>
+                  <div>
+                    <dt>Problem</dt>
+                    <dd>{item.problem}</dd>
+                  </div>
+                  <div>
+                    <dt>Built</dt>
+                    <dd>{item.built}</dd>
+                  </div>
+                  <div>
+                    <dt>Role</dt>
+                    <dd>{site.role}, {site.studio}</dd>
+                  </div>
+                  <div>
+                    <dt>Stack</dt>
+                    <dd>{(project.stack ?? []).join(' · ')}</dd>
+                  </div>
+                  <div>
+                    <dt>Result</dt>
+                    <dd>{item.result}</dd>
+                  </div>
+                </dl>
+                <div class="case-actions">
+                  <a class="play-btn" href={href(`play/${item.play}/`)}>Open live demo</a>
+                  {project.slug === 'boldinbeauty' &&
+                    (project.windows ? (
+                      <a class="play-btn play-btn-ghost" href={project.windows}>Download for Windows</a>
+                    ) : (
+                      <button type="button" class="play-btn play-btn-ghost" disabled>Windows build coming soon</button>
+                    ))}
+                  {project.links?.[0] && (
+                    <a href={project.links[0].href} rel="noopener noreferrer">{project.links[0].label}</a>
+                  )}
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

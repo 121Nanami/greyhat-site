@@ -4,10 +4,15 @@ import { groups, projectsIn, searchBlob } from '../lib/content';
 import { href } from '../lib/href';
 import { imageFor } from '../lib/images';
 
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
 const filters = [{ id: 'all', label: 'All' }, ...groups.map((group) => ({ id: group.id, label: group.label }))];
 ---
 
-<div class="workbench" data-workbench id="work">
+<div class:list={['workbench', { 'is-compact': compact }]} data-workbench id="work">
   <div class="filters">
     <div class="wrap filters-inner">
       <div class="filter-row" role="toolbar" aria-label="Filter projects by group">
@@ -99,8 +104,8 @@ const filters = [{ id: 'all', label: 'All' }, ...groups.map((group) => ({ id: gr
                       <p class="card-highlight">{project.highlight}</p>
                     </div>
                     </a>
+                    <a class="play-btn" href={href(`play/${project.slug}/`)}>Play</a>
                     <p class="card-out">
-                      <a href={href(`play/${project.slug}/`)}>Play</a>
                       {project.links?.map((link) => (
                         <a href={link.href} rel="noopener noreferrer">{link.label}</a>
                       ))}

@@ -4,21 +4,28 @@
 <style>body{display:block;height:auto;min-height:100vh;padding:18px;max-width:820px;margin:0 auto}button{margin:4px}input{min-height:48px}</style></head>
 <body>
 <h1 style="color:var(--t)">Facet</h1>
-<p>Start page for the Facet browser. Bookmarks and history stay on this machine. For .onion sites, point Facet at Tor’s local SOCKS port. See <code>linux/TOR.md</code>.</p>
+<p>Start page for the Facet browser. Bookmarks and history stay in this browser.</p>
 <div class="row"><input id="q" placeholder="Search the house"><button type="button" onclick="find()">Search</button></div>
 <div id="hits"></div>
 <section class="card" id="marks"></section>
-<section class="card"><h3>Remember a page</h3><div class="row"><input id="title" placeholder="Title"><input id="url" placeholder="Paste a URL"></div><button type="button" onclick="add()">Bookmark</button><button type="button" onclick="hist()">Add to history</button></section>
+<section class="card"><h3>Remember a page</h3><div class="row"><input id="title" placeholder="Title"><input id="url" placeholder="Paste a URL"></div><button type="button" id="add" onclick="add()">Bookmark</button><button type="button" id="hist-btn" onclick="hist()">Add to history</button></section>
 <section class="card" id="hist"></section>
 <script>
-const api=async(u,b)=>{const r=await fetch(u,b?{method:'POST',headers:{'Content-Type':'application/json','X-FiaOS':'1'},body:JSON.stringify(b)}:{});const j=await r.json();if(!r.ok)throw new Error(j.error||r.status);return j};
+const KEY='fiaos.facet.page.v1';
 const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-async function boot(){const d=await api('/api/facet');
+const seed=()=>({bookmarks:[{title:'Demo Harbour',url:'#demo-harbour',group:'house'}],history:[]});
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'');if(!Array.isArray(d.bookmarks))return seed();d.history=Array.isArray(d.history)?d.history:[];return d}catch{return seed()}}
+function paint(d){
  document.getElementById('marks').innerHTML='<h3>Bookmarks</h3>'+d.bookmarks.map(b=>`<p><a href="${esc(b.url)}">${esc(b.title)}</a> <small>${esc(b.group||'')}</small></p>`).join('');
- document.getElementById('hist').innerHTML='<h3>History</h3>'+(d.history.map(h=>`<p><a href="${esc(h.url)}">${esc(h.title)}</a></p>`).join('')||'<p class="mute">Facet can POST /api/facet/history when a page opens.</p>')+'<p class="ex">Tor SOCKS, when tor is running: '+esc(d.tor)+'</p>'}
-async function find(){const j=await api('/api/hub/search?q='+encodeURIComponent(document.getElementById('q').value));
- document.getElementById('hits').innerHTML=j.hits.map(h=>`<p><b>${esc(h.title)}</b> <small>${esc(h.kind)}</small><br>${esc(h.snippet||'')}</p>`).join('')||'<p class="mute">Nothing.</p>'}
-async function add(){await api('/api/facet/bookmark',{title:document.getElementById('title').value,url:document.getElementById('url').value});boot()}
-async function hist(){await api('/api/facet/history',{title:document.getElementById('title').value,url:document.getElementById('url').value});boot()}
-boot().catch(e=>{document.body.insertAdjacentHTML('beforeend','<p class="warn">'+esc(e.message)+'</p>')});
+ document.getElementById('hist').innerHTML='<h3>History</h3>'+(d.history.map(h=>`<p><a href="${esc(h.url)}">${esc(h.title)}</a></p>`).join('')||'<p class="mute">No history yet.</p>');
+}
+function save(d){localStorage.setItem(KEY,JSON.stringify(d));paint(d)}
+async function find(){const q=document.getElementById('q').value;const d=load();
+ const local=d.bookmarks.filter(b=>`${b.title} ${b.url}`.toLowerCase().includes(q.toLowerCase()));
+ let hits=local.map(b=>({title:b.title,kind:'bookmark',snippet:b.url}));
+ try{const r=await fetch('/api/hub/search?q='+encodeURIComponent(q));const j=await r.json();if(Array.isArray(j.hits)&&j.hits.length)hits=j.hits}catch{}
+ document.getElementById('hits').innerHTML=hits.map(h=>`<p><b>${esc(h.title)}</b> <small>${esc(h.kind)}</small><br>${esc(h.snippet||'')}</p>`).join('')||'<p class="mute">Nothing.</p>'}
+function add(){const d=load();d.bookmarks.unshift({title:document.getElementById('title').value||'Untitled',url:document.getElementById('url').value||'#demo',group:'demo'});save(d)}
+function hist(){const d=load();d.history.unshift({title:document.getElementById('title').value||'Page',url:document.getElementById('url').value||'#demo'});save(d)}
+paint(load());
 </script></body></html>

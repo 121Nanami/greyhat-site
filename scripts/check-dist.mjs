@@ -5,11 +5,20 @@ const dist = new URL('../dist/', import.meta.url);
 const root = dist.pathname;
 const baseRaw = process.env.BASE_PATH || '/';
 const basePrefix = baseRaw === '/' ? '' : `/${baseRaw.replace(/^\/+|\/+$/g, '')}`;
+const knownBases = ['/greyhat-site'];
 
 function sitePath(urlPath) {
   let pathOnly = urlPath.split('#')[0].split('?')[0];
-  if (basePrefix && (pathOnly === basePrefix || pathOnly.startsWith(`${basePrefix}/`))) {
-    pathOnly = pathOnly.slice(basePrefix.length) || '/';
+  const prefixes = [];
+  if (basePrefix) prefixes.push(basePrefix);
+  for (const known of knownBases) {
+    if (!prefixes.includes(known)) prefixes.push(known);
+  }
+  for (const prefix of prefixes) {
+    if (pathOnly === prefix || pathOnly.startsWith(`${prefix}/`)) {
+      pathOnly = pathOnly.slice(prefix.length) || '/';
+      break;
+    }
   }
   return pathOnly;
 }
@@ -27,7 +36,7 @@ function walk(dir) {
 const files = walk(root);
 const htmlFiles = files.filter((file) => file.endsWith('.html'));
 const texts = htmlFiles.map((file) => readFileSync(file, 'utf8'));
-const home = texts.find((html) => html.includes('Operator file'));
+const home = texts.find((html) => html.includes('See flagship work'));
 const errors = [];
 const fail = (message) => errors.push(message);
 
@@ -103,9 +112,9 @@ if (projectPages.length < 22) fail(`expected project pages plus index, saw ${pro
 
 const htmlByPath = new Map(htmlFiles.map((file, index) => [file, texts[index]]));
 for (const [file, html] of htmlByPath) {
-  const hrefs = html.match(/href="([^"]+)"/g) ?? [];
+  const hrefs = [...(html.match(/href="([^"]+)"/g) ?? []), ...(html.match(/src="([^"]+)"/g) ?? [])];
   for (const raw of hrefs) {
-    const href = raw.slice(6, -1);
+    const href = raw.slice(raw.indexOf('"') + 1, -1);
       if (/^(https?:|mailto:|tel:|javascript:)/i.test(href)) {
       const allowedHrefs = new Set([
         'https://www.youtube.com/channel/UCXJBK9fvqBnTByYkYo5eYyA',

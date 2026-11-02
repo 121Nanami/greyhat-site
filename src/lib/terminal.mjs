@@ -76,7 +76,7 @@ function ethos(profile) {
     { type: 'text', text: profile.ethos },
     { type: 'text', text: `Focus: ${profile.focus}` },
     { type: 'text', text: 'Repositories that are not public are marked that way, and are not linked.' },
-    { type: 'text', text: 'Agent Arena and Agent Fitness are public. BoldInBeauty is private and is not linked.' },
+    { type: 'text', text: 'BoldInBeauty, Agent Arena, Agent Fitness, and FiaOS are public. Fia Health is not linked.' },
     { type: 'text', text: 'This page does not send analytics.' },
   ];
 }

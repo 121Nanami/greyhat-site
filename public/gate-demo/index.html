@@ -8,13 +8,27 @@
       name="description"
       content="Shipgate: pre-merge control for AI-written code. Free GATE tool, GitHub Action, and public $1000 October bet."
     />
-    <link
-      rel="stylesheet"
-    />
+    <style>
+      #boot{position:fixed;inset:0;z-index:20;display:grid;place-items:center;margin:0;background:#10140f;color:#d6f25c;font:16px/1.4 ui-monospace,monospace}
+    </style>
+    <link rel="preload" href="/greyhat-site/gate-demo/assets/index-CX3SUj4i.css" as="style">
+    <link rel="modulepreload" href="/greyhat-site/gate-demo/assets/index-CNeJyDjO.js">
     <script type="module" crossorigin src="/greyhat-site/gate-demo/assets/index-CNeJyDjO.js"></script>
     <link rel="stylesheet" crossorigin href="/greyhat-site/gate-demo/assets/index-CX3SUj4i.css">
   </head>
   <body>
+    <div id="boot">Loading the GATE workspace…</div>
     <div id="app"></div>
+    <script>
+      (function () {
+        var boot = document.getElementById('boot');
+        var app = document.getElementById('app');
+        function done() {
+          if (app && app.childElementCount) boot.remove();
+        }
+        new MutationObserver(done).observe(app, { childList: true });
+        window.addEventListener('load', function () { setTimeout(done, 40); });
+      })();
+    </script>
   </body>
 </html>

@@ -423,43 +423,21 @@ function prefix() {
   return base.endsWith('/') ? base : `${base}/`;
 }
 
-function frameApp(root, src, note, onAct) {
+function frameApp(root, src, label) {
   root.innerHTML = `
-    <p class="play-flag">${note}</p>
-    <button type="button" data-demo-act>Use the app</button>
-    <p data-demo-out>Ready.</p>
-    <iframe title="Embedded app" src="${prefix()}${src}"></iframe>`;
-  bind(root, (out) => {
-    const frame = root.querySelector('iframe');
-    try {
-      onAct(frame, out);
-    } catch {
-      out.textContent = 'The app is open.';
-    }
+    <p class="play-loading" data-boot>Loading ${label}…</p>
+    <iframe title="${label}" src="${prefix()}${src}"></iframe>`;
+  const frame = root.querySelector('iframe');
+  const boot = root.querySelector('[data-boot]');
+  frame.addEventListener('load', () => {
+    boot.hidden = true;
   });
 }
 
 function embedFia(root, slug) {
   const query = slug === 'fiaos-studio' ? '?app=paint' : slug === 'fia-modules' ? '?app=mail' : '';
-  root.innerHTML = `
-    <p class="play-flag">Public FiaOS client. Demo profiles Ada, Bea, and Cam. Fia Health’s vault is not in this copy.</p>
-    <button type="button" data-demo-act>Show the household</button>
-    <p data-demo-out>Ready.</p>
-    <iframe title="FiaOS demo" src="${prefix()}fiaos-demo/${query}"></iframe>`;
-  bind(root, (out) => {
-    const frame = root.querySelector('iframe');
-    try {
-      const win = frame.contentWindow;
-      if (win && win.view) {
-        win.view.person = 'Household';
-        if (!query) win.view.tab = 'Stage';
-        win.render?.();
-      }
-    } catch {
-      /* the client still paints on its own */
-    }
-    out.textContent = query ? 'The public FiaOS client is open on that app.' : 'Household stage is open in the public FiaOS client.';
-  });
+  const label = slug === 'fiaos-studio' ? 'FiaPaint' : slug === 'fia-modules' ? 'Fia Mail' : 'FiaOS';
+  frameApp(root, `fiaos-demo/${query}`, label);
 }
 
 export function mount(root) {
@@ -470,33 +448,28 @@ export function mount(root) {
     return;
   }
   if (slug === 'gate') {
-    frameApp(root, 'gate-demo/#/gate', 'Shipgate GATE workspace from the public client. Checklist stays in this browser.', (frame, out) => {
-      frame.contentWindow.location.hash = '#/gate';
-      out.textContent = 'GATE workspace open.';
-    });
+    frameApp(root, 'gate-demo/#/gate', 'GATE');
     return;
   }
   if (slug === 'agent-arena') {
-    frameApp(root, 'arena-demo/', 'Agent Arena dashboard from the public client, reading the recorded season files.', (frame, out) => {
-      frame.contentWindow.location.hash = '#/leaderboard';
-      out.textContent = 'Leaderboard open.';
-    });
+    frameApp(root, 'arena-demo/', 'Agent Arena');
     return;
   }
   if (slug === 'facet') {
-    frameApp(root, 'fiaos-demo/facet.html', 'Facet start page from the public FiaOS client.', (_frame, out) => {
-      out.textContent = 'Facet is open.';
-    });
+    frameApp(root, 'fiaos-demo/facet.html', 'Facet');
     return;
   }
   if (slug === 'centre') {
-    frameApp(root, 'fiaos-demo/desk.html', 'Fia Desk from the public FiaOS client. It does not attach a VNC session.', (_frame, out) => {
-      out.textContent = 'Desk is open.';
-    });
+    frameApp(root, 'fiaos-demo/desk.html', 'Fia Desk');
     return;
   }
   if (slug === 'boldinbeauty') {
-    root.innerHTML = `<iframe title="BoldInBeauty site" src="${prefix()}bib-web/"></iframe><div data-gacha></div>`;
+    root.innerHTML = `<p class="play-loading" data-boot>Loading BoldInBeauty…</p><iframe title="BoldInBeauty site" src="${prefix()}bib-web/"></iframe><div class="play-dock" data-gacha></div>`;
+    const frame = root.querySelector('iframe');
+    const boot = root.querySelector('[data-boot]');
+    frame.addEventListener('load', () => {
+      boot.hidden = true;
+    });
     gacha(root.querySelector('[data-gacha]'));
     return;
   }

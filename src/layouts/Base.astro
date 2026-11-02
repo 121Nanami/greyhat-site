@@ -15,11 +15,13 @@ import { site } from '../lib/content';
 interface Props {
   title?: string;
   description?: string;
+  frame?: boolean;
 }
 
 const {
   title = site.headline,
   description = site.description,
+  frame = false,
 } = Astro.props;
 
 const jsonLd = JSON.stringify({
@@ -64,13 +66,13 @@ const jsonLd = JSON.stringify({
     </script>
     <script type="application/ld+json" set:html={jsonLd}></script>
   </head>
-  <body>
+  <body class={frame ? 'is-frame' : undefined}>
     <a class="skip" href="#content">Skip to content</a>
-    <Header />
+    {!frame && <Header />}
     <main id="content">
       <slot />
     </main>
-    <Footer />
+    {!frame && <Footer />}
     <script>
       import '../scripts/theme.js';
     </script>

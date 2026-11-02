@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { projects, site } from '../lib/content';
+import { href } from '../lib/href';
+
+const fitness = projects.find((project) => project.slug === 'agent-fitness');
+const triage = projects.find((project) => project.slug === 'triagebot');
+const arena = projects.find((project) => project.slug === 'agent-arena');
+const beauty = projects.find((project) => project.slug === 'boldinbeauty');
+const fia = projects.find((project) => project.slug === 'fiaos');
+const stacks = [...new Set(projects.flatMap((project) => project.stack ?? []))].sort((a, b) => a.localeCompare(b));
+---
+
+<Base frame title={`${site.person} — ${site.role}, ${site.studio}`} description="One-page summary. GitHub is the only contact.">
+  <article class="resume">
+    <header>
+      <h1>{site.person}</h1>
+      <p>{site.role}, {site.studio}</p>
+      <p><a href="https://github.com/121Nanami">github.com/121Nanami</a></p>
+    </header>
+    <p class="resume-line">Local-first agents and benchmarks, plus a public Unreal Engine 5.8 game. {projects.length} projects are indexed on this site.</p>
+    <h2>Selected work</h2>
+    <ul>
+      <li><strong>{beauty?.title}.</strong> {beauty?.highlight}. {beauty?.stage}</li>
+      <li><strong>AI Colosseum / Agent Arena.</strong> {arena?.highlight}. Season model: local Qwen2.5-Coder 1.5B.</li>
+      <li><strong>{fia?.title}.</strong> {fia?.highlight}. Demo profiles only.</li>
+      <li><strong>{fitness?.title}.</strong> {fitness?.highlight}.</li>
+      <li><strong>{triage?.title}.</strong> {triage?.stage}</li>
+    </ul>
+    <h2>Stack</h2>
+    <p>{stacks.join(' · ')}</p>
+    <p class="resume-note">No email or phone on this page. <a href={href('/')}>Back to the site</a>.</p>
+  </article>
+</Base>

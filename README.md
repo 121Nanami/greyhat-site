@@ -33,8 +33,8 @@ Needs Node 22.
 | `title`, `summary`, `highlight` | One honest line each. `highlight` is the metric or status a reader should see on the card. |
 | `group` | `flagship`, `security`, `fiaos`, `os`, or `health`. BoldInBeauty lives in `flagship`. |
 | `aliases` | Short names for the terminal (`cat arena`). Must not collide with another project or with `help`, `whoami`, `ls`, `cat`, `open`, `ethos`, `theme`, `clear`. |
-| `repo.state` | `coming-soon` or `private` |
-| `repo.note` | The sentence shown on the card. Private work, including Agent Arena and Agent Fitness, is `Private repository. Not linked.` |
+| `repo.state` | `public`, `private`, or `coming-soon` |
+| `repo.note` | The sentence shown on the card. Fia Health stays `Private repository. Not linked.` |
 | `facts` | Label/value pairs you can defend from the source notes. |
 | `paragraphs` | Prose. Same rule. |
 | `shots` | `{ "file", "alt", "caption" }`. `file` is relative to `src/assets`. Alt text describes the image. Caption says what the reader is allowed to conclude. |
@@ -45,8 +45,8 @@ Needs Node 22.
 | `links` | Optional outbound links. Approved: the GitHub profile, GATE, Shipgate, the GreyHat utilities repo, its Pages site, and the AI Colosseum YouTube channel. |
 | `pulse` | Optional recorded figure for the home rail. Use a number you can defend. |
 
-3. Do not add a testimonial or a number that is not in the source notes. `npm run check` allows only the public 121Nanami links listed above, plus the AI Colosseum YouTube channel. Private repos stay unlinked.
-4. Run `npm test && npm run check && npm run build`.
+3. Do not add a testimonial or a number that is not in the source notes. `npm run check` allows the public 121Nanami repositories that are linked from the cards, plus the AI Colosseum YouTube channel.
+4. Run `npm test && npm run check && npm run build`. Play tests cover Chromium, Firefox, and WebKit: `npm run test:play` (install the three browsers with `npx playwright install --with-deps chromium firefox webkit`).
 
 New groups need an entry in `src/data/groups.json` and in the allow-list inside `scripts/check-content.mjs`.
 
@@ -78,8 +78,8 @@ The public site is a project site at `https://121nanami.github.io/greyhat-site/`
 ## What this page will not do
 
 - No analytics, no cookie banner, no CDN, no remote fonts.
-- No repo link for Agent Arena, Agent Fitness, FiaOS, or BoldInBeauty. Those repositories are private.
-- BoldInBeauty has no public screenshot. The page says so.
+- Fia Health stays unlinked. BoldInBeauty, Agent Arena, Agent Fitness, and FiaOS link their public repositories.
+- BoldInBeauty’s Windows download stays disabled until `windows` in `projects.json` is a release URL. The button then reads Download for Windows.
 - Screenshots that are demo or synthetic data are captioned that way. On-screen demo scores are not restated as results.
 
 ## Light theme

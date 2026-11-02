@@ -44,8 +44,17 @@ const related = projectsIn(project.group).filter((item) => item.slug !== project
       </ul>
       <ul class="outlinks">
         <li>
-          <a href={href(`play/${project.slug}/`)}>Play</a>
+          <a class="play-btn" href={href(`play/${project.slug}/`)}>Play</a>
         </li>
+        {project.slug === 'boldinbeauty' && (
+          <li>
+            {project.windows ? (
+              <a class="play-btn play-btn-ghost" href={project.windows}>Download for Windows</a>
+            ) : (
+              <button type="button" class="play-btn play-btn-ghost" disabled>Windows build coming soon</button>
+            )}
+          </li>
+        )}
         {project.links?.map((link) => (
           <li>
             <a href={link.href} rel="noopener noreferrer">{link.label}</a>

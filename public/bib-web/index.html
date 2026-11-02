@@ -16,7 +16,7 @@
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="#home"><b>Bold</b>inbeauty</a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" onclick="var n=document.querySelector('.nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',String(open));event.stopPropagation()">Menu</button>
     <ul class="nav-links" id="nav-links">
       <li><a href="#news">News</a></li>
       <li><a href="#world">World</a></li>

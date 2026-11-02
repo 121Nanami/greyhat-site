@@ -34,6 +34,7 @@ export interface Project {
   hero?: boolean;
   pulse?: { text: string; label: string; count?: number; prefix?: string; suffix?: string };
   links?: { label: string; href: string }[];
+  windows?: string;
 }
 
 export interface Group {

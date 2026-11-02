@@ -12,6 +12,7 @@
     "summary": "A 3D gacha game in Unreal Engine 5.8, set in cyberpunk Neo Tokyo, 2009. Public snapshot: gameplay demo, account server, and the AI pipeline. Twenty operators, four rarities.",
     "highlight": "UE 5.8 public demo \u00b7 20 operators \u00b7 78 / 19.9 / 2 / 0.1",
     "stage": "Public snapshot. Guest play does not need the account server.",
+    "windows": "",
     "repo": {
       "state": "public",
       "note": "Public repository."
