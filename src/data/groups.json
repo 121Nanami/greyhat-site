@@ -1,0 +1,32 @@
+[
+  {
+    "id": "flagship",
+    "label": "Flagship AI",
+    "index": "01",
+    "summary": "BoldInBeauty leads: months of work on an AI-made 3D gacha game in Unreal. AI Colosseum is coming soon. Arena and Fitness are private. Triage is 6/6 easy on both models, and 1/4 hard on local 7B (0/4 on 14B). All-CNN-C is 27.17% after 8 CPU epochs. Three local-7B reels. Foundry's Pocket run is still rejected at QA."
+  },
+  {
+    "id": "security",
+    "label": "Security",
+    "index": "02",
+    "summary": "Authorised recon, and a privacy audit for your own Linux laptop. Small Python tools, with tests."
+  },
+  {
+    "id": "fiaos",
+    "label": "FiaOS ecosystem",
+    "index": "03",
+    "summary": "Private in-house systems. Frida edition of FiaOS, shown with demo data only, and Fia Health 0.2.0. No personal records."
+  },
+  {
+    "id": "os",
+    "label": "OS & Apps",
+    "index": "04",
+    "summary": "Custom Arch desktops, plus a family of Electron apps."
+  },
+  {
+    "id": "health",
+    "label": "Health tech",
+    "index": "05",
+    "summary": "An offline study suite for Australian premeds through residency."
+  }
+]

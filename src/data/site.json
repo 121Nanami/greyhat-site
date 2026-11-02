@@ -1,0 +1,15 @@
+{
+  "person": "Myla",
+  "role": "AI Engineer",
+  "headline": "GreyHat Inc — AI engineering studio",
+  "tagline": "AI Engineer · local-first agents, benchmarks and self-improving systems",
+  "description": "GreyHat Inc is Myla's AI engineering studio in Brisbane. Local-first agents, benchmarks, and self-improving systems. No analytics.",
+  "place": "Brisbane, Australia",
+  "studio": "GreyHat Inc",
+  "between": "Grey hat: between white hat and black hat.",
+  "focus": "Local-first agents, benchmarks, and self-improving systems. Also security tools, custom OS and apps, and health tech.",
+  "ethos": "Everything free, public, local-first, no cloud dependency.",
+  "socials": [
+    { "label": "GitHub", "href": "https://github.com/121Nanami" }
+  ]
+}

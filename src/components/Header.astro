@@ -1,0 +1,35 @@
+---
+import { site } from '../lib/content';
+import { href } from '../lib/href';
+
+const path = Astro.url.pathname;
+const home = href('/');
+const index = href('projects/');
+const onHome = path === home || path === home.replace(/\/$/, '');
+const onIndex = path === index || path === index.replace(/\/$/, '');
+---
+
+<header class="mast">
+  <div class="wrap mast-inner">
+    <a class="brand" href={home}>
+      <svg class="mark" viewBox="0 0 36 36" aria-hidden="true">
+        <rect width="16" height="36" fill="#f4f0e6"></rect>
+        <rect x="16" width="4" height="36" fill="#d6f25c"></rect>
+        <rect x="20" width="16" height="36" fill="#14160f"></rect>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">GreyHat Inc</span>
+        <span class="brand-sub">{site.person} · Brisbane</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href={href('/#session')} aria-current={onHome ? 'page' : undefined}>Session</a>
+      <a href={href('/#work')}>Work</a>
+      <a href={index} aria-current={onIndex ? 'page' : undefined}>Index</a>
+      <button type="button" data-theme-toggle>
+        <span class="when-dark">Use light theme</span>
+        <span class="when-light">Use dark theme</span>
+      </button>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,68 @@
+---
+import { allProjects, groups, site } from '../lib/content';
+
+const catalog = {
+  profile: site,
+  groups: groups.map((group) => ({ id: group.id, label: group.label })),
+  projects: allProjects().map((project) => ({
+    slug: project.slug,
+    title: project.title,
+    group: project.group,
+    aliases: project.aliases,
+    summary: project.summary,
+    highlight: project.highlight,
+    stage: project.stage ?? '',
+    repoNote: project.repo.note,
+    facts: project.facts,
+    paragraphs: project.paragraphs,
+    callout: project.callout ?? '',
+  })),
+};
+const catalogJson = JSON.stringify(catalog).replace(/</g, '\\u003c');
+---
+
+<div class="terminal" data-terminal>
+  <div class="term-bar">
+    <span class="pip" aria-hidden="true"></span>
+    <span class="term-titlebar">greyhat@bne — ~/session</span>
+    <span class="term-local">local only</span>
+    <time class="term-clock" data-clock></time>
+  </div>
+  <div class="term-log" data-log tabindex="0" aria-live="polite" aria-relevant="additions" aria-label="Terminal output">
+    <p class="term-line">GreyHat Inc — Brisbane. This session stays in your browser.</p>
+    <p class="term-line">Type help. Or try ls projects, cat arena, cat fitness, whoami.</p>
+    <p class="term-line">The same facts are written on the page, with the approved screenshots.</p>
+  </div>
+  <form class="term-form" data-form action="#session">
+    <label class="term-prompt" for="term-input">visitor@greyhat:~$</label>
+    <input
+      id="term-input"
+      data-input
+      name="command"
+      type="text"
+      autocomplete="off"
+      autocapitalize="none"
+      autocorrect="off"
+      spellcheck="false"
+      enterkeyhint="go"
+      aria-label="Terminal command"
+    />
+  </form>
+  <div class="term-hints" role="group" aria-label="Run an example command">
+    <button type="button" data-run="whoami">whoami</button>
+    <button type="button" data-run="ls projects">ls projects</button>
+    <button type="button" data-run="cat arena">cat arena</button>
+    <button type="button" data-run="cat fitness">cat fitness</button>
+    <button type="button" data-run="ethos">ethos</button>
+    <button type="button" data-run="help">help</button>
+  </div>
+  <script type="application/json" data-catalog set:html={catalogJson}></script>
+  <noscript>
+    <p class="term-noscript">The prompt needs JavaScript. Every project is still listed below.</p>
+  </noscript>
+</div>
+
+<script>
+  import { mountTerminal } from '../scripts/terminal.js';
+  mountTerminal();
+</script>

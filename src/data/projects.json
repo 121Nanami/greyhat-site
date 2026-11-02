@@ -1,0 +1,1421 @@
+[
+  {
+    "slug": "boldinbeauty",
+    "title": "BoldInBeauty",
+    "group": "flagship",
+    "featured": true,
+    "aliases": [
+      "boldin",
+      "gacha",
+      "game"
+    ],
+    "summary": "The largest project in the studio: months of work and over $1,000 invested in a fully AI-made 3D gacha game in Unreal Engine. Private. Not linked.",
+    "highlight": "Months of work · over $1,000 · Unreal still uncompiled",
+    "stage": "Private. The largest build in the studio. Suites recorded green. Unreal still uncompiled.",
+    "repo": {
+      "state": "private",
+      "note": "Private repository. Not linked."
+    },
+    "stack": [
+      "Unreal Engine"
+    ],
+    "facts": [
+      {
+        "label": "Scale",
+        "value": "Months of work. The owner puts the spend above $1,000. Fully AI-made."
+      },
+      {
+        "label": "Form",
+        "value": "3D gacha game in Unreal Engine"
+      },
+      {
+        "label": "Workspace",
+        "value": "Several AI agents under one lead. Mac and Windows copies kept in sync."
+      },
+      {
+        "label": "Sprint",
+        "value": "2 November 2026. Five merges. Suites recorded green. Unreal still uncompiled."
+      },
+      {
+        "label": "Server",
+        "value": "A reliability suite and local load numbers were recorded. The same day stopped lost saves, leaked rate keys, and a shutdown that drops in-flight work."
+      },
+      {
+        "label": "Game layer",
+        "value": "A second defect pass. Finished plays are released. A touch stick is not divided by a zero radius. Viewport widgets left behind by the player controller are dropped."
+      },
+      {
+        "label": "Saves",
+        "value": "A save-load sanitizer and fuzz results were recorded. Oversized JSON is refused. Hostile banner clocks are clamped. Overflow stays inside defined integer behaviour."
+      },
+      {
+        "label": "Earlier demo",
+        "value": "16 October: a BB Dream UI motion pack in game, dream-core rework, 13 fps."
+      },
+      {
+        "label": "Numbers",
+        "value": "The notes say the load numbers and fuzz results were recorded. The figures themselves are not in the pages used here, so they are not repeated."
+      },
+      {
+        "label": "Repository",
+        "value": "Private. Not linked. No screenshots on this page."
+      }
+    ],
+    "paragraphs": [
+      "BoldInBeauty is the largest project in the studio, ahead of the Colosseum labs. It is a fully AI-made 3D gacha game in Unreal Engine: months of work, and the owner puts the spend above $1,000. The repository is private and is not linked. The workspace coordinates several AI agents under one lead, with Mac and Windows copies kept in sync. This page does not invent game design beyond the notes.",
+      "The 2 November sprint is in three logs. The server log records a reliability suite and the local load numbers, and fixes for lost saves, leaked rate keys, and a shutdown that drops work still in flight. The game log records a second defect pass. The project log records the save-load sanitizer and fuzz results: oversized JSON is refused, hostile banner clocks are clamped on load, and overflow stays inside defined integer behaviour.",
+      "The integrated note says five merges, suites green, and Unreal still uncompiled. An earlier demo, on 16 October, put a BB Dream UI motion pack in the game at 13 fps. No screenshot is published here, and the load and fuzz figures are not copied because the notes do not include them."
+    ],
+    "callout": "Private repository. Not linked. No player count, no store, and no screenshot.",
+    "shots": []
+  },
+  {
+    "slug": "ai-colosseum",
+    "title": "AI Colosseum",
+    "group": "flagship",
+    "featured": true,
+    "comingSoon": true,
+    "aliases": [
+      "colosseum",
+      "aicolosseum"
+    ],
+    "summary": "The planned frame around the two labs. Agent Fitness trains a choose-your-fighter roster. Agent Arena battles on generated tasks. Not built yet.",
+    "highlight": "Coming soon · automatic checks · no copyrighted characters",
+    "stage": "Coming soon. No build, no stills, no repository.",
+    "links": [
+      {
+        "label": "AI Colosseum on YouTube",
+        "href": "https://www.youtube.com/@AIColosseumGreyHat"
+      }
+    ],
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "facts": [
+      {
+        "label": "Status",
+        "value": "Coming soon. This page describes the plan. It does not describe a finished system."
+      },
+      {
+        "label": "Training",
+        "value": "Agent Fitness: the training ground and the choose-your-fighter roster"
+      },
+      {
+        "label": "Battles",
+        "value": "Agent Arena: fights on generated tasks"
+      },
+      {
+        "label": "Easy task",
+        "value": "An example of the easy end: a shark-species gallery site"
+      },
+      {
+        "label": "Boss task",
+        "value": "An example of the boss end: a 3D renderer with lighting and shadows"
+      },
+      {
+        "label": "Checks",
+        "value": "Each task verified by automatic checks"
+      },
+      {
+        "label": "Characters",
+        "value": "No copyrighted characters"
+      },
+      {
+        "label": "Repository",
+        "value": "Not public. Not linked."
+      }
+    ],
+    "paragraphs": [
+      "AI Colosseum is the name for the season that would join the two labs. It is coming soon. Nothing here is a result from a colosseum that already ran.",
+      "Agent Fitness is the training side: a choose-your-fighter roster. Agent Arena is the battle side. The tasks are generated, and each one is verified by automatic checks. An easy task, as an example, is a shark-species gallery site. A boss-tier task, as an example, is a 3D renderer with lighting and shadows.",
+      "The roster will not use copyrighted characters. There is no repository to open."
+    ],
+    "callout": "The shark-species gallery and the 3D renderer are examples of the intended task range. They are not shipped projects, and this page has no screenshots of them.",
+    "shots": []
+  },
+  {
+    "slug": "agent-arena",
+    "title": "Agent Arena",
+    "group": "flagship",
+    "featured": true,
+    "aliases": [
+      "arena"
+    ],
+    "summary": "Coding agents compete on hidden-test Python tasks. Skill and cost are separate TrueSkill ratings, with a Pareto view. An LLM coach rewrites the losers.",
+    "highlight": "Reckless: 0% → 100% hidden pass after the coach rewrite",
+    "pulse": {
+      "text": "0 → 100%",
+      "label": "hidden pass after the rewrite",
+      "count": 100,
+      "prefix": "0 → ",
+      "suffix": "%"
+    },
+    "stage": "Season findings page done. Coach edits hurt smaller players. Repository private.",
+    "repo": {
+      "state": "private",
+      "note": "Private repository. Not linked."
+    },
+    "stack": [
+      "llama.cpp",
+      "Qwen2.5-Coder 1.5B",
+      "bubblewrap"
+    ],
+    "facts": [
+      {
+        "label": "Season model",
+        "value": "Local Qwen2.5-Coder 1.5B via llama.cpp"
+      },
+      {
+        "label": "Reported result",
+        "value": "Reckless went from 0% to 100% hidden pass after a coach rewrite"
+      },
+      {
+        "label": "Ratings",
+        "value": "Skill and cost are separate TrueSkill ratings, with a Pareto view"
+      },
+      {
+        "label": "Coach",
+        "value": "Losers are rewritten by an LLM coach: component crossover and lineage trees"
+      },
+      {
+        "label": "Holdout",
+        "value": "Hidden tests held out"
+      },
+      {
+        "label": "Sandbox",
+        "value": "bubblewrap, no network"
+      },
+      {
+        "label": "Findings",
+        "value": "Season findings page is done. Coach edits hurt smaller players."
+      },
+      {
+        "label": "Repository",
+        "value": "Private. Not linked."
+      }
+    ],
+    "paragraphs": [
+      "Coding agents compete on hidden-test Python tasks. Skill and cost stay separate, so a cheap agent is not treated as a better one. The Pareto view shows where nobody else is better at both.",
+      "The recorded season ran locally: Qwen2.5-Coder 1.5B through llama.cpp. Hidden tests were held out. The sandbox was bubblewrap with no network. In that season, Reckless went from 0% to 100% hidden pass after the coach rewrite. The season findings page is done: coach edits hurt smaller players. In the coming AI Colosseum, this lab is the battle side. The repository is private and is not linked."
+    ],
+    "callout": "The season screenshot prints its own on-screen figures. The result quoted on this page is the one in the studio brief: Reckless, 0% to 100% hidden pass after the coach rewrite.",
+    "shots": [
+      {
+        "file": "flagship/arena-season.png",
+        "alt": "Agent Arena season overview on a dark grid. The heading reads The season so far. Tabs include Overview, Leaderboard, Pareto, Evolution, Tasks, and Replay. A rating chart sits under a short season summary, with stat cards to the right. A badge says local model. The browser chrome shows a localhost address.",
+        "caption": "Season overview. Skill is a TrueSkill rating. The brief's season used local Qwen2.5-Coder 1.5B via llama.cpp."
+      },
+      {
+        "file": "flagship/arena-pareto.png",
+        "alt": "Agent Arena Pareto chart. The vertical axis is skill rating and the horizontal axis is cost rating, cheaper toward the right. Named points include Sprinter, Planner, Reckless, Critic, and Tester. A dashed line joins part of the front.",
+        "caption": "Pareto view. A point is on the front when no other agent is better at both skill and cost."
+      },
+      {
+        "file": "flagship/arena-agent.png",
+        "alt": "Agent Arena page for an agent named Reckless. A lineage shows Reckless g0 through g3. One panel is the current prompt. Another is a rewrite log. Buttons read Replay a trace and Copy link.",
+        "caption": "One agent's lineage. The coach rewrites losers and the page keeps the prompt beside the rewrite notes."
+      }
+    ]
+  },
+  {
+    "slug": "agent-fitness",
+    "title": "Agent Fitness",
+    "group": "flagship",
+    "featured": true,
+    "aliases": [
+      "fitness"
+    ],
+    "summary": "A benchmarking and evolution lab. One task goes to many models and modes. Each run gets a fitness score. Human judgement is half of it.",
+    "highlight": "Working MVP · ~22,000 lines · 129 files · 32 passing tests",
+    "pulse": {
+      "text": "32",
+      "label": "passing tests",
+      "count": 32
+    },
+    "stage": "Working MVP, local",
+    "repo": {
+      "state": "private",
+      "note": "Private repository. Not linked."
+    },
+    "stack": [
+      "Python",
+      "FastAPI",
+      "Postgres",
+      "Alembic",
+      "Next.js",
+      "Docker",
+      "pytest",
+      "Prometheus"
+    ],
+    "facts": [
+      {
+        "label": "Task",
+        "value": "One prompt, plus attachments, sent to many models and modes"
+      },
+      {
+        "label": "Providers",
+        "value": "GPT, Claude, Kimi, Gemini, and CLI agents such as Claude Code and Codex"
+      },
+      {
+        "label": "Score",
+        "value": "Time, tokens, cost, and success, measured automatically. Human judgement carries 50% of the weight"
+      },
+      {
+        "label": "Tournaments",
+        "value": "Single-elimination brackets with Elo"
+      },
+      {
+        "label": "Teams",
+        "value": "Mixed-provider pipelines — planner, executor, critic — scored as one unit"
+      },
+      {
+        "label": "Evolution",
+        "value": "Mutation and crossover of system prompts, with a lineage tree"
+      },
+      {
+        "label": "Queue",
+        "value": "Durable Postgres job queue (FOR UPDATE SKIP LOCKED) with leases, heartbeats, a worker pool, per-provider token-bucket rate limits, and retries with backoff"
+      },
+      {
+        "label": "Sandbox",
+        "value": "CLI agents in Docker with no network"
+      },
+      {
+        "label": "Access",
+        "value": "RBAC for admin, reviewer, and viewer. Fernet-encrypted API keys. Audit logs"
+      },
+      {
+        "label": "Ops",
+        "value": "JSON logs and Prometheus. Docker Compose. pytest. CI"
+      },
+      {
+        "label": "Demo",
+        "value": "Mock agents, so the demo runs with no API keys"
+      },
+      {
+        "label": "Size",
+        "value": "About 22,000 lines across 129 files"
+      },
+      {
+        "label": "Tests",
+        "value": "32 passing tests, plus an end-to-end browser test with no console errors"
+      },
+      {
+        "label": "UI",
+        "value": "Next.js dashboard with SVG visualisations. Dark observatory design"
+      }
+    ],
+    "paragraphs": [
+      "Agent Fitness is the other working flagship, beside Agent Arena. In the coming AI Colosseum it is the training ground and the choose-your-fighter roster. One task — a prompt plus attachments — is sent to many models and modes. The brief names GPT, Claude, Kimi, Gemini, and CLI agents such as Claude Code and Codex.",
+      "Each run gets a fitness score: time, tokens, cost, and success, measured automatically. A person's judgement carries 50% of the weight. The best setups meet in single-elimination tournaments with Elo. Mixed-provider pipelines (planner, executor, critic) are scored as one unit. System prompts evolve by mutation and crossover, and the lineage is kept.",
+      "The lab is a working MVP and it runs locally. The job queue is Postgres: FOR UPDATE SKIP LOCKED, with leases, heartbeats, a worker pool, per-provider token buckets, and retries with backoff. CLI agents are sandboxed in Docker with no network. API keys are Fernet-encrypted. Roles are admin, reviewer, and viewer, with audit logs."
+    ],
+    "callout": "The screenshots are the keyless mock demo. The agents in them are named mock:. They are not a published ranking of GPT, Claude, Kimi, Gemini, Claude Code, or Codex. The line counts and the 32 tests are the project metrics.",
+    "shots": [
+      {
+        "file": "fitness/observatory.png",
+        "alt": "Agent Fitness observatory in a dark theme. The heading reads The same prompt. Every agent. One ranking. An Elo ladder lists four mock agents. A live floor lists recent batches as completed. The sidebar includes Observatory, New task, Teams, Brackets, Judge, Leaderboard, Compare, and Lineage. A note says judgement is half the score.",
+        "caption": "Observatory, from the keyless mock demo. Human judgement is half the score. Counts on this screen are demo state."
+      },
+      {
+        "file": "fitness/bracket.png",
+        "alt": "Agent Fitness single-elimination bracket titled Opening bracket, marked completed. Round 1 pairs mock agents. A final is on the right. A ratings list sits under the bracket.",
+        "caption": "A finished bracket. Best setups compete in single-elimination tournaments with Elo. These entrants are mock agents."
+      },
+      {
+        "file": "fitness/teams.png",
+        "alt": "Agent Fitness Teams page. A pipeline named Deck council lists a planner, an executor, and a critic, each a mock agent. A form below is for a new pipeline.",
+        "caption": "Mixed-provider pipelines. Planner, executor, and critic are scored as one unit. This shot uses mock agents."
+      },
+      {
+        "file": "fitness/lineage.png",
+        "alt": "Agent Fitness lineage view for generation 2. An elite list shows two mock system prompts. A tree connects seed, crossover, and mutate nodes.",
+        "caption": "Lineage tree. Children are a mutation of one parent or a crossover of two. Scores on the nodes belong to the mock demo."
+      },
+      {
+        "file": "fitness/register.png",
+        "alt": "Agent Fitness registration screen titled Create an account. Fields for name, email, and password. A role choice between Reviewer and Viewer. A lime button reads Join the lab.",
+        "caption": "Registration. Lab roles are admin, reviewer, and viewer. This screen offers reviewer and viewer."
+      }
+    ]
+  },
+  {
+    "slug": "gate",
+    "title": "GATE / Shipgate",
+    "group": "flagship",
+    "aliases": [
+      "shipgate"
+    ],
+    "summary": "Pre-merge control for AI-written code. A free GATE workspace, a GitHub Action that marks Hot, Warm, and Cold zones on a pull request, and paid audits.",
+    "highlight": "Public repos · Hot / Warm / Cold on PRs · free path checks",
+    "stage": "Public. The GATE repository has no README; this card uses the repo description, the public page, and the Action README.",
+    "repo": {
+      "state": "public",
+      "note": "Public repositories."
+    },
+    "links": [
+      {
+        "label": "GATE repository",
+        "href": "https://github.com/121Nanami/gate"
+      },
+      {
+        "label": "Shipgate Action",
+        "href": "https://github.com/121Nanami/gate-action"
+      },
+      {
+        "label": "GATE in the browser",
+        "href": "https://121nanami.github.io/gate/"
+      }
+    ],
+    "stack": [
+      "TypeScript",
+      "Vite",
+      "GitHub Action"
+    ],
+    "facts": [
+      {
+        "label": "Line",
+        "value": "Ship AI code you can defend"
+      },
+      {
+        "label": "What it is",
+        "value": "Pre-merge control for AI-written pull requests: a free GATE workspace, an installable GitHub Action, and paid audits"
+      },
+      {
+        "label": "Public bet",
+        "value": "The repository describes a public $1000 October bet. No revenue figure is repeated here."
+      },
+      {
+        "label": "Action",
+        "value": "Comments Hot, Warm, and Cold trust-zone hints on pull requests, for AI-assisted diffs"
+      },
+      {
+        "label": "Free",
+        "value": "Path heuristics and a PR checklist"
+      },
+      {
+        "label": "Licensed",
+        "value": "Hot-zone extras. The Action README points at Shipgate pricing for a license key."
+      },
+      {
+        "label": "Permissions",
+        "value": "The sample workflow asks for contents: read and pull-requests: write"
+      },
+      {
+        "label": "Companion",
+        "value": "A browser tool with no install, on the GitHub Pages site"
+      }
+    ],
+    "paragraphs": [
+      "GATE is the public project behind Shipgate: pre-merge control for AI-written code. The repository description and the public page both use the line “Ship AI code you can defend.” The page names a free GATE tool, a GitHub Action, and a public $1000 October bet. There is no README in that repository, so this page does not invent a longer story.",
+      "The Shipgate Action comments Hot, Warm, and Cold trust-zone hints on pull requests. It is built for AI-assisted diffs. The free tier includes path heuristics and a PR checklist. Hot-zone extras need a license. A browser companion runs with no install."
+    ],
+    "callout": "License keys, product permalinks, and store URLs from the source are not copied here. The three links are the GATE repo, the Action repo, and the public Pages site.",
+    "shots": []
+  },
+  {
+    "slug": "triagebot",
+    "title": "TriageBot",
+    "group": "flagship",
+    "aliases": [
+      "triage"
+    ],
+    "summary": "Reproduces a reported bug in a sandbox, writes a failing test, proposes a fix, and verifies it. Duplicate detection uses local embeddings. Pull requests are opt-in.",
+    "highlight": "Easy slice 6/6 on both. Hard slice 1/4 on local 7B, 0/4 on 14B.",
+    "pulse": {
+      "text": "6/6 · 1/4",
+      "label": "easy slice, and the hard slice on local 7B"
+    },
+    "stage": "Easy slice 6/6 for both models. Hard slice 1/4 on local 7B, 0/4 on 14B.",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Qwen2.5-Coder 7B",
+      "Qwen2.5-Coder 14B"
+    ],
+    "facts": [
+      {
+        "label": "Loop",
+        "value": "Reproduce in a sandbox, write a failing test, propose a fix, verify the fix"
+      },
+      {
+        "label": "Duplicates",
+        "value": "Duplicate detection with local embeddings"
+      },
+      {
+        "label": "Pull requests",
+        "value": "Opt-in"
+      },
+      {
+        "label": "Desk",
+        "value": "GitHub Action"
+      },
+      {
+        "label": "Models",
+        "value": "Local Qwen2.5-Coder 7B and 14B"
+      },
+      {
+        "label": "Easy slice",
+        "value": "6/6 local fixes, up from 0/6, on local Qwen2.5-Coder 7B and 14B"
+      },
+      {
+        "label": "Hard slice",
+        "value": "1/4 verified with local Qwen2.5-Coder 7B. 0/4 with 14B. Multi-file, plus SWE-bench Lite flask."
+      },
+      {
+        "label": "Harness",
+        "value": "Improvements in progress"
+      }
+    ],
+    "paragraphs": [
+      "TriageBot takes a reported bug, reproduces it in a sandbox, writes the failing test, proposes a fix, and checks that the fix holds. Duplicate detection uses local embeddings. Opening a pull request is opt-in. A GitHub Action is the desk.",
+      "The easy slice is 6 of 6 verified for both local Qwen2.5-Coder 7B and 14B, up from 0 of 6. The hard slice — multi-file bugs, plus SWE-bench Lite flask — is 1 of 4 verified on the 7B model and 0 of 4 on the 14B model. Harness improvements are in progress."
+    ],
+    "shots": [
+      {
+        "file": "flagship/triagebot-7b.png",
+        "alt": "TriageBot bench page from GreyHat Inc. A large 100 percent sits under the title. The subtitle reads 6 of 6 cases verified, qwen2.5-coder-7b-instruct, llama, bubblewrap, no network. A table lists six cases — clamp, palindrome, weekday, paginate, merge, and retry — each marked fix verified and reproduced.",
+        "caption": "The easy-slice 7B bench: 6 of 6 verified. The hard slice is 1 of 4 on this 7B model and 0 of 4 on 14B. That result is not this still."
+      }
+    ]
+  },
+  {
+    "slug": "paper2repo",
+    "title": "Paper2Repo",
+    "group": "flagship",
+    "aliases": [
+      "paper",
+      "p2r"
+    ],
+    "summary": "An arXiv paper becomes a runnable PyTorch repo and an honest reproduction report.",
+    "highlight": "All-CNN-C: 27.17% after 8 CPU epochs. Paper is 9.08% at 350.",
+    "pulse": {
+      "text": "27.17%",
+      "label": "All-CNN-C test error, 8 CPU epochs"
+    },
+    "stage": "All-CNN-C moved off 90% chance with He init. Not at the paper's 350-epoch figure.",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "PyTorch"
+    ],
+    "facts": [
+      {
+        "label": "Dropout",
+        "value": "arXiv:1207.0580, at paper width: 1.39% MNIST error vs the paper's ~1.10%"
+      },
+      {
+        "label": "All-CNN-C",
+        "value": "He init: 27.17% test error after 8 CPU epochs. The paper reports 9.08% at 350 epochs. Default init was stuck at 90% chance."
+      },
+      {
+        "label": "Reports",
+        "value": "Static report gallery"
+      },
+      {
+        "label": "Output",
+        "value": "A runnable PyTorch repo plus an honest reproduction report"
+      }
+    ],
+    "paragraphs": [
+      "Paper2Repo turns an arXiv paper into a runnable PyTorch repository and a report that says what actually happened. The dropout paper (arXiv:1207.0580), at paper width, landed at 1.39% MNIST error against the paper's ~1.10%.",
+      "All-CNN-C was stuck at 90% chance with the default init. He init moved it to 27.17% test error after 8 CPU epochs. The paper reports 9.08% at 350 epochs. That gap stays in the note. The gallery stills are earlier runs."
+    ],
+    "callout": "The dropout figure prints the protocol differences beside the headline number. The percentage and the caveats are both the result.",
+    "shots": [
+      {
+        "file": "flagship/paper2repo-dropout.png",
+        "alt": "Paper2Repo reproduction report for arXiv:1207.0580, titled Improving neural networks by preventing co-adaptation of feature detectors. A box says to read the protocol before the numbers. The verdict places the paper's test error beside this run's 1.39 percent error and labels the comparison close, not paper scale. A table and a training curve follow.",
+        "caption": "Dropout report, arXiv:1207.0580. The brief's figure is 1.39% MNIST error against the paper's ~1.10%, at paper width. The report prints the protocol gaps next to that number."
+      },
+      {
+        "file": "flagship/paper2repo-gallery.png",
+        "alt": "Paper2Repo static gallery titled What the CPU runs actually got. Cards summarize reproduction runs for the dropout paper and note that one blueprint is a different network from All-CNN.",
+        "caption": "Static gallery of earlier runs. The latest All-CNN-C figure, 27.17% after 8 CPU epochs, is in the notes rather than on this still."
+      }
+    ]
+  },
+  {
+    "slug": "reporeel",
+    "title": "RepoReel",
+    "group": "flagship",
+    "aliases": [
+      "reel"
+    ],
+    "summary": "A repository becomes an onboarding guide, import-traced diagrams, and a narrated trailer. Three local 7B trailers — Click, chi, and zustand — sit in a gallery.",
+    "highlight": "3 local-7B trailers: Click, chi, zustand. Gallery.",
+    "stage": "Three trailers named. The still on this page is the Click reel.",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "local model"
+    ],
+    "facts": [
+      {
+        "label": "Input",
+        "value": "A GitHub repository"
+      },
+      {
+        "label": "Guide",
+        "value": "Onboarding guide"
+      },
+      {
+        "label": "Diagrams",
+        "value": "Import-traced"
+      },
+      {
+        "label": "Trailers",
+        "value": "3 local 7B trailers: Click, chi, and zustand, in a gallery"
+      },
+      {
+        "label": "Shown here",
+        "value": "The Click reel. chi and zustand are named and are not in these stills."
+      },
+      {
+        "label": "Earlier note",
+        "value": "The studio brief also describes a 65 second narrated trailer and a fully local model"
+      },
+      {
+        "label": "Model",
+        "value": "Local 7B for these three trailers"
+      }
+    ],
+    "paragraphs": [
+      "RepoReel reads a repository and writes the first-day guide: what matters, how it fits together, and what to run. Diagrams are traced from imports. The model for this set is local 7B.",
+      "There are three trailers in the gallery: Click, chi, and zustand. The stills on this page are the start screen and the Click reel. chi and zustand are not in those stills. None of those repositories are linked from this site."
+    ],
+    "callout": "The Click screen names llama.cpp on that capture. The three-trailer gallery is the later note. Do not treat the Click player length as a new metric.",
+    "shots": [
+      {
+        "file": "flagship/reporeel-home.png",
+        "alt": "RepoReel start screen on a cream page. The headline reads A first day for any public repository. Steps are listed: index the tree and trace imports, summarize files, then write the guide and cut the reel. A repository field and a Make the reel button sit to the side. A sample-output card is below. The page says the model runs locally.",
+        "caption": "Start screen. Paste a repository. The model runs locally. GreyHat Inc is named in the page chrome."
+      },
+      {
+        "file": "flagship/reporeel-sample.png",
+        "alt": "RepoReel sample page for a repository named click. A narration panel, a chapter list, a module map, and a data-flow diagram. The provider line reads llama.cpp.",
+        "caption": "The Click reel: narration, chapters, and import-traced diagrams. Provider label on this screen: llama.cpp. chi and zustand are the other two local-7B trailers and are not in this still."
+      }
+    ]
+  },
+  {
+    "slug": "foundry",
+    "title": "Foundry",
+    "group": "flagship",
+    "aliases": [
+      "foundry"
+    ],
+    "summary": "A multi-agent team — PM, architect, engineers, QA, reviewer — turns an idea into a tested web app. A person approves the merge.",
+    "highlight": "Pocket run rejected at QA. Harness fixes in progress.",
+    "stage": "Pocket rejected at QA. Shelf is the earlier shown run.",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "facts": [
+      {
+        "label": "Team",
+        "value": "PM, architect, engineers, QA, reviewer"
+      },
+      {
+        "label": "Output",
+        "value": "A tested web app from an idea"
+      },
+      {
+        "label": "Board",
+        "value": "Replayable event board"
+      },
+      {
+        "label": "Traceability",
+        "value": "Traceability matrix"
+      },
+      {
+        "label": "QA",
+        "value": "Browser QA"
+      },
+      {
+        "label": "Gate",
+        "value": "Human gate"
+      },
+      {
+        "label": "Ledger",
+        "value": "Token ledger"
+      },
+      {
+        "label": "Pocket",
+        "value": "Rejected at QA. Harness fixes are in progress."
+      },
+      {
+        "label": "Shelf",
+        "value": "Earlier shown run. The figures on this page are that run, not Pocket."
+      }
+    ],
+    "paragraphs": [
+      "Foundry staffs an idea with a small agent team: PM, architect, engineers, QA, and a reviewer. The run is replayable. Decisions sit on an event board, with a traceability matrix, browser QA, a human gate, and a token ledger.",
+      "The Pocket run is still rejected at QA. Harness fixes are in progress. The figures are an earlier run, an idea called Shelf, and the local reading-list app that run produced. They are not a pass for Pocket."
+    ],
+    "callout": "Shelf is the earlier run in the figures, not the Pocket run. The books on that screen are the demo app's sample data, not a metric. Pocket is still rejected at QA.",
+    "shots": [
+      {
+        "file": "flagship/foundry-board.webp",
+        "alt": "Foundry event board for a run named Shelf. The idea text describes a local personal reading list. Tabs read spec, architecture, implementation, qa, and review. Columns are backlog, in progress, review, and done, with a timeline beside them. A line says the human approves the merge. Browser chrome shows a localhost address.",
+        "caption": "Replayable event board for the Shelf run, including the human approval line."
+      },
+      {
+        "file": "flagship/foundry-shelf.webp",
+        "alt": "A local web app titled Shelf, a personal reading list. A form adds a book. Filters for status sit above a short list of books, each with status controls.",
+        "caption": "The tested web app from that run: a local reading list with add, filter, and delete."
+      }
+    ]
+  },
+  {
+    "slug": "scopehound",
+    "title": "ScopeHound",
+    "group": "security",
+    "aliases": [
+      "scope"
+    ],
+    "summary": "Point it at a domain. Get back a map of everything an attacker can see.",
+    "highlight": "MIT · 22 tests · CI · refuses to scan without --i-am-authorised",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Python 3.10+",
+      "standard library",
+      "pytest",
+      "optional Ollama"
+    ],
+    "facts": [
+      {
+        "label": "Form",
+        "value": "Zero-dependency Python CLI"
+      },
+      {
+        "label": "Map",
+        "value": "crt.sh, DNS, HTTP/TLS probe, technology fingerprint, security-header checks"
+      },
+      {
+        "label": "Score",
+        "value": "Risk scoring, with HTML, Markdown, and JSON reports"
+      },
+      {
+        "label": "Summary",
+        "value": "Optional Ollama summary. A built-in template is the offline fallback"
+      },
+      {
+        "label": "Gate",
+        "value": "--i-am-authorised is required for a live scan"
+      },
+      {
+        "label": "Limits",
+        "value": "Rate limited"
+      },
+      {
+        "label": "Demo",
+        "value": "Offline demo mode"
+      },
+      {
+        "label": "License",
+        "value": "MIT"
+      },
+      {
+        "label": "Tests",
+        "value": "22 tests, plus CI"
+      }
+    ],
+    "paragraphs": [
+      "ScopeHound is an attack-surface map for a domain you are allowed to look at. It gathers certificate-transparency names from crt.sh, resolves DNS, probes HTTP and TLS lightly, fingerprints the stack, and checks security headers. Every asset gets a risk score. Reports come out as HTML, Markdown, and JSON.",
+      "An optional local model, through Ollama, writes a plain-language summary. With no model, a template does it, so the tool still runs offline and does not call a paid service.",
+      "A live scan will not start without --i-am-authorised, and requests are rate limited. ScopeHound maps and advises. It does not exploit, brute-force credentials, or send attack payloads."
+    ],
+    "callout": "The figure is the offline --demo report. The banner says synthetic data. It is not a scan of a real target. Do not read the host names, addresses, or scores in it as findings.",
+    "shots": [
+      {
+        "file": "security/scopehound-demo-report.png",
+        "alt": "ScopeHound HTML report in demo mode. The header names acme-demo.test and a badge says synthetic data. The page has an executive summary, discovered assets with technology and missing-header notes, and a prioritised findings list.",
+        "caption": "Offline demo report. Synthetic data, as the banner says. A live scan requires --i-am-authorised and stays rate limited."
+      }
+    ]
+  },
+  {
+    "slug": "snitchless",
+    "title": "Snitchless",
+    "group": "security",
+    "aliases": [
+      "snitch"
+    ],
+    "summary": "A privacy audit for a Linux laptop you administer. Outbound connections, trackers, open ports, Flatpak permissions, Firefox, SSH, and the firewall. A score from 0 to 100. Fixes are dry-run first.",
+    "highlight": "0–100 score · reversible dry-run fixes · MIT · 9 tests",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Python standard library",
+      "pytest"
+    ],
+    "facts": [
+      {
+        "label": "Scope",
+        "value": "The Linux laptop you run it on"
+      },
+      {
+        "label": "Checks",
+        "value": "Outbound connections by app, company, and country; trackers; open ports; Flatpak permissions; Firefox; SSH; firewall"
+      },
+      {
+        "label": "Score",
+        "value": "0 to 100"
+      },
+      {
+        "label": "Fixes",
+        "value": "Reversible, and dry-run by default"
+      },
+      {
+        "label": "Runtime",
+        "value": "Python standard library only"
+      },
+      {
+        "label": "License",
+        "value": "MIT"
+      },
+      {
+        "label": "Tests",
+        "value": "9 tests"
+      }
+    ],
+    "paragraphs": [
+      "Snitchless tells you what a Linux laptop is saying to the network: which apps connect out, which companies and countries those flows point at, which trackers show up, what is listening, which Flatpak apps hold broad permissions, and how Firefox, SSH, and the firewall are set. The result is a score from 0 to 100 and a list of findings in plain language.",
+      "Fixes are dry-run unless you explicitly apply them, and they are reversible. The tool is standard-library Python, MIT licensed, with 9 tests. It is for the machine you own or administer."
+    ],
+    "callout": "The dashboard figure is synthetic demo data. The score on that screen is part of the demo, not a measurement of a real laptop.",
+    "shots": [
+      {
+        "file": "security/snitchless-dashboard-demo.png",
+        "alt": "Snitchless dashboard labeled as demo data for a synthetic laptop. A privacy-score dial, a findings list with fix buttons, a table of outbound connections by app, and a table of listening ports. A note explains that fixes are a dry run until confirmed.",
+        "caption": "Dashboard in --demo mode. Synthetic laptop. Fixes on this screen describe a dry run."
+      }
+    ]
+  },
+  {
+    "slug": "greyhat-utilities",
+    "title": "GreyHat utilities",
+    "group": "security",
+    "aliases": [
+      "urlguard",
+      "greyhat-tools"
+    ],
+    "summary": "The public GreyHat repository: consumer protection tools and small open-source utilities. This is not the source of this website.",
+    "highlight": "urlguard offline checker · app catalog · public repo",
+    "stage": "Public utilities repo. Not this portfolio.",
+    "repo": {
+      "state": "public",
+      "note": "Public repository."
+    },
+    "links": [
+      {
+        "label": "GreyHat repository",
+        "href": "https://github.com/121Nanami/GreyHat"
+      }
+    ],
+    "facts": [
+      {
+        "label": "What it is",
+        "value": "Defensive, consumer-facing helpers for privacy and phishing awareness, plus safer defaults, and a catalog of lightweight utility apps"
+      },
+      {
+        "label": "urlguard",
+        "value": "Offline URL safety checker. Heuristics for phishing and lookalikes. Named as a candidate for BlackArch packaging."
+      },
+      {
+        "label": "Apps",
+        "value": "Utility apps live under apps/, with a catalog in apps/CATALOG.md"
+      },
+      {
+        "label": "Boundary",
+        "value": "No malware, exploits, or unauthorized access"
+      },
+      {
+        "label": "This site",
+        "value": "That repository is not the source of this portfolio"
+      }
+    ],
+    "paragraphs": [
+      "The public repository named GreyHat ships consumer protection tools and small open-source utilities. The README describes defensive helpers for privacy, phishing awareness, and safer defaults, plus a catalog of lightweight apps. The work is non-malicious: no malware, exploits, or unauthorized access.",
+      "urlguard is an offline URL safety checker using heuristics for phishing and lookalikes, and it is named as a candidate for BlackArch packaging. Utility apps sit under apps/. This portfolio is a separate site. That repository is linked as the utilities catalog, not as the source of these pages."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "fiaos",
+    "title": "FiaOS",
+    "group": "fiaos",
+    "aliases": [
+      "lifeos"
+    ],
+    "summary": "Frida edition of the in-house life OS, version 0.2.0. A Casa tab for the house, and local AI through Ollama. Private. The stills are demo data, not a real household.",
+    "highlight": "Frida edition · Ollama qwen3:14b · 15/15 tests · demo stills",
+    "stage": "Private. Not linked. Screenshots are demo data only.",
+    "repo": {
+      "state": "private",
+      "note": "Private repository. Not linked."
+    },
+    "stack": [
+      "vanilla JS",
+      "Node",
+      "JSON storage"
+    ],
+    "facts": [
+      {
+        "label": "Edition",
+        "value": "Frida. The assistant is warm and dry. The handoff is dated 2026-10-31."
+      },
+      {
+        "label": "Casa",
+        "value": "A second tab, key C: house brief, maintenance, supplies that can land on the shopping list, a 30-day bills calendar, rooms for chores, and a home file. Wi-Fi notes are redacted before they reach the model."
+      },
+      {
+        "label": "Local AI",
+        "value": "If no external key is set, chat goes to Ollama on loopback only. Default model qwen3:14b. A non-loopback URL is refused. If Ollama is down the app says so."
+      },
+      {
+        "label": "Data",
+        "value": "Files live in a private data directory, mode 0700, not in the app folder. No personal records are published here."
+      },
+      {
+        "label": "Tests",
+        "value": "15 pass, 0 fail. Five are the existing planner. Five cover Casa. Five cover local-model routing, including a fake Ollama and a loopback-only check."
+      },
+      {
+        "label": "Smoke",
+        "value": "Health reported the local model qwen3:14b. Tabs rendered with no console errors. Not tested on the Linux laptop or on touch hardware."
+      },
+      {
+        "label": "Look",
+        "value": "Original CSS and SVG: a papel picado strip and tile corners. The stills below are a local run with invented demo data."
+      },
+      {
+        "label": "Stills",
+        "value": "Captured from version 0.2.0 with no API key. Profiles are Ada, Bea, and Cam. Meals, bills, and the Casa tab are placeholders. Not a real household."
+      },
+      {
+        "label": "Repository",
+        "value": "Private. Not linked."
+      }
+    ],
+    "paragraphs": [
+      "The newest FiaOS is the Frida edition, version 0.2.0, an in-house life OS. It still runs the meals, shopping, and budget loop, plus workouts, study blocks, bills, habits, and chores. Casa is the house tab. Frida is the helper. Profiles and a household view exist. The stills use a placeholder household named Ada, Bea, and Cam. No real record is shown.",
+      "Local AI is Ollama at the loopback address, model qwen3:14b unless another local model is named. An external key can still select the other provider. Anything else is refused, and Wi-Fi notes are stripped before the model sees context. The handoff's test run is 15 pass and 0 fail. A real model reply was not part of that test. The smoke host happened to have Ollama running, so health said local.",
+      "The repository is private and is not linked. The four figures are a local run of that edition with no API key. Every name, meal, bill, and Casa entry on them is invented demo data."
+    ],
+    "callout": "Private in-house system. There is no repository link. The figures are labelled demo data. They are not a capture of a real household, and they contain no personal or health records.",
+    "shots": [
+      {
+        "file": "fiaos/stage.png",
+        "alt": "FiaOS Frida edition, household view, labelled DEMO DATA. Profiles Ada, Bea, and Cam. A morning brief lists demo meals, a demo rent bill, and a note that three house items need attention. The helper panel says the local model is not ready.",
+        "caption": "Stage, household view. Demo data: placeholder profiles Ada, Bea, and Cam. Not a real household."
+      },
+      {
+        "file": "fiaos/casa.png",
+        "alt": "FiaOS Casa tab, labelled DEMO DATA. The house brief lists a demo smoke-alarm test, demo rent, watering a demo plant, and low demo tablets. Maintenance and supplies cards sit underneath.",
+        "caption": "Casa tab. Demo data: invented maintenance, supplies, and a placeholder bill. Not a real house."
+      },
+      {
+        "file": "fiaos/meals.png",
+        "alt": "FiaOS Meals and Diet tab for the demo profile Bea, labelled DEMO DATA. Each day is set to Demo oats, Placeholder soup, and Sample rice bowl, totalling 1340 kcal against a 1900 kcal target.",
+        "caption": "Meals for the demo profile Bea. Demo data: the same three placeholder meals every day."
+      },
+      {
+        "file": "fiaos/money.png",
+        "alt": "FiaOS Money tab, labelled DEMO DATA. Demo rent of 1200 dollars is split three ways across Ada, Bea, and Cam. Ada has one expense, placeholder coffee, for 4.50 dollars.",
+        "caption": "Money tab. Demo data: placeholder rent and one invented expense. Not a real budget."
+      }
+    ]
+  },
+  {
+    "slug": "fiahealth",
+    "title": "FiaHealth",
+    "group": "fiaos",
+    "aliases": [
+      "healthmod"
+    ],
+    "summary": "Fia Health 0.2.0. A local-first health workspace: one encrypted vault per profile, a scrypt login, and tests for isolation and throttling. No records are shown.",
+    "highlight": "v0.2.0 · encrypted vaults · scrypt login · private",
+    "stage": "Local-first. Private. Not linked. No personal data.",
+    "repo": {
+      "state": "private",
+      "note": "Private repository. Not linked."
+    },
+    "stack": [
+      "Node.js",
+      "local server",
+      "AES-256-GCM"
+    ],
+    "facts": [
+      {
+        "label": "Version",
+        "value": "0.2.0, 29 October 2026. No cloud storage and no Apple Health."
+      },
+      {
+        "label": "Vaults",
+        "value": "Each profile has its own encrypted vault. The server stores only the ciphertext."
+      },
+      {
+        "label": "Login",
+        "value": "The browser sends a login token derived from the passphrase, with a salt separate from the vault key. The server keeps a scrypt hash. It never sees the passphrase or a readable record."
+      },
+      {
+        "label": "Session",
+        "value": "A 12-hour HttpOnly cookie. Five wrong tries, then a five-minute lock."
+      },
+      {
+        "label": "Vault key",
+        "value": "PBKDF2-SHA256, 600,000 iterations, a random 16-byte salt, then a non-exportable AES-256-GCM key. Each save uses a fresh 12-byte nonce."
+      },
+      {
+        "label": "Writes",
+        "value": "Checked against the vault version so two devices cannot silently overwrite each other."
+      },
+      {
+        "label": "Network",
+        "value": "Listens on 127.0.0.1 only. Signing in needs the local server. Internet is not required."
+      },
+      {
+        "label": "Tests",
+        "value": "Account isolation, wrong passphrases, throttling, and cross-site writes. The browser test uses synthetic records, not a real profile."
+      },
+      {
+        "label": "Records",
+        "value": "Daily check-ins, cycle notes without fertility predictions, medications and appointments, and a personal funding ledger. Remaining funds are a planning figure, not an official balance. None of those records are shown here."
+      },
+      {
+        "label": "Repository",
+        "value": "Private. Not linked."
+      }
+    ],
+    "paragraphs": [
+      "Fia Health 0.2.0 is a local-first workspace beside FiaOS. Each profile has its own passphrase and its own encrypted vault. There is no subscription and no cloud copy. This page describes the architecture. It does not name anyone and it does not show a record.",
+      "Login is checked by the local server. A scrypt hash of a login token is what the server stores. The vault key is separate: PBKDF2-SHA256 with 600,000 iterations, then AES-256-GCM. A wrong passphrase is rejected. Five failures impose a five-minute lock. Tests cover isolation between profiles, throttling, and cross-site writes.",
+      "The server listens only on localhost. The repository is private and is not linked. There is no screenshot."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "fiaos-studio",
+    "title": "FiaOS Studio",
+    "group": "fiaos",
+    "aliases": [
+      "studio"
+    ],
+    "summary": "The creative apps in the FiaOS ecosystem: documents, sheets, slides, paint, draw, clip, photo, and layout. Open formats.",
+    "highlight": "Eight named apps · open formats · private, not linked",
+    "repo": {
+      "state": "private",
+      "note": "Private repository. Not linked."
+    },
+    "stack": [
+      "open formats",
+      "Arch PKGBUILD"
+    ],
+    "facts": [
+      {
+        "label": "Apps",
+        "value": "FiaDocs, FiaSheets, FiaSlides, FiaPaint, FiaDraw, FiaClip, FiaPhoto, FiaLayout"
+      },
+      {
+        "label": "Formats",
+        "value": "Open formats"
+      },
+      {
+        "label": "Package",
+        "value": "EllenOS App Library, as an Arch PKGBUILD"
+      }
+    ],
+    "paragraphs": [
+      "FiaOS Studio is the set of creative tools around the life OS: FiaDocs, FiaSheets, FiaSlides, FiaPaint, FiaDraw, FiaClip, FiaPhoto, and FiaLayout. Files stay in open formats. They are packaged as the EllenOS App Library, an Arch PKGBUILD."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "fia-modules",
+    "title": "Fia modules",
+    "group": "fiaos",
+    "aliases": [
+      "modules"
+    ],
+    "summary": "The other modules named beside FiaOS: mail, calendar, desk, media, local transcription, and self-hosted chat.",
+    "highlight": "Named modules. No records. Private, not linked.",
+    "repo": {
+      "state": "private",
+      "note": "Private repository. Not linked."
+    },
+    "facts": [
+      {
+        "label": "Mail and calendar",
+        "value": "Fia Mail + Calendar"
+      },
+      {
+        "label": "Desk",
+        "value": "Desk"
+      },
+      {
+        "label": "Media",
+        "value": "FiaMedia"
+      },
+      {
+        "label": "Transcription",
+        "value": "Local transcription"
+      },
+      {
+        "label": "Chat",
+        "value": "Self-hosted chat"
+      }
+    ],
+    "paragraphs": [
+      "These are the other modules the brief lists next to FiaOS: Fia Mail and Calendar, Desk, FiaMedia, local transcription, and self-hosted chat. No separate metrics or screenshots were provided, so none are shown."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "ellenos",
+    "title": "EllenOS",
+    "group": "os",
+    "aliases": [
+      "ellen-os"
+    ],
+    "summary": "A customised aarch64 Arch Linux desktop, run as a QEMU virtual machine on Apple Silicon.",
+    "highlight": "Snapshot/restore CLI · Mac bridge · Tor-routed browsing profile",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Arch Linux",
+      "aarch64",
+      "QEMU"
+    ],
+    "facts": [
+      {
+        "label": "Base",
+        "value": "Customised aarch64 Arch Linux"
+      },
+      {
+        "label": "Host",
+        "value": "QEMU virtual machine on Apple Silicon"
+      },
+      {
+        "label": "Control",
+        "value": "CLI with snapshot and restore"
+      },
+      {
+        "label": "Bridge",
+        "value": "Mac bridge"
+      },
+      {
+        "label": "Browsing",
+        "value": "Tor-routed browsing profile"
+      }
+    ],
+    "paragraphs": [
+      "EllenOS is a customised Arch Linux desktop for aarch64, run under QEMU on Apple Silicon. A control CLI snapshots and restores the machine. A Mac bridge connects it to the host. One browsing profile is routed through Tor."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "blackarch",
+    "title": "BlackArch workstation",
+    "group": "os",
+    "aliases": [
+      "black-arch"
+    ],
+    "summary": "An isolated Arch + BlackArch virtual machine for ethical-hacking study, with a snapshot and rollback CLI.",
+    "highlight": "Isolated study VM · snapshot and rollback",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Arch Linux",
+      "BlackArch"
+    ],
+    "facts": [
+      {
+        "label": "Base",
+        "value": "Isolated Arch Linux plus BlackArch virtual machine"
+      },
+      {
+        "label": "Use",
+        "value": "Ethical-hacking study"
+      },
+      {
+        "label": "Control",
+        "value": "Snapshot and rollback CLI"
+      }
+    ],
+    "paragraphs": [
+      "The BlackArch workstation is a separate virtual machine: Arch Linux plus BlackArch, kept isolated, for ethical-hacking study. A CLI snapshots and rolls it back."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "facet",
+    "title": "Facet",
+    "group": "os",
+    "aliases": [
+      "facet-browser"
+    ],
+    "summary": "A configurable Electron browser. Themed variants: Facet-Piastri, PitWall81, and CasaAzul.",
+    "highlight": "Configurable browser · three named themes",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Electron"
+    ],
+    "facts": [
+      {
+        "label": "Shell",
+        "value": "Electron"
+      },
+      {
+        "label": "What it is",
+        "value": "A configurable browser"
+      },
+      {
+        "label": "Variants",
+        "value": "Facet-Piastri, PitWall81, CasaAzul"
+      }
+    ],
+    "paragraphs": [
+      "Facet is a configurable browser in the Electron family. Three themed variants are named: Facet-Piastri, PitWall81, and CasaAzul. No screenshot was provided."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "centre",
+    "title": "Centre",
+    "group": "os",
+    "aliases": [
+      "center"
+    ],
+    "summary": "A side-monitor command centre. Six noVNC slots. Electron.",
+    "highlight": "Six noVNC slots on a side monitor",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Electron",
+      "noVNC"
+    ],
+    "facts": [
+      {
+        "label": "Shell",
+        "value": "Electron"
+      },
+      {
+        "label": "Role",
+        "value": "Side-monitor command centre"
+      },
+      {
+        "label": "Slots",
+        "value": "Six noVNC slots"
+      }
+    ],
+    "paragraphs": [
+      "Centre is the side-monitor command centre in the Electron family: six noVNC slots. No screenshot was provided."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "ellentalk",
+    "title": "EllenTalk",
+    "group": "os",
+    "aliases": [
+      "ellen",
+      "voice"
+    ],
+    "summary": "EllenTalk / Ellen. A local voice chatbot, built with three.js and MMD. Electron.",
+    "highlight": "Local voice · three.js · MMD",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Electron",
+      "three.js",
+      "MMD"
+    ],
+    "facts": [
+      {
+        "label": "Names",
+        "value": "EllenTalk / Ellen"
+      },
+      {
+        "label": "Shell",
+        "value": "Electron"
+      },
+      {
+        "label": "What it is",
+        "value": "A local voice chatbot"
+      },
+      {
+        "label": "View",
+        "value": "three.js and MMD"
+      }
+    ],
+    "paragraphs": [
+      "EllenTalk, also called Ellen, is a local voice chatbot in the Electron family. The view is three.js and MMD. No screenshot was provided."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "aicentre",
+    "title": "AICentre",
+    "group": "os",
+    "aliases": [
+      "aicenter"
+    ],
+    "summary": "Dispatch and monitor CLI AI agents in bulk. Electron.",
+    "highlight": "Bulk dispatch and monitoring for CLI agents",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Electron"
+    ],
+    "facts": [
+      {
+        "label": "Shell",
+        "value": "Electron"
+      },
+      {
+        "label": "Role",
+        "value": "Dispatch and monitor CLI AI agents in bulk"
+      }
+    ],
+    "paragraphs": [
+      "AICentre dispatches CLI AI agents in bulk and monitors them. It is part of the Electron family. No screenshot was provided."
+    ],
+    "shots": []
+  },
+  {
+    "slug": "medlib",
+    "title": "medlib",
+    "group": "health",
+    "aliases": [
+      "med"
+    ],
+    "summary": "An offline study suite for Australian premeds through residency. Hybrid search, a local model that cites sources, a pathway, a planner, exam timers, and clinical calculators.",
+    "highlight": "~37k cards searched in 50–130 ms · fully offline",
+    "stage": "Working local prototype. Personal tool.",
+    "repo": {
+      "state": "coming-soon",
+      "note": "Repository coming soon."
+    },
+    "stack": [
+      "Python",
+      "Flask",
+      "SQLite FTS5",
+      "fastembed",
+      "NumPy",
+      "Ollama",
+      "vanilla JS"
+    ],
+    "facts": [
+      {
+        "label": "Who it is for",
+        "value": "Australian premeds through residency"
+      },
+      {
+        "label": "Search",
+        "value": "Hybrid BM25 (SQLite FTS5) and local embeddings, including fastembed and bge-small, with medical abbreviation expansion. About 37,000 cards in 50–130 ms"
+      },
+      {
+        "label": "Ask",
+        "value": "Local LLM, with citations"
+      },
+      {
+        "label": "Pathway",
+        "value": "Dashboard from Year 12 toward specialist training"
+      },
+      {
+        "label": "Planner",
+        "value": "Pomodoro, spaced review, streaks"
+      },
+      {
+        "label": "Also in the suite",
+        "value": "Quiz, wellbeing reminders, rotation case log"
+      },
+      {
+        "label": "Timers",
+        "value": "UCAT and GAMSAT, matching official timings"
+      },
+      {
+        "label": "Calculators",
+        "value": "10 clinical calculators"
+      },
+      {
+        "label": "Network",
+        "value": "No cloud. Dark and light themes. Responsive. Keyboard-driven."
+      },
+      {
+        "label": "Pipeline",
+        "value": "A NotebookLM source-pack pipeline turns Anki exports into topic-sized Markdown. Mentioned only. No pack content is published here."
+      },
+      {
+        "label": "Status",
+        "value": "Working local prototype, personal tool"
+      }
+    ],
+    "paragraphs": [
+      "medlib is an offline suite for studying medicine in Australia, from premed through residency. Search is hybrid: BM25 on SQLite FTS5 plus local embeddings, with medical abbreviation expansion. About 37,000 cards come back in 50–130 milliseconds. Ask mode uses a local model and cites the source it used.",
+      "Around that: a pathway dashboard from Year 12 toward specialist training, a planner with Pomodoro blocks, spaced review, and streaks, a quiz, wellbeing reminders, a rotation case log, UCAT and GAMSAT timers that follow official section timings, and 10 clinical calculators.",
+      "The app is Python and Flask, with fastembed, NumPy, and Ollama, and a vanilla JS front end. It is a working local prototype and a personal tool. A separate pipeline builds NotebookLM source packs from Anki exports. The packs are not shown here. Flashcard contents are not shown either."
+    ],
+    "callout": "Only the approved screenshots are used. The clinical-tools screen says the calculators are study aids: not a medical device, and not for patient-care decisions.",
+    "shots": [
+      {
+        "file": "health/11-pathway.png",
+        "alt": "medlib pathway dashboard in a dark theme. Stage tabs run from Year 12 to registrar, with undergraduate selected. The page has milestone and task areas and a deck sidebar. The header describes hybrid search.",
+        "caption": "Pathway dashboard, dark theme. Year 12 through specialist training. Deck names are visible in the sidebar; card contents are not."
+      },
+      {
+        "file": "health/20-pathway-light.png",
+        "alt": "The same medlib pathway dashboard in a light theme, with the undergraduate stage selected and a deck sidebar.",
+        "caption": "The same pathway in the light theme."
+      },
+      {
+        "file": "health/12-planner.png",
+        "alt": "medlib study planner in a dark theme. A Pomodoro timer, spaced-review entries, a seven-day chart, and a week calendar. Summary tiles sit along the top.",
+        "caption": "Study planner: Pomodoro, spaced review, and a week view."
+      },
+      {
+        "file": "health/14-practice-ucat.png",
+        "alt": "medlib UCAT and GAMSAT practice screen. Four UCAT sections list question counts and timings, with a control for a full timed section. Score history and a form for logging a score sit below.",
+        "caption": "UCAT practice, with section timings. The page says timings follow the official test."
+      },
+      {
+        "file": "health/16-practice-gamsat-timer.png",
+        "alt": "medlib GAMSAT timer for Reasoning in Humanities and Social Sciences. The screen says to work from your own paper or mock, and shows a countdown near 100 minutes.",
+        "caption": "GAMSAT section timer. The suite matches official timings. The paper itself is not included."
+      },
+      {
+        "file": "health/18-clinical-calculators.png",
+        "alt": "medlib clinical tools in a dark theme. A banner says the calculators are for study only and must not be used for real patient-care decisions. Visible tools include BMI, eGFR, CHA2DS2-VASc, Wells score, Glasgow Coma Scale, and corrected calcium.",
+        "caption": "Clinical calculators. The suite has 10. This screen marks them as study aids, not for patient-care decisions."
+      }
+    ]
+  }
+]

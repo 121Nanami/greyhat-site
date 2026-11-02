@@ -1,0 +1,130 @@
+---
+import { Image } from 'astro:assets';
+import { groups, projectsIn, searchBlob } from '../lib/content';
+import { href } from '../lib/href';
+import { imageFor } from '../lib/images';
+
+const filters = [{ id: 'all', label: 'All' }, ...groups.map((group) => ({ id: group.id, label: group.label }))];
+---
+
+<div class="workbench" data-workbench id="work">
+  <div class="filters">
+    <div class="wrap filters-inner">
+      <div class="filter-row" role="toolbar" aria-label="Filter projects by group">
+        {
+          filters.map((filter) => (
+            <button type="button" class="filter-btn" data-filter={filter.id} aria-pressed={filter.id === 'all' ? 'true' : 'false'}>
+              {filter.label}
+            </button>
+          ))
+        }
+      </div>
+      <div class="filter-tools">
+        <label class="search-label">
+          <span class="visually-hidden">Search projects</span>
+          <input data-search type="search" placeholder="Search the index" enterkeyhint="search" />
+        </label>
+        <p class="count" data-count>{`${groups.reduce((n, group) => n + projectsIn(group.id).length, 0)} projects`}</p>
+      </div>
+    </div>
+  </div>
+  <p class="wrap filter-note">
+    <noscript>JavaScript is off, so the list stays unfiltered. </noscript>
+    Filters run in the browser. Nothing is sent anywhere.
+  </p>
+  <p class="wrap empty" data-empty hidden>No project matches that filter.</p>
+
+  {
+    groups.map((group) => {
+      const items = projectsIn(group.id);
+      return (
+        <section class="group" id={group.id} data-group-section aria-labelledby={`${group.id}-title`}>
+          <div class="wrap">
+            <header class="group-head">
+              <div>
+                <p class="kicker">
+                  {group.index} — {items.length} {items.length === 1 ? 'project' : 'projects'}
+                </p>
+                <h2 id={`${group.id}-title`}>{group.label}</h2>
+              </div>
+              <p class="group-summary">{group.summary}</p>
+            </header>
+            <div class:list={['group-grid', { 'is-flagship': group.id === 'flagship', solo: items.length === 1 }]}>
+              {items.map((project) => {
+                const shot = project.shots[0];
+                const image = shot ? imageFor(shot.file) : undefined;
+                const words = project.title.split(/[^A-Za-z0-9]+/).filter(Boolean);
+                const sigil = (words.length > 1 ? words[0][0] + words[1][0] : project.title.replace(/[^A-Za-z0-9]/g, '').slice(0, 2)).toUpperCase();
+                return (
+                  <article
+                    class:list={['card', { 'card-feature': project.featured, 'card-banner': project.comingSoon, 'no-shot': !shot, placeholder: project.placeholder, 'coming-soon': project.comingSoon }]}
+                    data-card
+                    data-group={project.group}
+                    data-search={searchBlob(project)}
+                  >
+                    <a class="card-main" href={href(`projects/${project.slug}/`)}>
+                    <div class="card-media">
+                      <span class="sigil" aria-hidden="true">{sigil}</span>
+                      {image && shot ? (
+                        <Image
+                          src={image}
+                          alt={project.featured ? shot.alt : ''}
+                          widths={project.featured ? [640, 960, 1280] : [480, 800]}
+                          sizes={project.featured ? '(min-width: 900px) 50vw, 100vw' : '(min-width: 900px) 320px, 100vw'}
+                          quality={78}
+                          format="webp"
+                          loading={project.featured ? 'eager' : 'lazy'}
+                          decoding="async"
+                        />
+                      ) : project.comingSoon ? (
+                        <div class="plate plate-soon">
+                          <span>Coming soon</span>
+                          <span>No stills yet</span>
+                        </div>
+                      ) : project.placeholder ? (
+                        <div class="plate">
+                          <span>No assets yet</span>
+                          <span>Placeholder</span>
+                        </div>
+                      ) : (
+                        <div class="slugplate">
+                          <span>No public screenshot</span>
+                          <span>{project.slug}</span>
+                        </div>
+                      )}
+                    </div>
+                    <div class="card-body">
+                      <p class="card-kicker">
+                        <span>{group.label}</span>
+                        <span class:list={['pill', project.repo.state]}>{project.repo.note}</span>
+                      </p>
+                      <h3>{project.title}</h3>
+                      <p class="card-summary">{project.summary}</p>
+                      {project.stage && <p class="card-stage">{project.stage}</p>}
+                      <p class="card-highlight">{project.highlight}</p>
+                    </div>
+                    </a>
+                    {
+                      project.links && project.links.length > 0 && (
+                        <p class="card-out">
+                          {project.links.map((link) => (
+                            <a href={link.href} rel="noopener noreferrer">{link.label}</a>
+                          ))}
+                        </p>
+                      )
+                    }
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      );
+    })
+  }
+</div>
+
+<script>
+  import { mountFilters } from '../scripts/filters.js';
+  mountFilters();
+</script>

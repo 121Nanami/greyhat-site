@@ -1,0 +1,145 @@
+---
+import Figure from '../../components/Figure.astro';
+import Schematic from '../../components/Schematic.astro';
+import Base from '../../layouts/Base.astro';
+import { groupById, projects, projectsIn } from '../../lib/content';
+import { href } from '../../lib/href';
+import { imageFor } from '../../lib/images';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const group = groupById(project.group);
+const related = projectsIn(project.group).filter((item) => item.slug !== project.slug);
+---
+
+<Base
+  title={`${project.title} — GreyHat Inc, AI engineering studio`}
+  description={`AI engineering studio. ${project.title}. ${project.summary}`}
+>
+  <article class="wrap report" data-group={project.group}>
+    <p class="crumbs">
+      <a href={href('/')}>Session</a>
+      <span aria-hidden="true">/</span>
+      <a href={href(`/#${group.id}`)}>{group.label}</a>
+      <span aria-hidden="true">/</span>
+      <span>{project.title}</span>
+    </p>
+    <header class="report-head">
+      <p class="kicker">{group.label}</p>
+      <h1>{project.title}</h1>
+      <p class="lede">{project.summary}</p>
+      <ul class="pills">
+        {
+          project.stage && (
+            <li class="pill">{project.stage}</li>
+          )
+        }
+        <li class:list={['pill', project.repo.state]}>{project.repo.note}</li>
+      </ul>
+      {
+        project.links && project.links.length > 0 && (
+          <ul class="outlinks">
+            {project.links.map((link) => (
+              <li>
+                <a href={link.href} rel="noopener noreferrer">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <div class="report-layout">
+      <div class="prose">
+        {project.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        {project.callout && <p class="callout">{project.callout}</p>}
+        {
+          project.stack && project.stack.length > 0 && (
+            <>
+              <h2>Stack</h2>
+              <ul class="stack">
+                {project.stack.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </>
+          )
+        }
+      </div>
+      <aside class="facts-panel" aria-label="Facts from the brief">
+        <h2>Facts</h2>
+        <dl class="facts">
+          {
+            project.facts.map((fact) => (
+              <div>
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </aside>
+    </div>
+
+    {project.schematic && <Schematic />}
+
+    {
+      project.placeholder && (
+        <div class="plate plate-large">
+          <span>No assets yet</span>
+          <span>In progress · nothing else is claimed</span>
+        </div>
+      )
+    }
+
+    {
+      project.comingSoon && (
+        <div class="plate plate-large plate-soon">
+          <span>Coming soon</span>
+          <span>Plan only · no stills · no repository</span>
+        </div>
+      )
+    }
+
+    {
+      project.shots.length > 0 && (
+        <section class="figures" aria-labelledby="figures-title">
+          <h2 id="figures-title">Figures</h2>
+          {project.shots.map((shot, index) => (
+            <Figure
+              src={imageFor(shot.file)}
+              alt={shot.alt}
+              caption={shot.caption}
+              n={index + 1}
+              eager={index === 0}
+            />
+          ))}
+        </section>
+      )
+    }
+
+    {
+      related.length > 0 && (
+        <section class="related-block" aria-labelledby="related-title">
+          <h2 id="related-title">Also in {group.label}</h2>
+          <ul class="related">
+            {related.map((item) => (
+              <li>
+                <a href={href(`projects/${item.slug}/`)}>
+                  <span>{item.title}</span>
+                  <span>{item.highlight}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+</Base>

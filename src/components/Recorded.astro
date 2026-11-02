@@ -1,0 +1,42 @@
+---
+import { href } from '../lib/href';
+import { projects } from '../lib/content';
+
+const pulses = projects.filter((project) => project.pulse);
+---
+
+<section class="recorded" aria-labelledby="recorded-title">
+  <div class="wrap">
+    <div class="recorded-head">
+      <p class="kicker" id="recorded-title"><span class="pip" aria-hidden="true"></span> Recorded figures</p>
+      <p class="recorded-note">From the studio notes. They count once in this browser. They are not a live feed.</p>
+    </div>
+    <ul class="recorded-list">
+      {
+        pulses.map((project) => (
+          <li>
+            <a href={href(`projects/${project.slug}/`)}>
+              <span
+                class="recorded-value"
+                data-pulse
+                data-count={project.pulse?.count ?? ''}
+                data-prefix={project.pulse?.prefix ?? ''}
+                data-suffix={project.pulse?.suffix ?? ''}
+                data-text={project.pulse?.text}
+              >
+                {project.pulse?.text}
+              </span>
+              <span class="recorded-name">{project.title}</span>
+              <span class="recorded-detail">{project.pulse?.label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<script>
+  import { mountPulses } from '../scripts/pulses.js';
+  mountPulses();
+</script>

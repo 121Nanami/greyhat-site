@@ -1,0 +1,29 @@
+---
+import Dossier from '../components/Dossier.astro';
+import Recorded from '../components/Recorded.astro';
+import Terminal from '../components/Terminal.astro';
+import Workbench from '../components/Workbench.astro';
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/content';
+---
+
+<Base>
+  <section class="session" id="session">
+    <div class="wrap">
+      <div class="intro">
+        <div>
+          <p class="kicker">{site.person} · {site.place}</p>
+          <h1>GreyHat Inc</h1>
+          <p class="studio-line">AI engineering studio</p>
+        </div>
+        <p class="intro-role">{site.tagline}</p>
+      </div>
+      <div class="session-grid">
+        <Terminal />
+        <Dossier />
+      </div>
+    </div>
+  </section>
+  <Recorded />
+  <Workbench />
+</Base>

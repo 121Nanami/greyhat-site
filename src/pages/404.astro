@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/href';
+---
+
+<Base title="Not found — GreyHat Inc" description="That path is not on the GreyHat Inc site.">
+  <div class="wrap missing">
+    <p class="kicker">404</p>
+    <h1>No such path.</h1>
+    <p class="intro-role">The session is still open. The index lists every project in the brief.</p>
+    <p class="missing-links">
+      <a href={href('/')}>Back to the session</a>
+      <a href={href('projects/')}>Project index</a>
+    </p>
+  </div>
+</Base>
