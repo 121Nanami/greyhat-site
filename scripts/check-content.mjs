@@ -14,7 +14,7 @@ const fail = (message) => errors.push(message);
 const COMMANDS = new Set(['help', 'whoami', 'ls', 'cat', 'open', 'ethos', 'theme', 'clear']);
 const GROUP_IDS = ['flagship', 'security', 'fiaos', 'os', 'health'];
 const ALLOWED_URLS = new Set([
-  'https://www.youtube.com/@AIColosseumGreyHat',
+  'https://www.youtube.com/channel/UCXJBK9fvqBnTByYkYo5eYyA',
   'https://github.com/121Nanami',
   'https://github.com/121Nanami/gate',
   'https://github.com/121Nanami/gate-action',
@@ -116,11 +116,17 @@ if (fiaosProject?.shots.some((shot) => !/demo data/i.test(shot.caption))) {
 }
 
 const colosseum = projects.find((project) => project.slug === 'ai-colosseum');
-if (!colosseum || !colosseum.comingSoon || colosseum.shots.length !== 0 || colosseum.repo.state !== 'coming-soon') {
-  fail('ai-colosseum must be coming soon, with no shots and no repository');
+if (!colosseum || colosseum.comingSoon || !colosseum.hero || colosseum.shots.length < 2) {
+  fail('ai-colosseum must be an active hero with the brand stills');
 }
-if (colosseum?.links?.[0]?.href !== 'https://www.youtube.com/@AIColosseumGreyHat') {
-  fail('ai-colosseum must link only the YouTube channel');
+if (colosseum?.highlight !== 'Two AIs · One random task · One winner') {
+  fail('ai-colosseum tagline');
+}
+if (colosseum?.links?.[0]?.href !== 'https://www.youtube.com/channel/UCXJBK9fvqBnTByYkYo5eYyA') {
+  fail('ai-colosseum must link the YouTube channel');
+}
+if (/coming soon/i.test(JSON.stringify({ site, groups, projects }))) {
+  fail('coming soon wording remains in content');
 }
 const gate = projects.find((project) => project.slug === 'gate');
 if (!gate || gate.repo.state !== 'public') fail('gate must be the public GATE / Shipgate project');

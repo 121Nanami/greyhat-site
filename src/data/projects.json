@@ -10,7 +10,7 @@
       "game"
     ],
     "summary": "The largest project in the studio: months of work and over $1,000 invested in a fully AI-made 3D gacha game in Unreal Engine. Private. Not linked.",
-    "highlight": "Months of work · over $1,000 · Unreal still uncompiled",
+    "highlight": "Months of work \u00b7 over $1,000 \u00b7 Unreal still uncompiled",
     "stage": "Private. The largest build in the studio. Suites recorded green. Unreal still uncompiled.",
     "repo": {
       "state": "private",
@@ -74,48 +74,51 @@
     "title": "AI Colosseum",
     "group": "flagship",
     "featured": true,
-    "comingSoon": true,
     "aliases": [
       "colosseum",
       "aicolosseum"
     ],
-    "summary": "The planned frame around the two labs. Agent Fitness trains a choose-your-fighter roster. Agent Arena battles on generated tasks. Not built yet.",
-    "highlight": "Coming soon · automatic checks · no copyrighted characters",
-    "stage": "Coming soon. No build, no stills, no repository.",
+    "summary": "Active. Agent Fitness trains a choose-your-fighter roster. Agent Arena runs head-to-head races on AI-generated tasks. Two AIs, one random task, one winner.",
+    "highlight": "Two AIs \u00b7 One random task \u00b7 One winner",
+    "stage": "Active. Fitness trains the roster. Arena runs the races.",
     "links": [
       {
         "label": "AI Colosseum on YouTube",
-        "href": "https://www.youtube.com/@AIColosseumGreyHat"
+        "href": "https://www.youtube.com/channel/UCXJBK9fvqBnTByYkYo5eYyA"
       }
     ],
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository. Not linked."
     },
     "facts": [
       {
         "label": "Status",
-        "value": "Coming soon. This page describes the plan. It does not describe a finished system."
+        "value": "Active. Agent Fitness trains. Agent Arena runs the races."
+      },
+      {
+        "label": "Tagline",
+        "value": "Two AIs \u00b7 One random task \u00b7 One winner"
       },
       {
         "label": "Training",
-        "value": "Agent Fitness: the training ground and the choose-your-fighter roster"
+        "value": "Agent Fitness trains the choose-your-fighter roster"
       },
       {
         "label": "Battles",
-        "value": "Agent Arena: fights on generated tasks"
+        "value": "Agent Arena runs head-to-head races on AI-generated tasks"
       },
       {
         "label": "Easy task",
-        "value": "An example of the easy end: a shark-species gallery site"
+        "value": "A 15-shark-species website"
       },
       {
         "label": "Boss task",
-        "value": "An example of the boss end: a 3D renderer with lighting and shadows"
+        "value": "A 3D renderer with lighting and shadows"
       },
       {
         "label": "Checks",
-        "value": "Each task verified by automatic checks"
+        "value": "Results are checked automatically"
       },
       {
         "label": "Characters",
@@ -123,16 +126,28 @@
       },
       {
         "label": "Repository",
-        "value": "Not public. Not linked."
+        "value": "No public repository. Agent Arena and Agent Fitness stay private and are not linked."
       }
     ],
     "paragraphs": [
-      "AI Colosseum is the name for the season that would join the two labs. It is coming soon. Nothing here is a result from a colosseum that already ran.",
-      "Agent Fitness is the training side: a choose-your-fighter roster. Agent Arena is the battle side. The tasks are generated, and each one is verified by automatic checks. An easy task, as an example, is a shark-species gallery site. A boss-tier task, as an example, is a 3D renderer with lighting and shadows.",
-      "The roster will not use copyrighted characters. There is no repository to open."
+      "AI Colosseum is active. Two AIs take one random task, and one of them wins. Agent Fitness trains the choose-your-fighter roster. Agent Arena runs the head-to-head races.",
+      "The tasks are generated. An easy task is a 15-shark-species website. A boss-tier task is a 3D renderer with lighting and shadows. The result of each task is checked automatically. The roster does not use copyrighted characters.",
+      "The YouTube channel is public. There is no public repository for Colosseum. Agent Arena and Agent Fitness stay private and are not linked."
     ],
-    "callout": "The shark-species gallery and the 3D renderer are examples of the intended task range. They are not shipped projects, and this page has no screenshots of them.",
-    "shots": []
+    "callout": "The 15-shark-species website and the 3D renderer are the two ends of the task range. They are generated tasks with automatic checks, not separate products.",
+    "shots": [
+      {
+        "file": "colosseum/banner.png",
+        "alt": "AI Colosseum banner on a dark field. A white line drawing of a colosseum with a green door, a green tile reading AI, and the word COLOSSEUM. The line under the wordmark reads TWO AIs \u00b7 ONE RANDOM TASK \u00b7 ONE WINNER.",
+        "caption": "Brand banner. Tagline: Two AIs \u00b7 One random task \u00b7 One winner."
+      },
+      {
+        "file": "colosseum/lockup.png",
+        "alt": "AI Colosseum lockup on black. A white colosseum mark with a green door, a green AI tile, and the word COLOSSEUM in a tall serif.",
+        "caption": "Horizontal brand mark used on the channel."
+      }
+    ],
+    "hero": true
   },
   {
     "slug": "agent-arena",
@@ -143,12 +158,12 @@
       "arena"
     ],
     "summary": "Coding agents compete on hidden-test Python tasks. Skill and cost are separate TrueSkill ratings, with a Pareto view. An LLM coach rewrites the losers.",
-    "highlight": "Reckless: 0% → 100% hidden pass after the coach rewrite",
+    "highlight": "Reckless: 0% \u2192 100% hidden pass after the coach rewrite",
     "pulse": {
-      "text": "0 → 100%",
+      "text": "0 \u2192 100%",
       "label": "hidden pass after the rewrite",
       "count": 100,
-      "prefix": "0 → ",
+      "prefix": "0 \u2192 ",
       "suffix": "%"
     },
     "stage": "Season findings page done. Coach edits hurt smaller players. Repository private.",
@@ -197,7 +212,7 @@
     ],
     "paragraphs": [
       "Coding agents compete on hidden-test Python tasks. Skill and cost stay separate, so a cheap agent is not treated as a better one. The Pareto view shows where nobody else is better at both.",
-      "The recorded season ran locally: Qwen2.5-Coder 1.5B through llama.cpp. Hidden tests were held out. The sandbox was bubblewrap with no network. In that season, Reckless went from 0% to 100% hidden pass after the coach rewrite. The season findings page is done: coach edits hurt smaller players. In the coming AI Colosseum, this lab is the battle side. The repository is private and is not linked."
+      "The recorded season ran locally: Qwen2.5-Coder 1.5B through llama.cpp. Hidden tests were held out. The sandbox was bubblewrap with no network. In that season, Reckless went from 0% to 100% hidden pass after the coach rewrite. The season findings page is done: coach edits hurt smaller players. In AI Colosseum, this lab is the battle side. The repository is private and is not linked."
     ],
     "callout": "The season screenshot prints its own on-screen figures. The result quoted on this page is the one in the studio brief: Reckless, 0% to 100% hidden pass after the coach rewrite.",
     "shots": [
@@ -227,7 +242,7 @@
       "fitness"
     ],
     "summary": "A benchmarking and evolution lab. One task goes to many models and modes. Each run gets a fitness score. Human judgement is half of it.",
-    "highlight": "Working MVP · ~22,000 lines · 129 files · 32 passing tests",
+    "highlight": "Working MVP \u00b7 ~22,000 lines \u00b7 129 files \u00b7 32 passing tests",
     "pulse": {
       "text": "32",
       "label": "passing tests",
@@ -267,7 +282,7 @@
       },
       {
         "label": "Teams",
-        "value": "Mixed-provider pipelines — planner, executor, critic — scored as one unit"
+        "value": "Mixed-provider pipelines \u2014 planner, executor, critic \u2014 scored as one unit"
       },
       {
         "label": "Evolution",
@@ -307,7 +322,7 @@
       }
     ],
     "paragraphs": [
-      "Agent Fitness is the other working flagship, beside Agent Arena. In the coming AI Colosseum it is the training ground and the choose-your-fighter roster. One task — a prompt plus attachments — is sent to many models and modes. The brief names GPT, Claude, Kimi, Gemini, and CLI agents such as Claude Code and Codex.",
+      "Agent Fitness is the other working flagship, beside Agent Arena. In AI Colosseum it is the training ground and the choose-your-fighter roster. One task \u2014 a prompt plus attachments \u2014 is sent to many models and modes. The brief names GPT, Claude, Kimi, Gemini, and CLI agents such as Claude Code and Codex.",
       "Each run gets a fitness score: time, tokens, cost, and success, measured automatically. A person's judgement carries 50% of the weight. The best setups meet in single-elimination tournaments with Elo. Mixed-provider pipelines (planner, executor, critic) are scored as one unit. System prompts evolve by mutation and crossover, and the lineage is kept.",
       "The lab is a working MVP and it runs locally. The job queue is Postgres: FOR UPDATE SKIP LOCKED, with leases, heartbeats, a worker pool, per-provider token buckets, and retries with backoff. CLI agents are sandboxed in Docker with no network. API keys are Fernet-encrypted. Roles are admin, reviewer, and viewer, with audit logs."
     ],
@@ -348,7 +363,7 @@
       "shipgate"
     ],
     "summary": "Pre-merge control for AI-written code. A free GATE workspace, a GitHub Action that marks Hot, Warm, and Cold zones on a pull request, and paid audits.",
-    "highlight": "Public repos · Hot / Warm / Cold on PRs · free path checks",
+    "highlight": "Public repos \u00b7 Hot / Warm / Cold on PRs \u00b7 free path checks",
     "stage": "Public. The GATE repository has no README; this card uses the repo description, the public page, and the Action README.",
     "repo": {
       "state": "public",
@@ -408,7 +423,7 @@
       }
     ],
     "paragraphs": [
-      "GATE is the public project behind Shipgate: pre-merge control for AI-written code. The repository description and the public page both use the line “Ship AI code you can defend.” The page names a free GATE tool, a GitHub Action, and a public $1000 October bet. There is no README in that repository, so this page does not invent a longer story.",
+      "GATE is the public project behind Shipgate: pre-merge control for AI-written code. The repository description and the public page both use the line \u201cShip AI code you can defend.\u201d The page names a free GATE tool, a GitHub Action, and a public $1000 October bet. There is no README in that repository, so this page does not invent a longer story.",
       "The Shipgate Action comments Hot, Warm, and Cold trust-zone hints on pull requests. It is built for AI-assisted diffs. The free tier includes path heuristics and a PR checklist. Hot-zone extras need a license. A browser companion runs with no install."
     ],
     "callout": "License keys, product permalinks, and store URLs from the source are not copied here. The three links are the GATE repo, the Action repo, and the public Pages site.",
@@ -424,13 +439,13 @@
     "summary": "Reproduces a reported bug in a sandbox, writes a failing test, proposes a fix, and verifies it. Duplicate detection uses local embeddings. Pull requests are opt-in.",
     "highlight": "Easy slice 6/6 on both. Hard slice 1/4 on local 7B, 0/4 on 14B.",
     "pulse": {
-      "text": "6/6 · 1/4",
+      "text": "6/6 \u00b7 1/4",
       "label": "easy slice, and the hard slice on local 7B"
     },
     "stage": "Easy slice 6/6 for both models. Hard slice 1/4 on local 7B, 0/4 on 14B.",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Qwen2.5-Coder 7B",
@@ -472,12 +487,12 @@
     ],
     "paragraphs": [
       "TriageBot takes a reported bug, reproduces it in a sandbox, writes the failing test, proposes a fix, and checks that the fix holds. Duplicate detection uses local embeddings. Opening a pull request is opt-in. A GitHub Action is the desk.",
-      "The easy slice is 6 of 6 verified for both local Qwen2.5-Coder 7B and 14B, up from 0 of 6. The hard slice — multi-file bugs, plus SWE-bench Lite flask — is 1 of 4 verified on the 7B model and 0 of 4 on the 14B model. Harness improvements are in progress."
+      "The easy slice is 6 of 6 verified for both local Qwen2.5-Coder 7B and 14B, up from 0 of 6. The hard slice \u2014 multi-file bugs, plus SWE-bench Lite flask \u2014 is 1 of 4 verified on the 7B model and 0 of 4 on the 14B model. Harness improvements are in progress."
     ],
     "shots": [
       {
         "file": "flagship/triagebot-7b.png",
-        "alt": "TriageBot bench page from GreyHat Inc. A large 100 percent sits under the title. The subtitle reads 6 of 6 cases verified, qwen2.5-coder-7b-instruct, llama, bubblewrap, no network. A table lists six cases — clamp, palindrome, weekday, paginate, merge, and retry — each marked fix verified and reproduced.",
+        "alt": "TriageBot bench page from GreyHat Inc. A large 100 percent sits under the title. The subtitle reads 6 of 6 cases verified, qwen2.5-coder-7b-instruct, llama, bubblewrap, no network. A table lists six cases \u2014 clamp, palindrome, weekday, paginate, merge, and retry \u2014 each marked fix verified and reproduced.",
         "caption": "The easy-slice 7B bench: 6 of 6 verified. The hard slice is 1 of 4 on this 7B model and 0 of 4 on 14B. That result is not this still."
       }
     ]
@@ -499,7 +514,7 @@
     "stage": "All-CNN-C moved off 90% chance with He init. Not at the paper's 350-epoch figure.",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "PyTorch"
@@ -547,12 +562,12 @@
     "aliases": [
       "reel"
     ],
-    "summary": "A repository becomes an onboarding guide, import-traced diagrams, and a narrated trailer. Three local 7B trailers — Click, chi, and zustand — sit in a gallery.",
+    "summary": "A repository becomes an onboarding guide, import-traced diagrams, and a narrated trailer. Three local 7B trailers \u2014 Click, chi, and zustand \u2014 sit in a gallery.",
     "highlight": "3 local-7B trailers: Click, chi, zustand. Gallery.",
     "stage": "Three trailers named. The still on this page is the Click reel.",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "local model"
@@ -612,12 +627,12 @@
     "aliases": [
       "foundry"
     ],
-    "summary": "A multi-agent team — PM, architect, engineers, QA, reviewer — turns an idea into a tested web app. A person approves the merge.",
+    "summary": "A multi-agent team \u2014 PM, architect, engineers, QA, reviewer \u2014 turns an idea into a tested web app. A person approves the merge.",
     "highlight": "Pocket run rejected at QA. Harness fixes in progress.",
     "stage": "Pocket rejected at QA. Shelf is the earlier shown run.",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "facts": [
       {
@@ -683,10 +698,10 @@
       "scope"
     ],
     "summary": "Point it at a domain. Get back a map of everything an attacker can see.",
-    "highlight": "MIT · 22 tests · CI · refuses to scan without --i-am-authorised",
+    "highlight": "MIT \u00b7 22 tests \u00b7 CI \u00b7 refuses to scan without --i-am-authorised",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Python 3.10+",
@@ -754,10 +769,10 @@
       "snitch"
     ],
     "summary": "A privacy audit for a Linux laptop you administer. Outbound connections, trackers, open ports, Flatpak permissions, Firefox, SSH, and the firewall. A score from 0 to 100. Fixes are dry-run first.",
-    "highlight": "0–100 score · reversible dry-run fixes · MIT · 9 tests",
+    "highlight": "0\u2013100 score \u00b7 reversible dry-run fixes \u00b7 MIT \u00b7 9 tests",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Python standard library",
@@ -815,7 +830,7 @@
       "greyhat-tools"
     ],
     "summary": "The public GreyHat repository: consumer protection tools and small open-source utilities. This is not the source of this website.",
-    "highlight": "urlguard offline checker · app catalog · public repo",
+    "highlight": "urlguard offline checker \u00b7 app catalog \u00b7 public repo",
     "stage": "Public utilities repo. Not this portfolio.",
     "repo": {
       "state": "public",
@@ -863,7 +878,7 @@
       "lifeos"
     ],
     "summary": "Frida edition of the in-house life OS, version 0.2.0. A Casa tab for the house, and local AI through Ollama. Private. The stills are demo data, not a real household.",
-    "highlight": "Frida edition · Ollama qwen3:14b · 15/15 tests · demo stills",
+    "highlight": "Frida edition \u00b7 Ollama qwen3:14b \u00b7 15/15 tests \u00b7 demo stills",
     "stage": "Private. Not linked. Screenshots are demo data only.",
     "repo": {
       "state": "private",
@@ -949,7 +964,7 @@
       "healthmod"
     ],
     "summary": "Fia Health 0.2.0. A local-first health workspace: one encrypted vault per profile, a scrypt login, and tests for isolation and throttling. No records are shown.",
-    "highlight": "v0.2.0 · encrypted vaults · scrypt login · private",
+    "highlight": "v0.2.0 \u00b7 encrypted vaults \u00b7 scrypt login \u00b7 private",
     "stage": "Local-first. Private. Not linked. No personal data.",
     "repo": {
       "state": "private",
@@ -1017,7 +1032,7 @@
       "studio"
     ],
     "summary": "The creative apps in the FiaOS ecosystem: documents, sheets, slides, paint, draw, clip, photo, and layout. Open formats.",
-    "highlight": "Eight named apps · open formats · private, not linked",
+    "highlight": "Eight named apps \u00b7 open formats \u00b7 private, not linked",
     "repo": {
       "state": "private",
       "note": "Private repository. Not linked."
@@ -1093,10 +1108,10 @@
       "ellen-os"
     ],
     "summary": "A customised aarch64 Arch Linux desktop, run as a QEMU virtual machine on Apple Silicon.",
-    "highlight": "Snapshot/restore CLI · Mac bridge · Tor-routed browsing profile",
+    "highlight": "Snapshot/restore CLI \u00b7 Mac bridge \u00b7 Tor-routed browsing profile",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Arch Linux",
@@ -1138,10 +1153,10 @@
       "black-arch"
     ],
     "summary": "An isolated Arch + BlackArch virtual machine for ethical-hacking study, with a snapshot and rollback CLI.",
-    "highlight": "Isolated study VM · snapshot and rollback",
+    "highlight": "Isolated study VM \u00b7 snapshot and rollback",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Arch Linux",
@@ -1174,10 +1189,10 @@
       "facet-browser"
     ],
     "summary": "A configurable Electron browser. Themed variants: Facet-Piastri, PitWall81, and CasaAzul.",
-    "highlight": "Configurable browser · three named themes",
+    "highlight": "Configurable browser \u00b7 three named themes",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Electron"
@@ -1212,7 +1227,7 @@
     "highlight": "Six noVNC slots on a side monitor",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Electron",
@@ -1246,10 +1261,10 @@
       "voice"
     ],
     "summary": "EllenTalk / Ellen. A local voice chatbot, built with three.js and MMD. Electron.",
-    "highlight": "Local voice · three.js · MMD",
+    "highlight": "Local voice \u00b7 three.js \u00b7 MMD",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Electron",
@@ -1290,7 +1305,7 @@
     "highlight": "Bulk dispatch and monitoring for CLI agents",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Electron"
@@ -1318,11 +1333,11 @@
       "med"
     ],
     "summary": "An offline study suite for Australian premeds through residency. Hybrid search, a local model that cites sources, a pathway, a planner, exam timers, and clinical calculators.",
-    "highlight": "~37k cards searched in 50–130 ms · fully offline",
+    "highlight": "~37k cards searched in 50\u2013130 ms \u00b7 fully offline",
     "stage": "Working local prototype. Personal tool.",
     "repo": {
       "state": "coming-soon",
-      "note": "Repository coming soon."
+      "note": "No public repository."
     },
     "stack": [
       "Python",
@@ -1340,7 +1355,7 @@
       },
       {
         "label": "Search",
-        "value": "Hybrid BM25 (SQLite FTS5) and local embeddings, including fastembed and bge-small, with medical abbreviation expansion. About 37,000 cards in 50–130 ms"
+        "value": "Hybrid BM25 (SQLite FTS5) and local embeddings, including fastembed and bge-small, with medical abbreviation expansion. About 37,000 cards in 50\u2013130 ms"
       },
       {
         "label": "Ask",
@@ -1380,7 +1395,7 @@
       }
     ],
     "paragraphs": [
-      "medlib is an offline suite for studying medicine in Australia, from premed through residency. Search is hybrid: BM25 on SQLite FTS5 plus local embeddings, with medical abbreviation expansion. About 37,000 cards come back in 50–130 milliseconds. Ask mode uses a local model and cites the source it used.",
+      "medlib is an offline suite for studying medicine in Australia, from premed through residency. Search is hybrid: BM25 on SQLite FTS5 plus local embeddings, with medical abbreviation expansion. About 37,000 cards come back in 50\u2013130 milliseconds. Ask mode uses a local model and cites the source it used.",
       "Around that: a pathway dashboard from Year 12 toward specialist training, a planner with Pomodoro blocks, spaced review, and streaks, a quiz, wellbeing reminders, a rotation case log, UCAT and GAMSAT timers that follow official section timings, and 10 clinical calculators.",
       "The app is Python and Flask, with fastembed, NumPy, and Ollama, and a vanilla JS front end. It is a working local prototype and a personal tool. A separate pipeline builds NotebookLM source packs from Anki exports. The packs are not shown here. Flashcard contents are not shown either."
     ],

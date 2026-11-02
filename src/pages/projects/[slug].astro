@@ -99,15 +99,6 @@ const related = projectsIn(project.group).filter((item) => item.slug !== project
     }
 
     {
-      project.comingSoon && (
-        <div class="plate plate-large plate-soon">
-          <span>Coming soon</span>
-          <span>Plan only · no stills · no repository</span>
-        </div>
-      )
-    }
-
-    {
       project.shots.length > 0 && (
         <section class="figures" aria-labelledby="figures-title">
           <h2 id="figures-title">Figures</h2>

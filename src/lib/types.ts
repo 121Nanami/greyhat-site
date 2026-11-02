@@ -31,6 +31,7 @@ export interface Project {
   schematic?: boolean;
   placeholder?: boolean;
   comingSoon?: boolean;
+  hero?: boolean;
   pulse?: { text: string; label: string; count?: number; prefix?: string; suffix?: string };
   links?: { label: string; href: string }[];
 }

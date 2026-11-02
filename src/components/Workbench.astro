@@ -57,7 +57,7 @@ const filters = [{ id: 'all', label: 'All' }, ...groups.map((group) => ({ id: gr
                 const sigil = (words.length > 1 ? words[0][0] + words[1][0] : project.title.replace(/[^A-Za-z0-9]/g, '').slice(0, 2)).toUpperCase();
                 return (
                   <article
-                    class:list={['card', { 'card-feature': project.featured, 'card-banner': project.comingSoon, 'no-shot': !shot, placeholder: project.placeholder, 'coming-soon': project.comingSoon }]}
+                    class:list={['card', { 'card-feature': project.featured, 'card-hero': project.hero, 'no-shot': !shot, placeholder: project.placeholder }]}
                     data-card
                     data-group={project.group}
                     data-search={searchBlob(project)}
@@ -76,11 +76,6 @@ const filters = [{ id: 'all', label: 'All' }, ...groups.map((group) => ({ id: gr
                           loading={project.featured ? 'eager' : 'lazy'}
                           decoding="async"
                         />
-                      ) : project.comingSoon ? (
-                        <div class="plate plate-soon">
-                          <span>Coming soon</span>
-                          <span>No stills yet</span>
-                        </div>
                       ) : project.placeholder ? (
                         <div class="plate">
                           <span>No assets yet</span>

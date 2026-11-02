@@ -682,8 +682,23 @@ figcaption,
   box-shadow: inset 3px 0 0 #d6f25c;
 }
 
-.card-banner {
+.group-grid.is-flagship > .card:first-child,
+.card-hero {
   grid-column: 1 / -1;
+}
+
+.card-hero .card-media {
+  aspect-ratio: 16 / 9;
+  background: #1c1e1c;
+}
+
+.card-hero .card-media img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.card-hero .sigil {
+  display: none;
 }
 
 .card-media {

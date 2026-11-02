@@ -43,7 +43,7 @@ for (const needle of [
   'zustand',
   '27.17%',
   'AI Colosseum on YouTube',
-  'https://www.youtube.com/@AIColosseumGreyHat',
+  'https://www.youtube.com/channel/UCXJBK9fvqBnTByYkYo5eYyA',
   'https://github.com/121Nanami',
   'GATE / Shipgate',
   'ScopeHound',
@@ -52,7 +52,8 @@ for (const needle of [
   'medlib',
   'BoldInBeauty',
   'Private repository. Not linked.',
-  'Repository coming soon.',
+  'No public repository.',
+  'Two AIs · One random task · One winner',
 ]) {
   if (!home?.includes(needle)) fail(`home missing ${needle}`);
 }
@@ -81,7 +82,7 @@ for (const html of texts) {
   for (const url of urls) {
     const allowed = [
       'https://schema.org',
-      'https://www.youtube.com/@AIColosseumGreyHat',
+      'https://www.youtube.com/channel/UCXJBK9fvqBnTByYkYo5eYyA',
       'https://github.com/121Nanami',
       'https://121nanami.github.io/gate/',
     ];
@@ -100,7 +101,7 @@ for (const [file, html] of htmlByPath) {
     const href = raw.slice(6, -1);
       if (/^(https?:|mailto:|tel:|javascript:)/i.test(href)) {
       const allowedHrefs = new Set([
-        'https://www.youtube.com/@AIColosseumGreyHat',
+        'https://www.youtube.com/channel/UCXJBK9fvqBnTByYkYo5eYyA',
         'https://github.com/121Nanami',
         'https://github.com/121Nanami/gate',
         'https://github.com/121Nanami/gate-action',

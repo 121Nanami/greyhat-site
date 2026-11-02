@@ -75,7 +75,7 @@ function ethos(profile) {
   return [
     { type: 'text', text: profile.ethos },
     { type: 'text', text: `Focus: ${profile.focus}` },
-    { type: 'text', text: 'Repositories that are not public yet are marked coming soon.' },
+    { type: 'text', text: 'Repositories that are not public are marked that way, and are not linked.' },
     { type: 'text', text: 'Agent Fitness is private and is not linked.' },
     { type: 'text', text: 'This page does not send analytics.' },
   ];

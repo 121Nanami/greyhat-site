@@ -59,14 +59,15 @@ test('cat fitness stays private', () => {
 test('cat colosseum is a plan, not a shipped result', () => {
   const result = runCommand('cat colosseum', ctx);
   const body = text(result);
-  assert.match(body, /Coming soon/);
-  assert.match(body, /shark-species gallery site/);
+  assert.match(body, /Two AIs · One random task · One winner/);
+  assert.match(body, /15-shark-species website/);
   assert.match(body, /3D renderer with lighting and shadows/);
   assert.match(body, /No copyrighted characters/);
-  assert.match(body, /Repository coming soon/);
+  assert.match(body, /No public repository/);
+  assert.doesNotMatch(body, /coming soon/i);
   assert.equal(
     result.blocks.find((block) => block.type === 'link' && block.href?.startsWith('http'))?.href,
-    'https://www.youtube.com/@AIColosseumGreyHat',
+    'https://www.youtube.com/channel/UCXJBK9fvqBnTByYkYo5eYyA',
   );
   assert.equal(result.navigateSlug, undefined);
   assert.doesNotMatch(body, /github\.com/);
@@ -106,7 +107,7 @@ test('every cat stays on-site', () => {
     for (const block of result.blocks) {
       if (!block.href) continue;
       if (block.href.startsWith('http')) {
-        assert.match(block.href, /^https:\/\/(www\.youtube\.com\/@AIColosseumGreyHat|github\.com\/121Nanami(\/(gate|gate-action|GreyHat))?|121nanami\.github\.io\/gate\/)$/);
+        assert.match(block.href, /^https:\/\/(www\.youtube\.com\/channel\/UCXJBK9fvqBnTByYkYo5eYyA|github\.com\/121Nanami(\/(gate|gate-action|GreyHat))?|121nanami\.github\.io\/gate\/)$/);
         assert.ok(['ai-colosseum', 'gate', 'greyhat-utilities'].includes(project.slug));
       } else {
         assert.match(block.href, /^projects\/[a-z0-9-]+\/$/);
