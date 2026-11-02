@@ -1,0 +1,51 @@
+<!doctype html><html lang="en-AU"><head><script src="demo-shim.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fia Desk</title><link rel="stylesheet" href="styles.css">
+<style>
+body{display:block;height:auto;min-height:100vh;padding:16px}main{display:block;padding:0}button{margin:4px}
+.desk-stage{display:grid;grid-template-columns:1fr 1fr;gap:8px;min-height:220px;margin-top:8px}
+.desk-stage[data-layout="left"]{grid-template-columns:2fr 1fr}
+.desk-stage[data-layout="right"]{grid-template-columns:1fr 2fr}
+.desk-stage[data-layout="focus"]{grid-template-columns:1fr}
+.desk-stage[data-layout="focus"] .desk-win:last-child{display:none}
+.desk-win{min-height:140px;padding:12px;border:1px solid #39c5bb66;border-radius:16px;background:#101826}
+.desk-win h3{margin:0 0 6px}
+</style></head>
+<body>
+<h1 style="color:var(--t)">Fia Desk</h1>
+<p class="mute">Panel for the Centre app. Windows tile inside this page. No VNC session is attached.</p>
+<section id="stats" class="card"></section>
+<section id="apps" class="card"></section>
+<section class="card"><h3>Clipboard</h3><div class="row"><input id="t" placeholder="Text to keep"><button type="button" onclick="keep()">Keep</button><button type="button" onclick="live()">Read clipboard</button></div><div id="clips"></div></section>
+<section class="card"><h3>Windows</h3>
+<button type="button" onclick="tile('left')">Left</button><button type="button" onclick="tile('right')">Right</button><button type="button" onclick="tile('focus')">Fullscreen</button>
+<p id="tile" class="mute">Split</p>
+<div id="stage" class="desk-stage" data-layout="split">
+<article class="desk-win" id="win-notes"><h3>FiaNotes</h3><p>Demo window. Notes stay in this browser.</p></article>
+<article class="desk-win" id="win-facet"><h3>Facet</h3><p>Demo window. The browser start page is a separate play page.</p></article>
+</div>
+</section>
+<script>
+const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const clips=[];
+function deviceLine(){
+ const parts=[];
+ if(navigator.hardwareConcurrency)parts.push(navigator.hardwareConcurrency+' CPU threads (navigator.hardwareConcurrency)');
+ if(navigator.deviceMemory)parts.push(navigator.deviceMemory+' GB device memory (navigator.deviceMemory)');
+ const heap=performance.memory;
+ if(heap&&heap.usedJSHeapSize)parts.push(Math.round(heap.usedJSHeapSize/1048576)+' MB JS heap in use');
+ return parts.length?parts.join(' · '):'This browser does not expose CPU or memory counters.';
+}
+function paintClips(){document.getElementById('clips').innerHTML=clips.slice(0,8).map(c=>`<p>${esc(c).slice(0,160)}</p>`).join('')||'<p class="mute">Empty.</p>'}
+document.getElementById('stats').innerHTML=`<h3>This browser</h3><p>${esc(deviceLine())}</p>`;
+document.getElementById('apps').innerHTML='<h3>Apps</h3><p><b>FiaNotes</b> <small>notes</small></p><p><b>Facet</b> <small>facet</small></p>';
+function keep(){const text=document.getElementById('t').value;if(!text)return;clips.unshift(text);paintClips()}
+async function live(){try{const text=await navigator.clipboard.readText();document.getElementById('t').value=text;clips.unshift(text);paintClips()}catch{document.getElementById('clips').insertAdjacentHTML('afterbegin','<p class="mute">Clipboard read was blocked by the browser.</p>')}}
+function tile(preset){
+ const stage=document.getElementById('stage');
+ const layout=preset==='focus'?'focus':preset==='right'?'right':'left';
+ stage.dataset.layout=layout;
+ document.getElementById('tile').textContent=layout==='left'?'Left tile':layout==='right'?'Right tile':'Fullscreen';
+}
+paintClips();
+</script></body></html>

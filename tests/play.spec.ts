@@ -29,8 +29,8 @@ function watch(page: Page) {
 
 async function open(page: Page, slug: string) {
   const errors = watch(page);
-  await page.goto(`/greyhat-site/play/${slug}/`);
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  await page.goto(`/greyhat-site/standalone/${slug}/index.html`);
+  await expect(page.locator('h1, h2, h3').first()).toBeVisible({ timeout: 20000 });
   return errors;
 }
 
@@ -52,13 +52,13 @@ for (const [slug, steps] of Object.entries(replaySteps)) {
 test.describe('gate', () => {
   test('workspace, intent, and a hot file', async ({ page }) => {
     const errors = await open(page, 'gate');
-    const frame = page.frameLocator('iframe');
-    await expect(frame.locator('#intent')).toBeVisible();
-    await frame.locator('#intent').fill('A visitor can export the checklist');
-    await frame.locator('#failure').fill('The export is empty');
-    await expect(frame.locator('#export')).toContainText('A visitor can export the checklist');
-    await frame.locator('#add-file').click();
-    await expect(frame.locator('.file-row')).toHaveCount(3);
+    await page.getByRole('link', { name: 'GATE', exact: true }).click();
+    await expect(page.locator('#intent')).toBeVisible();
+    await page.locator('#intent').fill('A visitor can export the checklist');
+    await page.locator('#failure').fill('The export is empty');
+    await expect(page.locator('#export')).toContainText('A visitor can export the checklist');
+    await page.locator('#add-file').click();
+    await expect(page.locator('.file-row')).toHaveCount(3);
     expect(errors, errors.join('\n')).toEqual([]);
   });
 });
@@ -66,12 +66,11 @@ test.describe('gate', () => {
 test.describe('agent-arena', () => {
   test('overview, leaderboard, and findings', async ({ page }) => {
     const errors = await open(page, 'agent-arena');
-    const frame = page.frameLocator('iframe');
-    await expect(frame.getByRole('tab', { name: 'Overview' })).toBeVisible({ timeout: 20000 });
-    await frame.getByRole('tab', { name: 'Leaderboard' }).click();
-    await expect(frame.getByRole('tab', { name: 'Leaderboard' })).toHaveAttribute('data-state', 'active');
-    await frame.getByRole('tab', { name: 'Findings' }).click();
-    await expect(frame.getByRole('tab', { name: 'Findings' })).toHaveAttribute('data-state', 'active');
+    await expect(page.getByRole('tab', { name: 'Overview' })).toBeVisible({ timeout: 20000 });
+    await page.getByRole('tab', { name: 'Leaderboard' }).click();
+    await expect(page.getByRole('tab', { name: 'Leaderboard' })).toHaveAttribute('data-state', 'active');
+    await page.getByRole('tab', { name: 'Findings' }).click();
+    await expect(page.getByRole('tab', { name: 'Findings' })).toHaveAttribute('data-state', 'active');
     expect(errors, errors.join('\n')).toEqual([]);
   });
 });
@@ -79,16 +78,15 @@ test.describe('agent-arena', () => {
 test.describe('boldinbeauty', () => {
   test('roster site, a pull, and a ten-pull', async ({ page }) => {
     const errors = await open(page, 'boldinbeauty');
-    const frame = page.frameLocator('iframe');
-    await expect(frame.getByRole('link', { name: 'Meet the operators' })).toBeVisible();
-    await frame.locator('#operators').scrollIntoViewIfNeeded();
-    await expect(frame.locator('#operators')).toContainText('Luna');
+    await expect(page.getByRole('link', { name: 'Meet the operators' })).toBeVisible();
+    await page.locator('#operators').scrollIntoViewIfNeeded();
+    await expect(page.locator('#operators')).toContainText('Luna');
     await page.setViewportSize({ width: 390, height: 844 });
-    const menu = frame.getByRole('button', { name: 'Menu' });
+    const menu = page.getByRole('button', { name: 'Menu' });
     await expect(menu).toBeVisible();
     await menu.click();
-    await expect(frame.locator('.nav')).toHaveClass(/open/);
-    await expect(frame.locator('.nav-links').getByRole('link', { name: 'Operators' })).toBeVisible();
+    await expect(page.locator('.nav')).toHaveClass(/open/);
+    await expect(page.locator('#nav-links').getByRole('link', { name: 'Operators' })).toBeVisible();
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.locator('[data-demo-act]').click();
     await expect(page.locator('[data-demo-out]')).toContainText('One pull');
@@ -101,13 +99,12 @@ test.describe('boldinbeauty', () => {
 test.describe('fiaos', () => {
   test('stage, meals, and another profile', async ({ page }) => {
     const errors = await open(page, 'fiaos');
-    const frame = page.frameLocator('iframe');
-    await expect(frame.getByRole('button', { name: 'Meals & Diet' })).toBeVisible({ timeout: 20000 });
-    await expect(frame.getByText('EXAMPLE DATA')).toBeVisible();
-    await frame.getByRole('button', { name: 'Meals & Diet' }).click();
-    await expect(frame.getByText(/meal plan/i).first()).toBeVisible();
-    await frame.locator('#people button', { hasText: 'Bea' }).click();
-    await expect(frame.locator('#people button[aria-pressed="true"], #people button.on')).toContainText('Bea');
+    await expect(page.getByRole('button', { name: 'Meals & Diet' })).toBeVisible({ timeout: 20000 });
+    await expect(page.getByText('EXAMPLE DATA')).toBeVisible();
+    await page.getByRole('button', { name: 'Meals & Diet' }).click();
+    await expect(page.getByText(/meal plan/i).first()).toBeVisible();
+    await page.locator('#people button', { hasText: 'Bea' }).click();
+    await expect(page.locator('#people button[aria-pressed="true"], #people button.on')).toContainText('Bea');
     expect(errors, errors.join('\n')).toEqual([]);
   });
 });
@@ -115,11 +112,9 @@ test.describe('fiaos', () => {
 test.describe('fiaos-studio', () => {
   test('a pointer drag leaves paint on the canvas', async ({ page }) => {
     const errors = await open(page, 'fiaos-studio');
-    const frame = page.frameLocator('iframe');
-    const canvas = frame.locator('#st-paint');
+    const canvas = page.locator('#st-paint');
     await expect(canvas).toBeVisible({ timeout: 20000 });
     await expect.poll(async () => canvas.evaluate((node) => (node as HTMLCanvasElement).dataset.on || '').catch(() => '')).toBe('1');
-    await canvas.scrollIntoViewIfNeeded();
     const light = () =>
       canvas.evaluate((node) => {
         const view = node as HTMLCanvasElement;
@@ -146,9 +141,8 @@ test.describe('fiaos-studio', () => {
 test.describe('fia-modules', () => {
   test('opens mail from the public client', async ({ page }) => {
     const errors = await open(page, 'fia-modules');
-    const frame = page.frameLocator('iframe');
-    await expect(frame.getByRole('button', { name: 'Mail' })).toBeVisible({ timeout: 20000 });
-    await expect(frame.getByText('New message')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Mail' })).toBeVisible({ timeout: 20000 });
+    await expect(page.getByText('New message')).toBeVisible();
     expect(errors, errors.join('\n')).toEqual([]);
   });
 });
@@ -156,18 +150,17 @@ test.describe('fia-modules', () => {
 test.describe('facet', () => {
   test('search, bookmark, and history', async ({ page }) => {
     const errors = await open(page, 'facet');
-    const frame = page.frameLocator('iframe');
-    await expect(frame.getByRole('heading', { name: 'Facet' })).toBeVisible();
-    await expect(frame.getByText('Demo Harbour')).toBeVisible();
-    await frame.locator('#q').fill('harbour');
-    await frame.getByRole('button', { name: 'Search' }).click();
-    await expect(frame.locator('#hits')).toContainText('Demo Harbour');
-    await frame.locator('#title').fill('Demo page');
-    await frame.locator('#url').fill('https://example.com/page');
-    await frame.getByRole('button', { name: 'Bookmark' }).click();
-    await expect(frame.locator('#marks')).toContainText('Demo page');
-    await frame.getByRole('button', { name: 'Add to history' }).click();
-    await expect(frame.locator('#hist')).toContainText('Demo page');
+    await expect(page.getByRole('heading', { name: 'Facet' })).toBeVisible();
+    await expect(page.getByText('Demo Harbour')).toBeVisible();
+    await page.locator('#q').fill('harbour');
+    await page.getByRole('button', { name: 'Search' }).click();
+    await expect(page.locator('#hits')).toContainText('Demo Harbour');
+    await page.locator('#title').fill('Demo page');
+    await page.locator('#url').fill('https://example.com/page');
+    await page.getByRole('button', { name: 'Bookmark' }).click();
+    await expect(page.locator('#marks')).toContainText('Demo page');
+    await page.getByRole('button', { name: 'Add to history' }).click();
+    await expect(page.locator('#hist')).toContainText('Demo page');
     expect(errors, errors.join('\n')).toEqual([]);
   });
 });
@@ -175,17 +168,16 @@ test.describe('facet', () => {
 test.describe('centre', () => {
   test('launcher, clipboard, and a tile note', async ({ page }) => {
     const errors = await open(page, 'centre');
-    const frame = page.frameLocator('iframe');
-    await expect(frame.getByRole('heading', { name: 'Fia Desk' })).toBeVisible();
-    await expect(frame.locator('#apps')).toContainText('FiaNotes');
-    await frame.locator('#t').fill('demo clip');
-    await frame.getByRole('button', { name: 'Keep' }).click();
-    await expect(frame.locator('#clips')).toContainText('demo clip');
-    await frame.getByRole('button', { name: 'Left' }).click();
-    await expect(frame.locator('#tile')).toContainText('Left tile');
-    await expect(frame.locator('#stage')).toHaveAttribute('data-layout', 'left');
-    await frame.getByRole('button', { name: 'Fullscreen' }).click();
-    await expect(frame.locator('#stage')).toHaveAttribute('data-layout', 'focus');
+    await expect(page.getByRole('heading', { name: 'Fia Desk' })).toBeVisible();
+    await expect(page.locator('#apps')).toContainText('FiaNotes');
+    await page.locator('#t').fill('demo clip');
+    await page.getByRole('button', { name: 'Keep' }).click();
+    await expect(page.locator('#clips')).toContainText('demo clip');
+    await page.getByRole('button', { name: 'Left' }).click();
+    await expect(page.locator('#tile')).toContainText('Left tile');
+    await expect(page.locator('#stage')).toHaveAttribute('data-layout', 'left');
+    await page.getByRole('button', { name: 'Fullscreen' }).click();
+    await expect(page.locator('#stage')).toHaveAttribute('data-layout', 'focus');
     expect(errors, errors.join('\n')).toEqual([]);
   });
 });
@@ -270,17 +262,14 @@ test('home sells the three flagships and a play control on every card', async ({
   await page.goto('/greyhat-site/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Myla — AI Engineer, GreyHat Inc');
   await expect(page.getByRole('link', { name: 'See flagship work' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Open live demo' })).toHaveCount(3);
-  await expect(page.getByRole('button', { name: 'Windows build coming soon' })).toBeDisabled();
-  await expect(page.locator('a.play-btn', { hasText: /^Play$/ })).toHaveCount(projects.length);
+  await expect(page.locator('article.case a.play-btn', { hasText: 'Play in browser' })).toHaveCount(3);
+  await expect(page.getByRole('button', { name: 'Windows build coming soon' }).first()).toBeDisabled();
+  await expect(page.locator('article.card a.play-btn', { hasText: 'Play in browser' })).toHaveCount(projects.length);
+  await expect(page.locator('article.card a[download]')).toHaveCount(projects.length);
   for (const slug of ['fiaos-studio', 'facet', 'centre']) {
-    await expect(page.locator(`a.play-btn[href$="/play/${slug}/"]`)).toBeVisible();
+    await expect(page.locator(`article.card a.play-btn[href$="/standalone/${slug}/index.html"]`)).toBeVisible();
   }
-  if (testInfo.project.name === 'chromium') {
-    await page.screenshot({ path: '/cursor/stores/self/home-desktop.png', fullPage: true });
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.screenshot({ path: '/cursor/stores/self/home-mobile.png', fullPage: true });
-  }
+  void testInfo;
   expect(errors, errors.join('\n')).toEqual([]);
 });
 

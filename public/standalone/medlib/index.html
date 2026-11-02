@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>medlib</title>
+<style>:root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.45 "IBM Plex Sans", "Segoe UI", sans-serif; background: #10140f; color: #f4f0e6; }
+  header, main { width: min(880px, calc(100% - 2rem)); margin: 0 auto; }
+  header { padding: 1.2rem 0 0.4rem; }
+  h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.03em; margin: 0.2rem 0; }
+  .flag { font-family: ui-monospace, monospace; letter-spacing: 0.08em; text-transform: uppercase; color: #d6f25c; font-size: 0.75rem; }
+  button, input { min-height: 44px; font: inherit; }
+  button { background: #d6f25c; color: #172006; border: 0; padding: 0 0.9rem; cursor: pointer; }
+  input[type="text"], input:not([type]) { background: #171b14; color: inherit; border: 1px solid #2c3326; padding: 0 0.6rem; width: min(100%, 28rem); }
+  #out, .out { font-size: 1.15rem; }
+  ol { padding-left: 1.2rem; }
+  label { display: flex; gap: 0.5rem; align-items: center; margin: 0.6rem 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }</style>
+</head>
+<body>
+<header><p class="flag">medlib</p><h1>Study calculator</h1></header>
+<main>
+  <p>Planner and one of the ten clinical calculators. The 37,000-card index is not in this browser. No patient record is stored.</p>
+  <label>Height cm <input data-cm id="cm" value="170" /></label>
+  <label>Weight kg <input data-kg id="kg" value="70" /></label>
+  <button type="button" data-demo-act>Calculate BMI</button>
+  <p data-demo-out id="out">Ready.</p>
+</main>
+<script>
+const out = document.getElementById('out');
+document.querySelector('[data-demo-act]').addEventListener('click', () => {
+  const cm = Number(document.getElementById('cm').value);
+  const kg = Number(document.getElementById('kg').value);
+  if (!cm || !kg) { out.textContent = 'Enter a height and a weight.'; return; }
+  const bmi = kg / (cm / 100) ** 2;
+  out.textContent = 'BMI ' + bmi.toFixed(1) + ' from the numbers in the form. Study aid only.';
+});
+</script>
+</body>
+</html>

@@ -13,7 +13,7 @@ const cases = [
   {
     project: beauty,
     play: 'boldinbeauty',
-    reel: 'reel/boldinbeauty.webm',
+    reel: '',
     problem: 'A 3D gacha needed a playable Unreal build, an account server, and a public site.',
     built: 'Unreal Engine 5.8 gameplay demo, account server, and AI pipeline. Twenty operators.',
     result: beauty?.highlight,
@@ -21,7 +21,7 @@ const cases = [
   {
     project: colosseum,
     play: 'agent-arena',
-    reel: 'reel/arena.webm',
+    reel: 'reel/arena.mp4',
     problem: 'Two models take one generated task. The winner has to be checked, not claimed.',
     built: 'Agent Fitness trains the roster. Agent Arena runs the head-to-head races and keeps the season files.',
     result: `${colosseum?.highlight}. ${arena?.highlight}.`,
@@ -29,7 +29,7 @@ const cases = [
   {
     project: fia,
     play: 'fiaos',
-    reel: 'reel/fiaos.webm',
+    reel: 'reel/fiaos.mp4',
     problem: 'A household OS that stays on the machine, including local chat when no external key is set.',
     built: 'Frida edition, public client, Casa tab, demo profiles Ada, Bea, and Cam.',
     result: '15 pass, 0 fail. Default local model qwen3:14b. Stills are demo data.',
@@ -55,21 +55,24 @@ const cases = [
                 {shot && (
                   <Image
                     src={imageFor(shot.file)}
-                    alt=""
+                    alt={shot.alt}
                     widths={[640, 960, 1280]}
                     sizes="(min-width: 900px) 46vw, 100vw"
                     format="webp"
                     loading="eager"
                   />
                 )}
-                <video
-                  src={href(item.reel)}
-                  muted
-                  loop
-                  playsinline
-                  autoplay
-                  aria-label={`${project.title} demo`}
-                ></video>
+                {item.reel && (
+                  <video
+                    data-reel={href(item.reel)}
+                    poster={href(item.reel.replace(/\.mp4$/, '.webp'))}
+                    muted
+                    loop
+                    playsinline
+                    preload="none"
+                    aria-label={`${project.title} demo`}
+                  ></video>
+                )}
               </div>
               <div class="case-copy">
                 <p class="kicker">{project.title}</p>
@@ -97,7 +100,8 @@ const cases = [
                   </div>
                 </dl>
                 <div class="case-actions">
-                  <a class="play-btn" href={href(`play/${item.play}/`)}>Open live demo</a>
+                  <a class="play-btn" href={href(`standalone/${item.play}/index.html`)}>Play in browser</a>
+                  <a class="play-btn play-btn-ghost" href={href(`downloads/${item.play}.zip`)} download>Download</a>
                   {project.slug === 'boldinbeauty' &&
                     (project.windows ? (
                       <a class="play-btn play-btn-ghost" href={project.windows}>Download for Windows</a>

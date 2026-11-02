@@ -4,7 +4,7 @@ function replay(root, steps) {
   let index = 0;
   root.innerHTML = `
     <p class="play-flag">Replay of recorded run.</p>
-    <button type="button" data-demo-act>Next recorded step</button>
+    <button type="button" data-demo-act>Next</button>
     <p data-demo-out>Ready.</p>
     <ol class="play-log"></ol>`;
   const out = root.querySelector('[data-demo-out]');

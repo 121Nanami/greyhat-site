@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { Image } from 'astro:assets';
 import { groups, projectsIn, searchBlob } from '../lib/content';
 import { href } from '../lib/href';
@@ -58,6 +60,10 @@ const filters = [{ id: 'all', label: 'All' }, ...groups.map((group) => ({ id: gr
               {items.map((project) => {
                 const shot = project.shots[0];
                 const image = shot ? imageFor(shot.file) : undefined;
+                const captureName = `captures/${project.slug}.webp`;
+                const reelName = `captures/${project.slug}.mp4`;
+                const hasCapture = !shot && existsSync(join(process.cwd(), 'public', captureName));
+                const hasReel = hasCapture && existsSync(join(process.cwd(), 'public', reelName));
                 const words = project.title.split(/[^A-Za-z0-9]+/).filter(Boolean);
                 const sigil = (words.length > 1 ? words[0][0] + words[1][0] : project.title.replace(/[^A-Za-z0-9]/g, '').slice(0, 2)).toUpperCase();
                 return (
@@ -81,16 +87,11 @@ const filters = [{ id: 'all', label: 'All' }, ...groups.map((group) => ({ id: gr
                           loading={project.featured ? 'eager' : 'lazy'}
                           decoding="async"
                         />
-                      ) : project.placeholder ? (
-                        <div class="plate">
-                          <span>No assets yet</span>
-                          <span>Placeholder</span>
-                        </div>
-                      ) : (
-                        <div class="slugplate">
-                          <span>No public screenshot</span>
-                          <span>{project.slug}</span>
-                        </div>
+                      ) : hasCapture ? (
+                        <img src={href(captureName)} alt={`${project.title} browser demo`} width="960" height="540" loading="lazy" decoding="async" />
+                      ) : null}
+                      {hasReel && (
+                        <video data-reel={href(reelName)} poster={href(captureName)} muted loop playsinline preload="none" aria-label={`${project.title} demo`}></video>
                       )}
                     </div>
                     <div class="card-body">
@@ -104,7 +105,16 @@ const filters = [{ id: 'all', label: 'All' }, ...groups.map((group) => ({ id: gr
                       <p class="card-highlight">{project.highlight}</p>
                     </div>
                     </a>
-                    <a class="play-btn" href={href(`play/${project.slug}/`)}>Play</a>
+                    <div class="card-actions">
+                      <a class="play-btn" href={href(`standalone/${project.slug}/index.html`)}>Play in browser</a>
+                      <a class="play-btn play-btn-ghost" href={href(`downloads/${project.slug}.zip`)} download>Download</a>
+                      {project.slug === 'boldinbeauty' &&
+                        (project.windows ? (
+                          <a class="play-btn play-btn-ghost" href={project.windows}>Download for Windows</a>
+                        ) : (
+                          <button type="button" class="play-btn play-btn-ghost" disabled>Windows build coming soon</button>
+                        ))}
+                    </div>
                     <p class="card-out">
                       {project.links?.map((link) => (
                         <a href={link.href} rel="noopener noreferrer">{link.label}</a>

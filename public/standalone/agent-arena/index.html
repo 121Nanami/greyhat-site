@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Arena</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="root"></div>
+<script src="data/live.js"></script>
+<script src="data/tournament.js"></script>
+<script src="data/cross-model.js"></script>
+<script>
+(function () {
+  var orig = window.fetch;
+  var map = { 'live.json': window.__ARENA_LIVE, 'tournament.json': window.__ARENA_TOURNAMENT, 'cross-model.json': window.__ARENA_CROSS };
+  window.fetch = function (input, init) {
+    var url = typeof input === 'string' ? input : (input && input.url) || '';
+    for (var key in map) {
+      if (url.indexOf(key) !== -1 && map[key] != null) {
+        return Promise.resolve(new Response(JSON.stringify(map[key]), { status: 200, headers: { 'Content-Type': 'application/json' } }));
+      }
+    }
+    return orig.call(this, input, init);
+  };
+})();
+</script>
+<script src="app.js"></script>
+</body>
+</html>
