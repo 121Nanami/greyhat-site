@@ -1,0 +1,85 @@
+{
+  "target_usd": 1000.0,
+  "revenue_usd": 0.0,
+  "spend_usd": 0.0,
+  "profit_usd": 0.0,
+  "deadline": "2026-10-31",
+  "days_left": 1,
+  "skus": 10,
+  "hn": "Making1ktm",
+  "updated_at": "2026-11-02T09:53:43.396913+00:00",
+  "needed_per_day": 1000.0,
+  "on_pace": false,
+  "products": [
+    {
+      "name": "Ship AI Code Operator Pack",
+      "price": 19,
+      "url": "https://2406902730061.gumroad.com/l/ejvjut",
+      "cat": "ai"
+    },
+    {
+      "name": "Notion Creator OS",
+      "price": 29,
+      "url": "https://2406902730061.gumroad.com/l/pxcdsh",
+      "cat": "notion"
+    },
+    {
+      "name": "Notion Freelance CRM",
+      "price": 24,
+      "url": "https://2406902730061.gumroad.com/l/pjvpyk",
+      "cat": "notion"
+    },
+    {
+      "name": "Notion SaaS Launch OS",
+      "price": 27,
+      "url": "https://2406902730061.gumroad.com/l/htqwe",
+      "cat": "notion"
+    },
+    {
+      "name": "Notion Content Engine",
+      "price": 19,
+      "url": "https://2406902730061.gumroad.com/l/iouonp",
+      "cat": "notion"
+    },
+    {
+      "name": "Shopify Dawn Presets Pack",
+      "price": 39,
+      "url": "https://2406902730061.gumroad.com/l/avhirh",
+      "cat": "shopify"
+    },
+    {
+      "name": "Operator + Templates Kit Bundle",
+      "price": 149,
+      "url": "https://2406902730061.gumroad.com/l/scqqm",
+      "cat": "bundle"
+    },
+    {
+      "name": "AI PR Risk Audit (Async)",
+      "price": 299,
+      "url": "https://2406902730061.gumroad.com/l/cuibwl",
+      "cat": "service"
+    },
+    {
+      "name": "Digital Product Sprint",
+      "price": 499,
+      "url": "https://2406902730061.gumroad.com/l/wqnwmm",
+      "cat": "service"
+    },
+    {
+      "name": "Agent Treasury Setup Pack",
+      "price": 149,
+      "url": "https://2406902730061.gumroad.com/l/zeegwq",
+      "cat": "service"
+    }
+  ],
+  "compound": {
+    "bank_usd": 0.0,
+    "reinvest_budget_usd": 0.0,
+    "reinvest_available_usd": 0.0,
+    "reinvest_pct": 0.4,
+    "bank_pct": 0.6,
+    "dynamic_soft_cap_usd": 50.0,
+    "dynamic_daily_cap_usd": 150.0,
+    "bet_target_hit": false
+  }
+}

@@ -86,6 +86,7 @@ const REPLAYS = {
   aicentre: [
     'Electron app. Role: dispatch and monitor CLI AI agents in bulk.',
     'No dispatch log or agent count is recorded here.',
+    'This page does not invent a run.',
   ],
   reporeel: [
     'Three local-7B trailers are named: Click, chi, and zustand.',
@@ -216,11 +217,15 @@ const REAL = {
       <p>A live scan on the record requires --i-am-authorised. This browser does not contact the network and does not score a domain.</p>
       <label><input type="checkbox" data-auth /> I am authorised to describe a scan of a domain I administer</label>
       <button type="button" data-demo-act>Describe the checks</button>
+      <button type="button" data-suite>Recorded suite</button>
       <p data-demo-out>Ready.</p>`;
+    root.querySelector('[data-suite]').addEventListener('click', () => {
+      root.querySelector('[data-demo-out]').textContent = 'Recorded suite: 22 tests, plus CI. MIT. Offline demo mode does not contact a network.';
+    });
     bind(root, (out) => {
       const allowed = root.querySelector('[data-auth]').checked;
       out.textContent = allowed
-        ? 'Recorded checks, not run: crt.sh, DNS, HTTP/TLS probe, technology fingerprint, security-header checks. No risk score is computed here. 22 tests and CI are the recorded suite size.'
+        ? 'Recorded checks, not run: crt.sh, DNS, HTTP/TLS probe, technology fingerprint, security-header checks. No risk score is computed here.'
         : 'Refused. The tool will not scan without --i-am-authorised.';
     });
   },
@@ -228,9 +233,13 @@ const REAL = {
     root.innerHTML = `
       <p>A score from 0 to 100 belongs to a laptop you administer. This browser cannot see one, so it will not invent a score. Fixes on the record are dry-run first.</p>
       <button type="button" data-demo-act>List the dry-run checks</button>
+      <button type="button" data-suite>Recorded suite</button>
       <p data-demo-out>Ready.</p>`;
+    root.querySelector('[data-suite]').addEventListener('click', () => {
+      root.querySelector('[data-demo-out]').textContent = 'Recorded suite: 9 tests. MIT. Fixes are reversible and dry-run by default.';
+    });
     bind(root, (out) => {
-      out.textContent = 'Dry-run only: outbound connections, trackers, open ports, Flatpak permissions, Firefox, SSH, firewall. No score. 9 tests and MIT are the recorded project facts.';
+      out.textContent = 'Dry-run only: outbound connections, trackers, open ports, Flatpak permissions, Firefox, SSH, firewall. No score.';
     });
   },
   'greyhat-utilities'(root) {
@@ -409,15 +418,34 @@ const REAL = {
   },
 };
 
-function embedFia(root, slug) {
+function prefix() {
   const base = document.documentElement.dataset.base || '/';
-  const prefix = base.endsWith('/') ? base : `${base}/`;
+  return base.endsWith('/') ? base : `${base}/`;
+}
+
+function frameApp(root, src, note, onAct) {
+  root.innerHTML = `
+    <p class="play-flag">${note}</p>
+    <button type="button" data-demo-act>Use the app</button>
+    <p data-demo-out>Ready.</p>
+    <iframe title="Embedded app" src="${prefix()}${src}"></iframe>`;
+  bind(root, (out) => {
+    const frame = root.querySelector('iframe');
+    try {
+      onAct(frame, out);
+    } catch {
+      out.textContent = 'The app is open.';
+    }
+  });
+}
+
+function embedFia(root, slug) {
   const query = slug === 'fiaos-studio' ? '?app=paint' : slug === 'fia-modules' ? '?app=mail' : '';
   root.innerHTML = `
     <p class="play-flag">Public FiaOS client. Demo profiles Ada, Bea, and Cam. Fia Health’s vault is not in this copy.</p>
     <button type="button" data-demo-act>Show the household</button>
     <p data-demo-out>Ready.</p>
-    <iframe title="FiaOS demo" src="${prefix}fiaos-demo/${query}"></iframe>`;
+    <iframe title="FiaOS demo" src="${prefix()}fiaos-demo/${query}"></iframe>`;
   bind(root, (out) => {
     const frame = root.querySelector('iframe');
     try {
@@ -439,6 +467,37 @@ export function mount(root) {
   const slug = root.dataset.slug;
   if (slug === 'fiaos' || slug === 'fiaos-studio' || slug === 'fia-modules') {
     embedFia(root, slug);
+    return;
+  }
+  if (slug === 'gate') {
+    frameApp(root, 'gate-demo/#/gate', 'Shipgate GATE workspace from the public client. Checklist stays in this browser.', (frame, out) => {
+      frame.contentWindow.location.hash = '#/gate';
+      out.textContent = 'GATE workspace open.';
+    });
+    return;
+  }
+  if (slug === 'agent-arena') {
+    frameApp(root, 'arena-demo/', 'Agent Arena dashboard from the public client, reading the recorded season files.', (frame, out) => {
+      frame.contentWindow.location.hash = '#/leaderboard';
+      out.textContent = 'Leaderboard open.';
+    });
+    return;
+  }
+  if (slug === 'facet') {
+    frameApp(root, 'fiaos-demo/facet.html', 'Facet start page from the public FiaOS client.', (_frame, out) => {
+      out.textContent = 'Facet is open.';
+    });
+    return;
+  }
+  if (slug === 'centre') {
+    frameApp(root, 'fiaos-demo/desk.html', 'Fia Desk from the public FiaOS client. It does not attach a VNC session.', (_frame, out) => {
+      out.textContent = 'Desk is open.';
+    });
+    return;
+  }
+  if (slug === 'boldinbeauty') {
+    root.innerHTML = `<iframe title="BoldInBeauty site" src="${prefix()}bib-web/"></iframe><div data-gacha></div>`;
+    gacha(root.querySelector('[data-gacha]'));
     return;
   }
   if (REPLAYS[slug]) {

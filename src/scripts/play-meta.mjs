@@ -2,7 +2,7 @@
 export const DEMO_KIND = {
   boldinbeauty: 'gallery',
   'ai-colosseum': 'replay',
-  'agent-arena': 'replay',
+  'agent-arena': 'real',
   'agent-fitness': 'replay',
   gate: 'real',
   triagebot: 'replay',

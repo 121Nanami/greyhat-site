@@ -1,30 +1,4 @@
-<!doctype html><html lang="en-AU"><head><script>
-(()=>{
-  const root=location.pathname.replace(/[^/]*$/, '');
-  const here=u=>{
-    if(typeof u!=='string')return u;
-    if(u.startsWith('/api/')||u.startsWith('/oauth/'))return null;
-    if(u.startsWith('/')&&!u.startsWith(root))return root.replace(/\/$/,'')+u;
-    return u;
-  };
-  const orig=window.fetch;
-  window.fetch=(input,init)=>{
-    const url=typeof input==='string'?input:(input&&input.url);
-    const mapped=here(url);
-    if(mapped==null)return Promise.resolve(new Response(JSON.stringify({ok:false,xai:false,items:[],notes:[],products:[],episodes:[],error:'No local server in this browser demo.'}),{status:200,headers:{'Content-Type':'application/json'}}));
-    if(typeof input==='string')return orig(mapped,init);
-    return orig(input,init);
-  };
-  document.addEventListener('click',e=>{
-    const a=e.target.closest&&e.target.closest('a[href^="/"]');
-    if(!a)return;
-    const href=a.getAttribute('href');
-    if(href.startsWith('/api/')||href.startsWith('/oauth/')){e.preventDefault();return}
-    e.preventDefault();
-    location.href=root.replace(/\/$/,'')+href;
-  },true);
-})();
-</script>
+<!doctype html><html lang="en-AU"><head><script src="demo-shim.js"></script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Facet</title><link rel="stylesheet" href="styles.css">
 <style>body{display:block;height:auto;min-height:100vh;padding:18px;max-width:820px;margin:0 auto}button{margin:4px}input{min-height:48px}</style></head>
